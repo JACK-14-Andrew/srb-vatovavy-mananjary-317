@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>SRB Vatovavy | Portail Officiel Premium - MEF Madagascar</title>
+    
+    <!-- Bootstrap 5 + Icons + Fonts Ultra Premium -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== ULTRA PREMIUM PRO MAX ===== */
+        :root {
+            --mada-white: #FFFFFF;
+            --mada-red: #E52E1E;
+            --mada-green: #2D6A2F;
+            --mada-red-light: #FF6B5E;
+            --mada-green-light: #4CAF50;
+            --dark-bg: #0A1A0E;
+            --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            --transition-smooth: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #FEF9F5 0%, #F5F7F2 100%);
+            color: #1A2A1F;
+            scroll-behavior: smooth;
+            padding-top: 95px;
+        }
+        h1, h2, h3, h4, .logo-text { font-family: 'Cormorant Garamond', serif; font-weight: 700; letter-spacing: -0.01em; }
+        
+        /* NAVBAR */
+        .navbar-premium {
+            background: rgba(10, 26, 14, 0.92);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.8rem 0;
+            transition: var(--transition-smooth);
+        }
+        .logo-premium { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon {
+            position: relative;
+            width: 48px; height: 48px;
+            background: linear-gradient(145deg, var(--mada-red), var(--mada-green));
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 20px rgba(229, 46, 30, 0.3);
+        }
+        .logo-icon i { font-size: 1.8rem; color: white; }
+        .logo-icon::after {
+            content: ''; position: absolute; inset: -2px;
+            background: linear-gradient(145deg, var(--mada-red), var(--mada-green));
+            border-radius: 22px; z-index: -1; opacity: 0.6; filter: blur(6px);
+        }
+        .logo-text { font-size: 1.6rem; font-weight: 800; color: white; letter-spacing: -0.5px; line-height: 1.2; }
+        .logo-text span { background: linear-gradient(135deg, #FFB347, var(--mada-red)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .logo-badge { font-size: 0.65rem; background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 30px; color: #FFD700; font-weight: 600; }
+        .nav-link-premium {
+            color: rgba(255,255,255,0.85) !important; font-weight: 600; font-size: 0.95rem;
+            padding: 8px 20px !important; margin: 0 4px;
+            border-radius: 50px; transition: var(--transition-smooth);
+            position: relative;
+        }
+        .nav-link-premium:hover { color: white !important; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .nav-link-premium::before {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 0; height: 2px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green));
+            transition: width 0.3s ease; border-radius: 2px;
+        }
+        .nav-link-premium:hover::before { width: 70%; }
+        .btn-cta-premium {
+            background: linear-gradient(135deg, var(--mada-red), var(--mada-green));
+            border: none; padding: 8px 24px; border-radius: 50px;
+            color: white; font-weight: 700; font-size: 0.85rem;
+            transition: var(--transition-smooth); margin-left: 10px;
+        }
+        .btn-cta-premium:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(229, 46, 30, 0.4); }
+        
+        /* HERO */
+        .hero-premium {
+            background: linear-gradient(120deg, #0A1A0E 0%, #1A3A1E 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-premium::before {
+            content: ''; position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1562771379-e0a6ab3a6e72?auto=format&fit=crop&w=1920&q=80') center/cover;
+            opacity: 0.08; pointer-events: none;
+        }
+        .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(229,46,30,0.15) 0%, transparent 70%); top: -200px; right: -100px; border-radius: 50%; }
+        .greeting-badge { background: rgba(255, 215, 0, 0.2); backdrop-filter: blur(8px); border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 60px; padding: 8px 24px; display: inline-block; font-weight: 600; }
+        .welcome-text { font-size: 1.2rem; line-height: 1.7; background: rgba(255,255,245,0.08); padding: 20px 28px; border-radius: 32px; border-left: 4px solid #FFB347; }
+        .btn-hero-primary { background: linear-gradient(135deg, var(--mada-red), #FF6B5E); border: none; padding: 14px 38px; border-radius: 60px; font-weight: 700; transition: var(--transition-smooth); box-shadow: 0 10px 25px rgba(229,46,30,0.35); }
+        .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 35px rgba(229,46,30,0.45); }
+        
+        /* CARTES */
+        .card-premium {
+            background: rgba(255,255,255,0.95); border-radius: 32px; padding: 28px 20px;
+            transition: var(--transition-smooth); border: 1px solid rgba(0,0,0,0.04);
+            cursor: pointer; box-shadow: 0 10px 25px -10px rgba(0,0,0,0.05);
+        }
+        .card-premium:hover { transform: translateY(-12px); box-shadow: var(--shadow-premium); border-color: var(--mada-red); }
+        .card-icon { width: 70px; height: 70px; background: linear-gradient(145deg, rgba(229,46,30,0.1), rgba(45,106,47,0.1)); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: var(--mada-red); transition: var(--transition-smooth); }
+        .card-premium:hover .card-icon { background: linear-gradient(145deg, var(--mada-red), var(--mada-green)); color: white; transform: scale(1.05); }
+        
+        /* CHAT */
+        .chat-premium { border-radius: 36px; background: white; overflow: hidden; box-shadow: var(--shadow-premium); border: 1px solid rgba(229,46,30,0.15); }
+        .chat-header-premium { background: linear-gradient(135deg, #0A1A0E, #1A3A1E); padding: 20px 28px; }
+        
+        /* CONTACT */
+        .contact-form-premium { background: rgba(255,255,255,0.08); backdrop-filter: blur(4px); border-radius: 28px; padding: 28px; }
+        .contact-form-premium input, .contact-form-premium textarea { background: rgba(255,255,255,0.9); border: none; border-radius: 60px; padding: 12px 20px; font-weight: 500; }
+        .contact-form-premium textarea { border-radius: 28px; }
+        .map-container { border-radius: 28px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.2); }
+        .social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: rgba(255,255,255,0.12); border-radius: 60px; transition: 0.3s; font-size: 1.6rem; margin: 0 8px; text-decoration: none; }
+        .social-icons a:hover { transform: translateY(-5px); background: var(--mada-red); color: white !important; }
+        
+        .footer-premium { background: #071207; border-top: 2px solid var(--mada-green); }
+        .whatsapp-float-premium { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(145deg, #25D366, #128C7E); width: 62px; height: 62px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; transition: 0.3s; z-index: 1000; box-shadow: 0 10px 25px rgba(37,211,102,0.4); text-decoration: none; }
+        .whatsapp-float-premium:hover { transform: scale(1.08) rotate(5deg); border-radius: 30px; color: white; }
+        
+        @media (max-width: 992px) { body { padding-top: 80px; } .logo-text { font-size: 1.3rem; } .logo-icon { width: 40px; height: 40px; } .welcome-text { font-size: 1rem; padding: 16px; } }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ULTRA PREMIUM ===== -->
+    <nav class="navbar navbar-premium fixed-top navbar-expand-lg">
+        <div class="container">
+            <a class="logo-premium" href="#accueil">
+                <div class="logo-icon"><i class="fa-solid fa-landmark"></i></div>
+                <div><div class="logo-text">SERVICE REGIONAL DU BUDGET <span>VATOVAVY</span></div><div class="logo-badge">MEF • MADAGASCAR</div></div>
+            </a>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
+                <i class="fa-solid fa-bars-staggered fs-3"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="premiumNavbar">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#accueil"><i class="fa-regular fa-compass me-1"></i> Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#demarches"><i class="fa-regular fa-folder-tree me-1"></i> Démarches</a></li>
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#apropos"><i class="fa-regular fa-flag me-1"></i> À propos</a></li>
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#contact"><i class="fa-regular fa-address-card me-1"></i> Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a href="#assistant-ia" class="btn btn-cta-premium"><i class="fa-regular fa-microchip me-2"></i> Assistance IA</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ===== SECTION HERO ACCUEIL AVEC SALUTATION ===== -->
+    <section id="accueil" class="hero-premium py-5">
+        <div class="hero-glow"></div>
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-white">
+                    <div class="mb-4"><span class="greeting-badge"><i class="fa-regular fa-hand-peace me-2"></i> Bienvenue sur le portail officiel</span></div>
+                    <h1 class="display-3 fw-bold">Ministère de l'Économie<br><span style="color: #FFB347;">et des Finances</span></h1>
+                    <div class="welcome-text mt-4 mb-4">
+                        <i class="fa-regular fa-hand-peace me-2" style="color: #FFB347;"></i> 
+                        <strong>Cher visiteur,</strong> <br><br>
+                        Le Service Régional du Budget (SRB) Vatovavy vous souhaite la bienvenue sur sa plateforme numérique premium. 
+                        Situé à <strong>Antanambazaha, Mananjary</strong>, nous mettons à votre disposition un espace digital moderne dédié à la gestion budgétaire, 
+                        au patrimoine de l'État et à l'accompagnement des agents publics. <br><br>
+                        <i class="fa-regular fa-flag me-1"></i> <strong>Tanindrazana, Fahafahana, Fandrosoana</strong> — Transparence, efficacité et innovation.
+                    </div>
+                    <div class="d-flex gap-3 mt-3 flex-wrap">
+                        <a href="#assistant-ia" class="btn btn-hero-primary text-white px-5 py-3"><i class="fa-regular fa-robot me-2"></i> Assistant IA Pro</a>
+                        <a href="#demarches" class="btn btn-outline-light px-5 py-3 rounded-pill"><i class="fa-regular fa-file-lines me-2"></i> Accès aux modèles</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block text-center">
+                    <img src="C:\Users\USER\Desktop\tahiana\R.png" alt="Armoiries Madagascar" style="width: 170px; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));">
+                    <div class="mt-4 bg-white bg-opacity-10 rounded-4 p-3"><p class="mb-0 fw-semibold"><i class="fa-regular fa-circle-check me-2 text-success"></i> Gestion budgétaire & Patrimoine</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ASSISTANT IA ULTRA INTELLIGENT ===== -->
+    <section id="assistant-ia" class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold" style="color: #1A2A1F;">🤖 Assistant Virtuel <span style="color: var(--mada-red);">Premium</span></h2>
+                <div class="mx-auto" style="width: 100px; height: 4px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
+                <p class="text-muted mt-3">Posez n'importe quelle question — je vous réponds comme un moteur de recherche intelligent !</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="chat-premium">
+                        <div class="chat-header-premium d-flex align-items-center">
+                            <div class="bg-white bg-opacity-15 rounded-circle p-2 me-3"><i class="fa-solid fa-brain fa-lg" style="color: #FFB347;"></i></div>
+                            <div><h5 class="mb-0 text-white">Agent IA • SRB Vatovavy</h5><small class="text-white-50"><i class="fa-regular fa-circle-dot me-1 text-success"></i> Ultra-intelligent • Base MEF</small></div>
+                        </div>
+                        <div class="chat-messages" id="chatMessagesPremium" style="height: 420px; overflow-y: auto; background: #FEFCF7; padding: 24px;">
+                            <div class="d-flex mb-3">
+                                <div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid var(--mada-green); max-width: 90%;">
+                                    <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour ! Je suis votre assistant intelligent SRB Vatovavy.</strong><br><br>
+                                    Je peux répondre à toutes vos questions :<br>
+                                    📍 Infos pratiques : horaires, adresse (Antanambazaha, Mananjary), contact, email, téléphone<br>
+                                    📋 Démarches : quitus, SIIGFP, SIGMP, bail, remboursement médical, reddition<br>
+                                    🏛️ Missions du SRB : budget, patrimoine, contrôle financier<br>
+                                    ❓ Questions générales : que fait le SRB ? c'est quoi un quitus ?<br><br>
+                                    <span class="text-muted">👉 Posez votre question ci-dessous !</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-white border-top">
+                            <form id="chatPremiumForm" class="d-flex gap-2">
+                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-3" placeholder="Ex: Quels sont les horaires ? Comment obtenir un quitus véhicule ?" autocomplete="off">
+                                <button type="submit" class="btn rounded-pill px-5" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green)); color: white; font-weight: 600;"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== DÉMARCHES ===== -->
+    <section id="demarches" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">📋 Démarches & <span style="color: var(--mada-green);">Modèles Officiels</span></h2>
+                <div class="mx-auto" style="width: 100px; height: 4px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
+                <p class="text-muted mt-3">Cliquez sur une carte pour connaître les pièces justificatives officielles</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalQuitus"><div class="card-icon mx-auto"><i class="fa-solid fa-car"></i></div><h5 class="fw-bold">Quitus complet</h5><p class="small text-muted">Véhicule / Logement d'État</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalBail"><div class="card-icon mx-auto"><i class="fa-solid fa-file-contract"></i></div><h5 class="fw-bold">Baux & Attestations</h5><p class="small text-muted">Bail administratif</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalEngagement"><div class="card-icon mx-auto"><i class="fa-solid fa-hand-peace"></i></div><h5 class="fw-bold">Engagements</h5><p class="small text-muted">Honneur & éthique</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalSiigfp"><div class="card-icon mx-auto"><i class="fa-solid fa-database"></i></div><h5 class="fw-bold">Login SIIGFP</h5><p class="small text-muted">Ordonnateur / CAd</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalSigmp"><div class="card-icon mx-auto"><i class="fa-solid fa-chart-line"></i></div><h5 class="fw-bold">Accès SIGMP</h5><p class="small text-muted">PRMP Marchés publics</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalSante"><div class="card-icon mx-auto"><i class="fa-solid fa-heart-pulse"></i></div><h5 class="fw-bold">Remboursement médical</h5><p class="small text-muted">Soins & pharmacie</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalReddition"><div class="card-icon mx-auto"><i class="fa-solid fa-cubes"></i></div><h5 class="fw-bold">Reddition compte matière</h5><p class="small text-muted">Inventaire & PV</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalPatrimoine"><div class="card-icon mx-auto"><i class="fa-solid fa-building"></i></div><h5 class="fw-bold">Patrimoine État</h5><p class="small text-muted">Attribution</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== À PROPOS ===== -->
+    <section id="apropos" class="py-5" style="background: linear-gradient(115deg, #F4F7F2, #FFF8F0);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold">🇲🇬 SRB <span style="color: var(--mada-red);">Vatovavy</span></h2>
+                    <div class="my-3" style="width: 80px; height: 3px; background: var(--mada-green);"></div>
+                    <p class="lead fs-5">Le Service Régional du Budget, démembrement du Ministère de l'Économie et des Finances à Mananjary, assure la gestion budgétaire, le contrôle des dépenses et la gestion du patrimoine de l'État dans la région Vatovavy.</p>
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-2"><i class="fa-regular fa-circle-check me-2" style="color: var(--mada-green);"></i> <strong>Exécution budgétaire</strong> – Suivi des crédits et engagements</li>
+                        <li class="mb-2"><i class="fa-regular fa-circle-check me-2" style="color: var(--mada-green);"></i> <strong>Patrimoine public</strong> – Quitus, baux, recensement des biens</li>
+                        <li class="mb-2"><i class="fa-regular fa-circle-check me-2" style="color: var(--mada-green);"></i> <strong>Digitalisation</strong> – SIIGFP, SIGMP et support IA</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="bg-white p-3 rounded-5 shadow-lg"><img src="https://images.unsplash.com/photo-1562771379-e0a6ab3a6e72?auto=format&fit=crop&w=700&q=80" class="img-fluid rounded-4" style="max-height: 280px; width: 100%; object-fit: cover;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT PREMIUM AVEC CARTE, FORMULAIRE, RÉSEAUX ===== -->
+    <section id="contact" class="py-5" style="background: #0A1A0E;">
+        <div class="container text-white">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-white">📞 Contact <span style="color: var(--mada-red);">Premium</span></h2>
+                <div class="mx-auto" style="width: 100px; height: 3px; background: var(--mada-green);"></div>
+                <p class="mt-3 opacity-75">Nous sommes à votre disposition du lundi au vendredi</p>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="bg-white bg-opacity-10 rounded-4 p-4 h-100">
+                        <h3 class="mb-4"><i class="fa-regular fa-building me-2" style="color: var(--mada-red);"></i> Coordonnées officielles</h3>
+                        <p><i class="fa-solid fa-location-dot me-3" style="color: var(--mada-red); width: 25px;"></i> <strong>Bureau central :</strong><br> Antanambazaha, Mananjary 317, Région Vatovavy, Madagascar</p>
+                        <p><i class="fa-solid fa-envelope me-3" style="color: var(--mada-green); width: 25px;"></i> <strong>Email :</strong><br> contact.srb.vatovavy@mef.gov.mg</p>
+                        <p><i class="fa-solid fa-phone me-3" style="color: #FFB347; width: 25px;"></i> <strong>Téléphone fixe :</strong><br> +261 20 57 901 23</p>
+                        <p><i class="fa-brands fa-whatsapp me-3" style="color: #25D366; width: 25px;"></i> <strong>WhatsApp direct :</strong><br> +261 34 57 250 57</p>
+                        <p><i class="fa-regular fa-clock me-3" style="color: #FFB347; width: 25px;"></i> <strong>Horaires d'ouverture :</strong><br> Lundi - Vendredi : 08h00 - 17h00<br> Samedi & Dimanche : Fermé</p>
+                        <div class="map-container mt-4">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31677.34256895428!2d48.399112!3d-21.230992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f5488d0af620cf%3A0x4a9e9f8c9c5b2e1d!2sMananjary%2C%20Madagascar!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" width="100%" height="200" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div class="social-icons mt-4 text-center">
+                            <p class="mb-2 opacity-75">Suivez-nous</p>
+                            <a href="#" class="text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form-premium">
+                        <h3 class="mb-4"><i class="fa-regular fa-pen-to-square me-2" style="color: var(--mada-green);"></i> Envoyez-nous un message</h3>
+                        <form id="contactFormPremium">
+                            <div class="mb-3"><input type="text" id="contactNom" class="form-control" placeholder="Votre nom complet" required></div>
+                            <div class="mb-3"><input type="email" id="contactEmail" class="form-control" placeholder="Votre adresse email" required></div>
+                            <div class="mb-3"><input type="tel" id="contactTel" class="form-control" placeholder="Votre numéro de téléphone"></div>
+                            <div class="mb-3"><textarea id="contactMessage" rows="4" class="form-control" placeholder="Votre message..." required></textarea></div>
+                            <button type="submit" class="btn text-white w-100" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green));"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer le message</button>
+                            <div id="formStatus" class="mt-3 text-center small fw-bold"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-premium py-4 text-center text-white-50">
+        <div class="container">
+            <p class="mb-0">© 2026 Ministère de l'Économie et des Finances - SRB Vatovavy | Conception stratégique TAHIANA ANDREA 🇲🇬</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/261342501234" class="whatsapp-float-premium" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <!-- MODALS -->
+    <div class="modal fade" id="modalQuitus" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content rounded-4"><div class="modal-header bg-light"><h5 class="modal-title text-danger">📄 Quitus Officiel</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><ul><li>Bordereau d'envoi</li><li>Certificat de situation juridique / Carte grise</li><li>PV de recensement physique</li><li>Quitus N-1 (si applicable)</li><li>Devis technique (4 ex) pour véhicule</li></ul></div></div></div></div>
+    <div class="modal fade" id="modalBail" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>🏠 Bail administratif</h5></div><div class="modal-body"><ul><li>Contrat de bail (7 ex)</li><li>Photos immeuble</li><li>Certificat de situation juridique</li><li>RIB bailleur</li><li>Attestation de non-logement</li></ul></div></div></div></div>
+    <div class="modal fade" id="modalEngagement" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>📜 Engagement</h5></div><div class="modal-body"><p>Formulaire déontologie + lettre d'engagement SIIGFP/SIGMP.</p></div></div></div></div>
+    <div class="modal fade" id="modalSiigfp" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>💻 SIIGFP</h5></div><div class="modal-body"><ul><li>Nom, IM, fonction, rôle</li><li>Acte nomination ORDSEC</li><li>Lettre d'engagement</li></ul></div></div></div></div>
+    <div class="modal fade" id="modalSigmp" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>📊 SIGMP</h5></div><div class="modal-body"><ul><li>Acte nomination PRMP</li><li>CV + lettre d'engagement</li><li>Email institutionnel</li></ul></div></div></div></div>
+    <div class="modal fade" id="modalSante" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>🩺 Remboursement médical</h5></div><div class="modal-body"><ul><li>Demande manuscrite</li><li>Bulletin consultation + ordonnance</li><li>Factures + RIB</li></ul></div></div></div></div>
+    <div class="modal fade" id="modalReddition" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>📦 Reddition compte matière</h5></div><div class="modal-body"><ul><li>Note de présentation</li><li>Inventaire physique (3 ex)</li><li>PV recensement + Excel PVRG</li></ul></div></div></div></div>
+    <div class="modal fade" id="modalPatrimoine" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>🏛️ Patrimoine État</h5></div><div class="modal-body"><ul><li>Fiche d'attribution</li><li>Arrêté de concession</li><li>Quitus antérieur</li></ul></div></div></div></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ===== ASSISTANT IA ULTRA INTELLIGENT =====
+        const chatForm = document.getElementById('chatPremiumForm');
+        const chatInput = document.getElementById('premiumChatInput');
+        const chatContainer = document.getElementById('chatMessagesPremium');
+
+        function addBotMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'd-flex mb-3';
+            div.innerHTML = `<div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F; max-width: 90%;"><i class="fa-regular fa-robot text-success me-2"></i> ${text}</div>`;
+            chatContainer.appendChild(div);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function getAIResponse(question) {
+            const q = question.toLowerCase();
+            
+            // Horaires & Contact
+            if (q.includes('horaire') || q.includes('ouverture') || q.includes('quand ouvrez')) return "🕒 Nos horaires d'ouverture : Lundi à Jeudi de 08h00 à 16h30, Vendredi de 08h00 à 15h30. Fermé le week-end et les jours fériés.";
+            if (q.includes('adresse') || q.includes('localisation') || q.includes('où se trouve') || q.includes('antenambazaha') || q.includes('mananjary')) return "📍 Notre adresse : Antanambazaha, Mananjary 317, Région Vatovavy, Madagascar. Vous pouvez nous localiser via la carte Google Maps dans la section Contact.";
+            if (q.includes('email') || q.includes('courriel')) return "📧 Notre adresse email officielle : contact.srb.vatovavy@mef.gov.mg. Vous pouvez également utiliser le formulaire de contact sur notre site.";
+            if (q.includes('téléphone') || q.includes('appel') || q.includes('numero') || q.includes('fixe')) return "📞 Téléphone fixe : +261 20 57 901 23. WhatsApp : +261 34 57 250 57. Nous sommes joignables aux heures ouvrables.";
+            
+            // Missions
+            if (q.includes('mission') || q.includes('que fait') || q.includes('rôle') || q.includes('attribution') || q.includes('service')) {
+                return "🏛️ Le SRB Vatovavy a pour missions : 1️⃣ Assurer l'exécution budgétaire et le contrôle des dépenses publiques. 2️⃣ Gérer le patrimoine de l'État (quitus, baux, recensement). 3️⃣ Superviser les systèmes SIIGFP et SIGMP. 4️⃣ Accompagner les agents publics dans leurs démarches administratives.";
+            }
+            
+            // Quitus
+            if (q.includes('quitus')) {
+                if (q.includes('véhicule') || q.includes('voiture') || q.includes('auto')) return "🚗 Quitus véhicule : fournir bordereau d'envoi, devis technique (4 exemplaires), carnet d'entretien à jour, décision de nomination du dépositaire, PV de recensement physique visé.";
+                if (q.includes('logement') || q.includes('maison') || q.includes('bâtiment')) return "🏠 Quitus logement : bordereau d'envoi, certificat d'immatriculation et situation juridique, acte de donation visé (si applicable), plan topographique, quitus N-1.";
+                return "✅ Quitus : document officiel attestant de la bonne gestion d'un bien d'État (véhicule ou logement). Pièces requises : bordereau, situation juridique, PV de recensement, quitus antérieur. Cliquez sur la carte 'Quitus' pour plus de détails.";
+            }
+            
+            // SIIGFP
+            if (q.includes('siigfp')) return "💻 SIIGFP (Système Intégré d'Information de Gestion des Finances Publiques) : pour créer un login, fournir au Chef de Service : nom complet, numéro IM, fonction exacte, rôle (CAd/Ordonnateur/Opérateur), code ordonnateur, acte de nomination ORDSEC, lettre d'engagement signée.";
+            
+            // SIGMP / PRMP
+            if (q.includes('sigmp') || q.includes('prmp')) return "🔐 SIGMP (accès PRMP) : dossier à constituer avec acte de nomination en tant que PRMP, curriculum vitae actualisé, lettre d'engagement signée, adresse email institutionnelle valide.";
+            
+            // Remboursement médical
+            if (q.includes('remboursement') || q.includes('médical') || q.includes('santé') || q.includes('soins') || q.includes('famerenana')) {
+                return "🏥 Remboursement médical : pièces justificatives à déposer au SRB : demande manuscrite, bulletin de consultation (original), ordonnance médicale, factures de pharmacie certifiées, copie du carnet de santé, RIB du bénéficiaire.";
+            }
+            
+            // Bail
+            if (q.includes('bail') || q.includes('contrat de location')) return "📑 Bail administratif : pièces requises : photos de l'immeuble, note de présentation détaillée, contrat de bail (7 exemplaires), certificat de situation juridique récent, RIB du bailleur. Pour attestation de non-logement : engagement sur l'honneur + dernière fiche de paie.";
+            
+            // Reddition
+            if (q.includes('reddition') || q.includes('compte matière') || q.includes('inventaire')) {
+                return "📦 Reddition de comptes matière : dossier comprenant note de présentation (2 ex), décision de nomination, PV des membres des commissions, inventaire physique (3 ex), ordres d'entrée/sortie avec justificatifs, version électronique PVRG (Excel), PV de recensement général signé.";
+            }
+            
+            // Patrimoine
+            if (q.includes('patrimoine') || q.includes('état')) return "🏛️ Gestion du patrimoine de l'État : recensement des biens, attribution des logements et véhicules administratifs, contrats de bail, délivrance de quitus. Contactez le service patrimoine du SRB pour toute attribution.";
+            
+            // Salutations
+            if (q.includes('bonjour') || q.includes('salut') || q.includes('coucou')) return "👋 Bonjour ! Je suis l'assistant virtuel du SRB Vatovavy. Comment puis-je vous aider aujourd'hui ? Vous pouvez me poser des questions sur les démarches, les horaires, les contacts, ou les missions du service.";
+            if (q.includes('merci')) return "🎉 Avec plaisir ! N'hésitez pas si vous avez d'autres questions. Passez une excellente journée !";
+            
+            // Réponse par défaut
+            return "🔍 Je n'ai pas trouvé de réponse précise à votre question. Pouvez-vous reformuler ? Je peux vous renseigner sur : horaires, adresse (Antanambazaha, Mananjary), contact, quitus (véhicule/logement), SIIGFP, SIGMP, remboursement médical, bail administratif, reddition de comptes, missions du SRB.";
+        }
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const msg = chatInput.value.trim();
+            if (!msg) return;
+            
+            const userDiv = document.createElement('div');
+            userDiv.className = 'd-flex justify-content-end mb-3';
+            userDiv.innerHTML = `<div class="rounded-4 p-3" style="background: linear-gradient(135deg, #E52E1E, #2D6A2F); color: white; max-width: 85%;">${msg}</div>`;
+            chatContainer.appendChild(userDiv);
+            chatInput.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            setTimeout(() => {
+                const response = getAIResponse(msg);
+                addBotMessage(response);
+            }, 300);
+        });
+
+        // Formulaire de contact
+        const contactForm = document.getElementById('contactFormPremium');
+        const formStatus = document.getElementById('formStatus');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nom = document.getElementById('contactNom').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+            if (!nom || !email || !message) {
+                formStatus.innerHTML = '<span class="text-warning">⚠️ Veuillez remplir tous les champs obligatoires.</span>';
+                return;
+            }
+            formStatus.innerHTML = '<span class="text-success"><i class="fa-regular fa-circle-check me-1"></i> Message envoyé ! Nous vous répondrons dans les plus brefs délais.</span>';
+            contactForm.reset();
+            setTimeout(() => { formStatus.innerHTML = ''; }, 5000);
+        });
+    </script>
+</body>
+</html>
