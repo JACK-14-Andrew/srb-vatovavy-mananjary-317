@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title> Portail Officiel  - SERVICE REGIONAL DU BUDGET VATOVAVY</title>
-    <!-- Bootstrap 5 + Icons + Fonts Ultra Premium -->
+    <title>Portail Officiel - SERVICE REGIONAL DU BUDGET VATOVAVY</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        /* ===== ULTRA PREMIUM PRO MAX - RESPONSIVE ===== */
         :root {
-            --mada-white: #FFFFFF;
             --mada-red: #E52E1E;
             --mada-green: #2D6A2F;
-            --mada-red-light: #FF6B5E;
             --mada-green-light: #4CAF50;
-            --dark-bg: #0A1A0E;
             --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
             --transition-smooth: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
         }
@@ -28,93 +24,33 @@
             scroll-behavior: smooth;
             padding-top: 85px;
         }
-        h1, h2, h3, h4, .logo-text { font-family: 'Cormorant Garamond', serif; font-weight: 700; letter-spacing: -0.01em; }
+        h1, h2, h3, h4, .logo-text { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
         
-        /* ===== NAVBAR RESPONSIVE AVEC ESPACE POUR LOGO ===== */
+        /* NAVBAR */
         .navbar-premium {
             background: rgba(10, 26, 14, 0.96);
             backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
             border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             padding: 0.6rem 0;
-            transition: var(--transition-smooth);
         }
-        .logo-premium {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-       
-        .logo-img {
-            height: 50px;
-            width: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-            transition: transform 0.3s ease;
-            object-fit: contain;
-        }
-        /* Version fallback si pas d'image : affichage texte stylé */
-        .logo-fallback {
-            display: none;
-        }
-        /* Si l'image ne charge pas, afficher le fallback */
-        .logo-img.error {
-            display: none;
-        }
+        .logo-premium { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-img { height: 50px; width: auto; object-fit: contain; }
+        .logo-fallback { display: none; }
+        .logo-img.error { display: none; }
         .logo-img.error + .logo-fallback {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(145deg, var(--mada-red), var(--mada-green));
-            border-radius: 14px;
-            color: white;
-            font-size: 1.5rem;
+            display: flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; background: linear-gradient(145deg, var(--mada-red), var(--mada-green));
+            border-radius: 14px; color: white; font-size: 1.5rem;
         }
+        .logo-text-section { line-height: 1.2; }
+        .logo-text { font-size: 1.3rem; font-weight: 700; color: white; }
+        .logo-text span { background: linear-gradient(135deg, #FFB347, var(--mada-red)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .logo-badge { font-size: 0.55rem; background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 30px; color: #FFD700; display: inline-block; }
+        .nav-link-premium { color: rgba(255,255,255,0.85) !important; font-weight: 600; font-size: 0.9rem; padding: 6px 16px !important; border-radius: 50px; transition: var(--transition-smooth); }
+        .nav-link-premium:hover { color: white !important; background: rgba(255,255,255,0.1); }
+        .btn-cta-premium { background: linear-gradient(135deg, var(--mada-red), var(--mada-green)); border: none; padding: 6px 18px; border-radius: 50px; color: white; font-weight: 600; margin-left: 5px; }
         
-        .logo-text-section {
-            line-height: 1.2;
-        }
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: white;
-            letter-spacing: -0.3px;
-        }
-        .logo-text span { 
-            background: linear-gradient(135deg, #FFB347, var(--mada-red)); 
-            background-clip: text; 
-            -webkit-background-clip: text; 
-            color: transparent; 
-        }
-        .logo-badge { 
-            font-size: 0.55rem; 
-            background: rgba(255,255,255,0.15); 
-            padding: 2px 6px; 
-            border-radius: 30px; 
-            color: #FFD700; 
-            font-weight: 600; 
-            display: inline-block;
-        }
-        .nav-link-premium {
-            color: rgba(255,255,255,0.85) !important; 
-            font-weight: 600; 
-            font-size: 0.9rem;
-            padding: 6px 16px !important; 
-            margin: 0 2px;
-            border-radius: 50px; 
-            transition: var(--transition-smooth);
-        }
-        .nav-link-premium:hover { color: white !important; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-        .btn-cta-premium {
-            background: linear-gradient(135deg, var(--mada-red), var(--mada-green));
-            border: none; padding: 6px 18px; border-radius: 50px;
-            color: white; font-weight: 600; font-size: 0.8rem;
-            transition: var(--transition-smooth); margin-left: 5px;
-        }
-        
-        /* HERO */
+        /* HERO - VERSION ORIGINALE CONSERVÉE */
         .hero-premium {
             background: linear-gradient(120deg, #0A1A0E 0%, #1A3A1E 100%);
             position: relative; overflow: hidden;
@@ -122,75 +58,100 @@
         .hero-premium::before {
             content: ''; position: absolute; inset: 0;
             background: url('https://images.unsplash.com/photo-1562771379-e0a6ab3a6e72?auto=format&fit=crop&w=1920&q=80') center/cover;
-            opacity: 0.08; pointer-events: none;
+            opacity: 0.08;
         }
-        .greeting-badge { background: rgba(255, 215, 0, 0.2); backdrop-filter: blur(8px); border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 60px; padding: 6px 18px; display: inline-block; font-weight: 600; font-size: 0.85rem; }
+        .greeting-badge { background: rgba(255,215,0,0.2); backdrop-filter: blur(8px); border: 1px solid rgba(255,215,0,0.4); border-radius: 60px; padding: 6px 18px; display: inline-block; font-size: 0.85rem; }
         .welcome-text { font-size: 1rem; line-height: 1.6; background: rgba(255,255,245,0.08); padding: 18px 22px; border-radius: 28px; border-left: 4px solid #FFB347; }
-        .btn-hero-primary { background: linear-gradient(135deg, var(--mada-red), #FF6B5E); border: none; padding: 12px 28px; border-radius: 60px; font-weight: 700; font-size: 0.9rem; transition: var(--transition-smooth); box-shadow: 0 10px 25px rgba(229,46,30,0.35); }
+        .btn-hero-primary { background: linear-gradient(135deg, var(--mada-red), #FF6B5E); border: none; padding: 12px 28px; border-radius: 60px; font-weight: 700; }
         .btn-hero-primary:hover { transform: translateY(-3px); }
         
-        /* CARTES */
-        .card-premium {
-            background: rgba(255,255,255,0.95); border-radius: 28px; padding: 22px 16px;
-            transition: var(--transition-smooth); cursor: pointer; box-shadow: 0 10px 25px -10px rgba(0,0,0,0.05);
-            height: 100%;
+        /* DIVISIONS */
+        .division-card {
+            background: white; border-radius: 28px; padding: 25px 15px; text-align: center;
+            transition: var(--transition-smooth); cursor: pointer; box-shadow: 0 10px 25px -10px rgba(0,0,0,0.1);
+            height: 100%; border: 1px solid rgba(0,0,0,0.05);
         }
-        .card-premium:hover { transform: translateY(-8px); box-shadow: var(--shadow-premium); border-color: var(--mada-red); }
-        .card-icon { width: 60px; height: 60px; background: linear-gradient(145deg, rgba(229,46,30,0.1), rgba(45,106,47,0.1)); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.8rem; color: var(--mada-red); }
-        .card-premium h5 { font-size: 1.1rem; margin-bottom: 5px; }
+        .division-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-premium); border-color: var(--mada-red); }
+        .division-icon { width: 70px; height: 70px; background: linear-gradient(145deg, var(--mada-red), var(--mada-green)); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white; }
+        .division-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--mada-red); }
+        
+        /* MODÈLES CARDS - ENTIÈREMENT CLIQUABLES */
+        .modele-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 20px;
+            transition: 0.3s;
+            border-left: 4px solid var(--mada-green);
+            margin-bottom: 20px;
+            height: 100%;
+            cursor: pointer;
+        }
+        .modele-card:hover {
+            background: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+            border-left-color: var(--mada-red);
+        }
+        .modele-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1A2A1F;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .modele-title i { font-size: 1.5rem; color: var(--mada-red); }
+        .modele-description { font-size: 0.8rem; color: #6c757d; margin-bottom: 0; }
+        .modele-badge { display: inline-block; background: var(--mada-green); color: white; font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; margin-top: 12px; }
+        
+        /* MODAL & PDF */
+        .btn-download-modal {
+            background: linear-gradient(135deg, var(--mada-green), var(--mada-green-light));
+            border: none; border-radius: 40px; padding: 10px 24px;
+            color: white; font-weight: 700; transition: 0.3s;
+        }
+        .btn-download-modal:hover { transform: scale(1.03); }
+        .pdf-preview {
+            font-family: 'Times New Roman', serif;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .pdf-preview h4 { color: #E52E1E; text-align: center; margin-bottom: 10px; }
+        .pdf-preview .subtitle { text-align: center; font-size: 0.85rem; margin-bottom: 15px; }
+        .pdf-preview hr { margin: 15px 0; }
+        .pdf-preview ul { margin-left: 20px; }
         
         /* CHAT */
         .chat-premium { border-radius: 28px; background: white; overflow: hidden; box-shadow: var(--shadow-premium); }
         .chat-header-premium { background: linear-gradient(135deg, #0A1A0E, #1A3A1E); padding: 15px 20px; }
         .chat-messages { height: 380px; overflow-y: auto; background: #FEFCF7; padding: 20px; }
-        .bubble-responsive { max-width: 90%; }
         
         /* CONTACT */
         .contact-form-premium { background: rgba(255,255,255,0.08); border-radius: 24px; padding: 20px; }
         .contact-form-premium input, .contact-form-premium textarea { background: rgba(255,255,255,0.9); border: none; border-radius: 50px; padding: 10px 18px; }
-        .contact-form-premium textarea { border-radius: 20px; }
         .map-container { border-radius: 24px; overflow: hidden; }
         .social-icons a { display: inline-flex; width: 42px; height: 42px; background: rgba(255,255,255,0.12); border-radius: 50px; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 5px; transition: 0.3s; text-decoration: none; }
         .social-icons a:hover { transform: translateY(-4px); background: var(--mada-red); color: white !important; }
-        
         .footer-premium { background: #071207; border-top: 2px solid var(--mada-green); }
-        .whatsapp-float-premium { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(145deg, #25D366, #128C7E); width: 55px; height: 55px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; z-index: 1000; box-shadow: 0 8px 20px rgba(37,211,102,0.4); text-decoration: none; }
+        .whatsapp-float-premium { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(145deg, #25D366, #128C7E); width: 55px; height: 55px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; z-index: 1000; text-decoration: none; }
         
-        /* Responsive */
         @media (max-width: 768px) {
             body { padding-top: 72px; }
             .logo-img { height: 38px; }
-            .logo-text { font-size: 1rem; }
-            .logo-badge { font-size: 0.45rem; }
-            .navbar-premium { padding: 0.4rem 0; }
-            .hero-premium .display-3 { font-size: 2rem; }
-            .welcome-text { font-size: 0.9rem; padding: 14px; }
-            .card-premium { padding: 16px 12px; }
-            .card-icon { width: 50px; height: 50px; font-size: 1.5rem; }
-            .chat-messages { height: 320px; }
-            .btn-hero-primary, .btn-outline-light { padding: 8px 18px; font-size: 0.8rem; }
-        }
-        @media (max-width: 480px) {
-            .logo-text { font-size: 0.85rem; }
-            .logo-badge { display: none; }
-            .logo-img { height: 35px; }
-            .nav-link-premium { padding: 5px 12px !important; font-size: 0.8rem; }
+            .division-icon { width: 55px; height: 55px; font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== NAVBAR AVEC EMPLACEMENT DÉDIÉ POUR LE LOGO MEF ===== -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-premium fixed-top navbar-expand-lg">
         <div class="container">
             <a class="logo-premium" href="#accueil">
-                <!-- =============================================== -->
-                <!-- REMPLACEZ LE src CI-DESSOUS PAR VOTRE IMAGE LOGO -->
-                <!-- =============================================== -->
-                <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" 
-                     alt="Logo MEF Madagascar" 
-                     class="logo-img"
-                     onerror="this.classList.add('error'); this.onerror=null;">
+                <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" class="logo-img" onerror="this.classList.add('error'); this.onerror=null;">
                 <div class="logo-fallback"><i class="fa-solid fa-landmark"></i></div>
                 <div class="logo-text-section">
                     <div class="logo-text">SERVICE REGIONAL DU BUDGET <span>VATOVAVY</span></div>
@@ -202,17 +163,17 @@
             </button>
             <div class="collapse navbar-collapse" id="premiumNavbar">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#accueil"><i class="fa-regular fa-compass me-1"></i> Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#demarches"><i class="fa-regular fa-folder-tree me-1"></i> Démarches</a></li>
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#apropos"><i class="fa-regular fa-flag me-1"></i> À propos</a></li>
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#contact"><i class="fa-regular fa-address-card me-1"></i> Contact</a></li>
-                    <li class="nav-item ms-lg-2"><a href="#assistant-ia" class="btn btn-cta-premium"><i class="fa-regular fa-microchip me-1"></i> IA</a></li>
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#demarches">Démarches</a></li>
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#apropos">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a href="#assistant-ia" class="btn btn-cta-premium">IA</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- ===== SECTION HERO ACCUEIL ===== -->
+    <!-- HERO ACCUEIL - VERSION ORIGINALE CONSERVÉE -->
     <section id="accueil" class="hero-premium py-4 py-md-5">
         <div class="container py-3 py-md-4">
             <div class="row align-items-center">
@@ -223,8 +184,8 @@
                         <i class="fa-regular fa-hand-peace me-2" style="color: #FFB347;"></i> 
                         <strong>Akory aby lahaly eeee!,</strong><br><br>
                         Ny Service Régional du Budget (SRB) Vatovavy dia faly miarahaba anao tongasoa ato amin'ny rohinay. 
-                        Izay hita eto <strong>Antanambazaha, Mananjary</strong>, « Mametraka eo am-pelatananareo ny sehatra nomerika maoderina izahay ho an'ny fitantanana ny tetibola, 
-                        ny fananan’ny Fanjakana, ary ny fanampiana ny mpiasam-panjakana.»<br><br>
+                        Izay hita eto <strong>Antanambazaha, Mananjary</strong>, mametraka eo am-pelatananareo ny sehatra nomerika maoderina ho an'ny fitantanana ny tetibola, 
+                        ny fananan'ny Fanjakana, ary ny fanampiana ny mpiasam-panjakana.<br><br>
                         <i class="fa-regular fa-flag me-1"></i> <strong>Tanindrazana, Fahafahana, Fandrosoana</strong> — Transparence, efficacité et innovation.
                     </div>
                     <div class="d-flex gap-3 flex-wrap">
@@ -233,41 +194,34 @@
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block text-center mt-4 mt-lg-0">
-                    <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" alt="Armoiries Madagascar" style="width: 140px;">
+                    <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" alt="Logo MEF" style="width: 140px;">
                     <div class="mt-3 bg-white bg-opacity-10 rounded-4 p-2"><p class="mb-0 small"><i class="fa-regular fa-circle-check me-1 text-success"></i> Merci infiniment pour votre visite</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ASSISTANT IA INTELLIGENT ===== -->
+    <!-- ASSISTANT IA -->
     <section id="assistant-ia" class="py-4 py-md-5">
         <div class="container py-2 py-md-4">
             <div class="text-center mb-4">
-                <h2 class="display-5 fw-bold" style="color: #1A2A1F;">🤖 Assistant Virtuel <span style="color: var(--mada-red);">SRBV</span></h2>
+                <h2 class="display-5 fw-bold">🤖 Assistant Virtuel <span style="color: var(--mada-red);">SRBV</span></h2>
                 <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
-                <p class="text-muted mt-2 small">Posez n'importe quelle question sur le SRB, les démarches ou les services publics</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="chat-premium">
                         <div class="chat-header-premium d-flex align-items-center">
                             <div class="bg-white bg-opacity-15 rounded-circle p-2 me-3"><i class="fa-solid fa-brain fa-lg" style="color: #FFB347;"></i></div>
-                            <div><h5 class="mb-0 text-white fs-6 fs-md-5">Agent IA • SRB Vatovavy</h5><small class="text-white-50"><i class="fa-regular fa-circle-dot me-1 text-success"></i> Intelligent • Base MEF</small></div>
+                            <div><h5 class="mb-0 text-white">Agent IA • SRB Vatovavy</h5><small class="text-white-50">Base MEF</small></div>
                         </div>
                         <div class="chat-messages" id="chatMessagesPremium">
-                            <div class="d-flex mb-3">
-                                <div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F; max-width: 90%;">
-                                    <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour !</strong><br>
-                                    Je réponds à toutes vos questions : horaires, adresse (Antanambazaha), quitus, SIIGFP, SIGMP, bail, remboursement médical, reddition...<br>
-                                    <span class="text-muted small">👉 Posez votre question !</span>
-                                </div>
-                            </div>
+                            <div class="d-flex mb-3"><div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F;"><i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour !</strong><br>Je réponds à toutes vos questions : horaires, adresse, quitus, SIIGFP, SIGMP, bail, remboursement...</div></div>
                         </div>
                         <div class="p-3 bg-white border-top">
                             <form id="chatPremiumForm" class="d-flex gap-2">
-                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-2 py-md-3" placeholder="Ex: Comment obtenir un quitus véhicule ?" autocomplete="off">
-                                <button type="submit" class="btn rounded-pill px-3 px-md-5" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green)); color: white; font-weight: 600;"><i class="fa-regular fa-paper-plane me-1"></i> Envoyer</button>
+                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-2 py-md-3" placeholder="Ex: Comment obtenir un quitus véhicule ?">
+                                <button type="submit" class="btn rounded-pill px-3 px-md-5" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green)); color: white;">Envoyer</button>
                             </form>
                         </div>
                     </div>
@@ -276,28 +230,32 @@
         </div>
     </section>
 
-    <!-- ===== DÉMARCHES ===== -->
+    <!-- DÉMARCHES -->
     <section id="demarches" class="py-4 py-md-5 bg-white">
         <div class="container">
             <div class="text-center mb-4">
                 <h2 class="display-5 fw-bold">📋 Démarches & <span style="color: var(--mada-green);">Modèles Officiels</span></h2>
                 <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
-                <p class="text-muted mt-2 small">Cliquez sur une carte pour voir les pièces requises</p>
+                <p class="text-muted mt-2 small">Cliquez sur une division, puis sur un modèle pour le visualiser et le télécharger</p>
             </div>
-            <div class="row g-3 g-md-4">
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalQuitus"><div class="card-icon mx-auto"><i class="fa-solid fa-car"></i></div><h5 class="fw-bold fs-6">Quitus</h5><p class="small text-muted mb-0">Véhicule/Logement</p></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalBail"><div class="card-icon mx-auto"><i class="fa-solid fa-file-contract"></i></div><h5 class="fw-bold fs-6">Baux</h5><p class="small text-muted mb-0">Bail administratif</p></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalEngagement"><div class="card-icon mx-auto"><i class="fa-solid fa-hand-peace"></i></div><h5 class="fw-bold fs-6">Engagements</h5><p class="small text-muted mb-0">Honneur & éthique</p></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalSiigfp"><div class="card-icon mx-auto"><i class="fa-solid fa-database"></i></div><h5 class="fw-bold fs-6">SIIGFP</h5><p class="small text-muted mb-0">Login</p></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalSigmp"><div class="card-icon mx-auto"><i class="fa-solid fa-chart-line"></i></div><h5 class="fw-bold fs-6">SIGMP</h5><p class="small text-muted mb-0">PRMP</p></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalSante"><div class="card-icon mx-auto"><i class="fa-solid fa-heart-pulse"></i></div><h5 class="fw-bold fs-6">Remboursement</h5><p class="small text-muted mb-0">Médical</p></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalReddition"><div class="card-icon mx-auto"><i class="fa-solid fa-cubes"></i></div><h5 class="fw-bold fs-6">Reddition</h5><p class="small text-muted mb-0">Compte matière</p></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="card-premium text-center" data-bs-toggle="modal" data-bs-target="#modalPatrimoine"><div class="card-icon mx-auto"><i class="fa-solid fa-building"></i></div><h5 class="fw-bold fs-6">Patrimoine</h5><p class="small text-muted mb-0">État</p></div></div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-3 col-6"><div class="division-card" data-division="dpe"><div class="division-icon"><i class="fa-solid fa-landmark"></i></div><h3>DPE</h3><p class="small text-muted">Patrimoine d'État<br>Quitus • Baux • Recensement</p></div></div>
+                <div class="col-md-3 col-6"><div class="division-card" data-division="cir"><div class="division-icon"><i class="fa-solid fa-computer"></i></div><h3>CIR</h3><p class="small text-muted">Centre Informatique<br>SIIGFP • SIGMP</p></div></div>
+                <div class="col-md-3 col-6"><div class="division-card" data-division="budget"><div class="division-icon"><i class="fa-solid fa-chart-simple"></i></div><h3>EXÉCUTION BUDGÉTAIRE</h3><p class="small text-muted">Performance • Budget</p></div></div>
+                <div class="col-md-3 col-6"><div class="division-card" data-division="sante"><div class="division-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>SANTÉ & SOCIAL</h3><p class="small text-muted">Remboursement médical</p></div></div>
+            </div>
+
+            <div id="modelesContainer" class="mt-4">
+                <div class="text-center text-muted py-5">
+                    <i class="fa-regular fa-folder-open fa-3x mb-3"></i>
+                    <p>Sélectionnez une division ci-dessus</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== À PROPOS ===== -->
+    <!-- À PROPOS - VERSION ORIGINALE CONSERVÉE -->
     <center>
     <section id="apropos" class="py-4 py-md-5" style="background: linear-gradient(115deg, #F4F7F2, #FFF8F0);">
         <div class="container">
@@ -312,15 +270,15 @@
                         <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Digitalisation</strong> – SIIGFP, SIGMP, IA</li>
                     </ul>
                 </div>
-                 <div class="col-lg-6 text-center">
+                <div class="col-lg-6 text-center">
                     <div class="bg-white p-3 rounded-5 shadow-lg"><img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" class="img-fluid rounded-4" style="max-height: 280px; width: 100%; object-fit: cover;"></div>
                 </div>
-                
             </div>
         </div>
     </section>
     </center>
-    <!-- ===== CONTACT AVEC CARTE ET FORMULAIRE ===== -->
+
+    <!-- CONTACT - AVEC HORAIRES CORRECTS -->
     <section id="contact" class="py-4 py-md-5" style="background: #0A1A0E;">
         <div class="container text-white">
             <div class="text-center mb-4">
@@ -337,7 +295,7 @@
                         <p class="small mb-2"><i class="fa-brands fa-whatsapp me-2 text-success"></i> <strong>WhatsApp :</strong> +261 34 57 250 57</p>
                         <p class="small mb-3"><i class="fa-regular fa-clock me-2 text-warning"></i> <strong>Horaires :</strong> Lundi - Vendredi <br> <strong>Matin:</strong> 08h00 - 12h00 <br><strong> Après-midi:</strong> 14h00 - 17h00 </p>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="180" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" width="100%" height="180" style="border:0; border-radius: 16px;"></iframe>
                         </div>
                         <div class="social-icons mt-3 text-center">
                             <a href="#" class="text-white"><i class="fa-brands fa-facebook-f"></i></a>
@@ -353,7 +311,7 @@
                             <input type="text" id="contactNom" class="form-control mb-2" placeholder="Nom complet" required>
                             <input type="email" id="contactEmail" class="form-control mb-2" placeholder="Email" required>
                             <textarea id="contactMessage" rows="3" class="form-control mb-2" placeholder="Votre message..." required></textarea>
-                            <button type="submit" class="btn text-white w-100" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green));"><i class="fa-regular fa-paper-plane me-1"></i> Envoyer</button>
+                            <button type="submit" class="btn text-white w-100" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green));">Envoyer</button>
                             <div id="formStatus" class="mt-2 text-center small"></div>
                         </form>
                     </div>
@@ -363,81 +321,147 @@
     </section>
 
     <footer class="footer-premium py-3 text-center text-white-50">
-        <div class="container">
-            <p class="mb-0 small">© 2026 Ministère de l'Économie et des Finances - SRB Vatovavy | TAHIANA ANDREA 🇲🇬</p>
-        </div>
+        <div class="container"><p class="mb-0 small">© 2026 Ministère de l'Économie et des Finances - SRB Vatovavy | TAHIANA ANDREA 🇲🇬</p></div>
     </footer>
 
     <a href="https://wa.me/261342501234" class="whatsapp-float-premium" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-    <!-- MODALS -->
-    <div class="modal fade" id="modalQuitus" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content rounded-4"><div class="modal-header bg-light"><h5 class="modal-title">📄 Quitus Officiel</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><ul><li>Bordereau d'envoi</li><li>Certificat de situation juridique / Carte grise</li><li>PV de recensement</li><li>Quitus N-1</li><li>Devis technique (4 ex) pour véhicule</li></ul></div></div></div></div>
-    <div class="modal fade" id="modalBail" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>🏠 Bail</h5></div><div class="modal-body"><ul><li>Contrat de bail (7 ex)</li><li>Photos immeuble</li><li>Certificat situation juridique</li><li>RIB bailleur</li></ul></div></div></div></div>
-    <div class="modal fade" id="modalEngagement" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>📜 Engagement</h5></div><div class="modal-body"><p>Formulaire déontologie + lettre d'engagement SIIGFP/SIGMP.</p></div></div></div></div>
-    <div class="modal fade" id="modalSiigfp" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>💻 SIIGFP</h5></div><div class="modal-body"><ul><li>Nom, IM, fonction, rôle</li><li>Acte nomination ORDSEC</li><li>Lettre d'engagement</li></ul></div></div></div></div>
-    <div class="modal fade" id="modalSigmp" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>📊 SIGMP</h5></div><div class="modal-body"><ul><li>Acte nomination PRMP</li><li>CV + lettre</li><li>Email institutionnel</li></ul></div></div></div></div>
-    <div class="modal fade" id="modalSante" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>🩺 Remboursement médical</h5></div><div class="modal-body"><ul><li>Demande manuscrite</li><li>Bulletin consultation</li><li>Ordonnance + factures</li><li>RIB</li></ul></div></div></div></div>
-    <div class="modal fade" id="modalReddition" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>📦 Reddition</h5></div><div class="modal-body"><ul><li>Note de présentation</li><li>Inventaire (3 ex)</li><li>PV recensement</li><li>Excel PVRG</li></ul></div></div></div></div>
-    <div class="modal fade" id="modalPatrimoine" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>🏛️ Patrimoine</h5></div><div class="modal-body"><ul><li>Fiche d'attribution</li><li>Arrêté de concession</li><li>Quitus antérieur</li></ul></div></div></div></div>
+    <!-- MODAL -->
+    <div class="modal fade" id="modeleModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header" style="background: var(--mada-red); color: white;">
+                    <h5 class="modal-title" id="modeleModalTitle">Modèle officiel</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modeleModalBody" style="max-height: 500px; overflow-y: auto;"></div>
+                <div class="modal-footer">
+                    <button class="btn-download-modal" id="downloadPdfBtn"><i class="fa-solid fa-download me-2"></i>Télécharger PDF</button>
+                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ASSISTANT IA INTELLIGENT
+        // MODÈLES
+        const modelesData = {
+            dpe: [
+                { titre: "DEMANDE DE QUITUS - Véhicule Administratif", description: "Formulaire officiel pour quitus véhicule de l'État", contenu: `<div class="pdf-preview"><h4>RÉPUBLIQUE DE MADAGASCAR</h4><div class="subtitle">Ministère de l'Économie et des Finances<br>SRB Vatovavy</div><hr><h5>Objet : Demande de quitus pour véhicule administratif</h5><p><strong>Pièces jointes :</strong></p><ul><li>Bordereau d'envoi</li><li>Demande au Chef SRB</li><li>Dernier quitus matières</li><li>Carte grise certifiée</li><li>Inventaire des matériels</li><li>Ordre d'Entrée</li><li>Décision nomination dépositaire</li><li>PV recensement (4 ex)</li><li>Carnet d'entretien</li></ul><p><strong>Fait à Mananjary, le ___/___/___</strong></p></div>` },
+                { titre: "DEMANDE DE QUITUS - Logement", description: "Quitus pour logement ou bâtiment administratif", contenu: `<div class="pdf-preview"><h4>RÉPUBLIQUE DE MADAGASCAR</h4><div class="subtitle">Ministère de l'Économie et des Finances<br>SRB Vatovavy</div><hr><h5>Objet : Demande de quitus pour logement</h5><ul><li>Bordereau d'envoi</li><li>Certificat situation juridique</li><li>Acte de donation visé</li><li>Plan topographique</li><li>Plans des travaux (2 ex)</li><li>Quitus N-1</li><li>PV recensement</li></ul></div>` },
+                { titre: "DEMANDE DE BAIL", description: "Bail pour logement administratif", contenu: `<div class="pdf-preview"><h4>DEMANDE DE BAIL</h4><ul><li>Photos immeuble A4</li><li>Bordereau d'envoi</li><li>Note de présentation</li><li>Contrat de bail (7 ex)</li><li>Acte de nomination</li><li>Certificat situation</li><li>Attestation non-logement</li><li>Fiche de paie</li><li>RIB bailleur</li></ul></div>` }
+            ],
+            cir: [
+                { titre: "DEMANDE LOGIN SIIGFP", description: "Création compte SIIGFP", contenu: `<div class="pdf-preview"><h4>DEMANDE LOGIN SIIGFP</h4><p><strong>Informations :</strong> Nom, IM, Structure, Fonction, Rôle (RdP/CdP/Ordsec)</p><p><strong>Pièces :</strong> Acte nomination ORDSEC, Lettre engagement</p><p>Fait à Mananjary, le ___/___/___</p></div>` },
+                { titre: "LETTRE D'ENGAGEMENT SIIGFP", description: "Engagement confidentialité", contenu: `<div class="pdf-preview"><h4>LETTRE D'ENGAGEMENT</h4><p>Je soussigné(e) ____________ m'engage à utiliser SIIGFP confidentiellement.</p><p>Fait à Mananjary, le ___/___/___</p></div>` },
+                { titre: "DEMANDE COMPTE SIGMP", description: "Création compte PRMP", contenu: `<div class="pdf-preview"><h4>DEMANDE COMPTE SIGMP</h4><p>Je soussigné(e) ____________, PRMP, demande création compte SIGMP.</p><p>Pièces : CV, Acte nomination, Lettre engagement</p></div>` }
+            ],
+            budget: [
+                { titre: "CADRE LOGIQUE", description: "Document performance", contenu: `<div class="pdf-preview"><h4>CADRE LOGIQUE</h4><ul><li>Objectif global</li><li>Objectifs spécifiques</li><li>Résultats attendus</li><li>Indicateurs</li></ul></div>` },
+                { titre: "FICHE ACTION", description: "Fiche action/programme", contenu: `<div class="pdf-preview"><h4>FICHE ACTION</h4><ul><li>Intitulé</li><li>Activités</li><li>Calendrier</li><li>Coûts</li></ul></div>` }
+            ],
+            sante: [
+                { titre: "REMBOURSEMENT MÉDICAL", description: "Fangatahana famerenana saram-pitsaboana", contenu: `<div class="pdf-preview"><h4>FANGATAHANA FAMERENANA SARAM-PITSABOANA</h4><ul><li>Demande manuscrite</li><li>Carte pension</li><li>Bulletin consultation original</li><li>Ordonnance avec cachets</li><li>Facture N° STAT</li><li>RIB</li><li>Livret famille / acte naissance</li></ul><p><strong>⚠️ Bulletin à prendre AVANT consultation</strong></p></div>` }
+            ]
+        };
+
+        let currentModele = null;
+
+        function displayModeles(division) {
+            const container = document.getElementById('modelesContainer');
+            const modeles = modelesData[division];
+            if (!modeles) { container.innerHTML = '<div class="text-center text-muted py-5"><p>Aucun modèle</p></div>'; return; }
+            let html = `<h4 class="mb-4 fw-bold" style="color: var(--mada-red);">Modèles disponibles (${modeles.length})</h4><div class="row">`;
+            modeles.forEach((modele) => {
+                html += `<div class="col-md-6">
+                    <div class="modele-card" data-modele='${JSON.stringify(modele).replace(/'/g, "&#39;")}' onclick="showModalWithModele(this)">
+                        <div class="modele-title"><i class="fa-regular fa-file-pdf"></i><strong>${modele.titre}</strong></div>
+                        <div class="modele-description">${modele.description}</div>
+                        <div class="modele-badge"><i class="fa-regular fa-eye me-1"></i>Cliquer pour voir</div>
+                    </div>
+                </div>`;
+            });
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function showModalWithModele(element) {
+            const modeleStr = element.getAttribute('data-modele');
+            currentModele = JSON.parse(modeleStr);
+            document.getElementById('modeleModalTitle').innerHTML = currentModele.titre;
+            document.getElementById('modeleModalBody').innerHTML = currentModele.contenu;
+            new bootstrap.Modal(document.getElementById('modeleModal')).show();
+        }
+
+        async function downloadPDF(titre, contenuHtml) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(16);
+            doc.setTextColor(229, 46, 30);
+            doc.text(titre, 20, 25);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(11);
+            doc.setTextColor(0, 0, 0);
+            let text = contenuHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+            const lines = doc.splitTextToSize(text, 170);
+            doc.text(lines, 20, 40);
+            doc.save(`${titre.replace(/[^a-z0-9]/gi, '_')}.pdf`);
+        }
+
+        document.querySelectorAll('.division-card').forEach(card => {
+            card.addEventListener('click', () => {
+                displayModeles(card.getAttribute('data-division'));
+                document.getElementById('modelesContainer').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Chat IA
         const chatForm = document.getElementById('chatPremiumForm');
         const chatInput = document.getElementById('premiumChatInput');
         const chatContainer = document.getElementById('chatMessagesPremium');
-
-        function addBotMsg(text) {
-            const div = document.createElement('div');
-            div.className = 'd-flex mb-3';
-            div.innerHTML = `<div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F; max-width: 90%;"><i class="fa-regular fa-robot text-success me-2"></i> ${text}</div>`;
-            chatContainer.appendChild(div);
+        function addBotMsg(t) {
+            const d = document.createElement('div');
+            d.className = 'd-flex mb-3';
+            d.innerHTML = `<div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F;"><i class="fa-regular fa-robot text-success me-2"></i> ${t}</div>`;
+            chatContainer.appendChild(d);
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
-
-        function getResponse(q) {
-            if (q.includes('horaire') || q.includes('ouverture')) return "🕒 Horaires : Lundi-Jeudi 08h00-16h30, Vendredi 08h00-15h30. Fermé week-end.";
-            if (q.includes('adresse') || q.includes('localisation') || q.includes('antanambazaha')) return "📍 Antanambazaha, Mananjary 317, Région Vatovavy, Madagascar.";
-            if (q.includes('email')) return "📧 contact.srb.vatovavy@mef.gov.mg";
-            if (q.includes('téléphone') || q.includes('appel')) return "📞 Tél: +261 20 57 901 23 | WhatsApp: +261 34 57 250 57";
-            if (q.includes('quitus') && q.includes('véhicule')) return "🚗 Quitus véhicule : bordereau, devis technique (4ex), carnet entretien, PV recensement.";
-            if (q.includes('quitus') && q.includes('logement')) return "🏠 Quitus logement : bordereau, situation juridique, plans, quitus N-1.";
-            if (q.includes('quitus')) return "✅ Quitus : document pour bien d'État. Pièces : bordereau, PV recensement, quitus antérieur.";
-            if (q.includes('siigfp')) return "💻 SIIGFP : fournir nom, IM, fonction, rôle, acte ORDSEC, lettre engagement.";
-            if (q.includes('sigmp') || q.includes('prmp')) return "🔐 SIGMP : acte nomination PRMP, CV, lettre engagement, email institutionnel.";
-            if (q.includes('remboursement') || q.includes('médical')) return "🏥 Remboursement médical : demande manuscrite, bulletin consultation, ordonnance, factures, RIB.";
-            if (q.includes('bail')) return "📑 Bail : contrat 7 ex, photos, certificat situation, RIB bailleur.";
-            if (q.includes('reddition')) return "📦 Reddition : inventaire (3 ex), PV commission, ordres, Excel PVRG.";
-            if (q.includes('mission')) return "🏛️ Missions SRB : exécution budgétaire, patrimoine public, SIIGFP/SIGMP, accompagnement agents.";
-            if (q.includes('bonjour') || q.includes('salut')) return "👋 Bonjour ! Je suis l'assistant SRB. Posez-moi vos questions !";
-            return "🔍 Je n'ai pas compris. Demandez-moi : horaires, adresse, quitus, SIIGFP, SIGMP, remboursement, bail, reddition, missions.";
-        }
-
         chatForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const msg = chatInput.value.trim();
             if (!msg) return;
             const userDiv = document.createElement('div');
             userDiv.className = 'd-flex justify-content-end mb-3';
-            userDiv.innerHTML = `<div class="rounded-4 p-3" style="background: linear-gradient(135deg, #E52E1E, #2D6A2F); color: white; max-width: 85%;">${msg}</div>`;
+            userDiv.innerHTML = `<div class="rounded-4 p-3" style="background: linear-gradient(135deg, #E52E1E, #2D6A2F); color: white;">${msg}</div>`;
             chatContainer.appendChild(userDiv);
             chatInput.value = '';
             chatContainer.scrollTop = chatContainer.scrollHeight;
-            setTimeout(() => addBotMsg(getResponse(msg.toLowerCase())), 300);
+            let rep = "🔍 Demandez-moi : horaires, adresse, quitus, SIIGFP, SIGMP, bail, remboursement";
+            if (msg.toLowerCase().includes('horaire')) rep = "🕒 Lundi-Vendredi 08h-12h / 14h-17h";
+            else if (msg.toLowerCase().includes('adresse')) rep = "📍 Antanambazaha, Mananjary 317";
+            else if (msg.toLowerCase().includes('quitus')) rep = "📄 Division DPE - modèles Quitus disponibles";
+            else if (msg.toLowerCase().includes('siigfp')) rep = "💻 Division CIR - demande login SIIGFP";
+            else if (msg.toLowerCase().includes('sigmp')) rep = "🔐 Division CIR - compte SIGMP";
+            else if (msg.toLowerCase().includes('remboursement')) rep = "🏥 Division Santé - remboursement médical";
+            setTimeout(() => addBotMsg(rep), 300);
         });
 
-        // Formulaire contact
+        // Contact form
         document.getElementById('contactFormPremium').addEventListener('submit', (e) => {
             e.preventDefault();
-            const nom = document.getElementById('contactNom').value.trim();
-            const email = document.getElementById('contactEmail').value.trim();
-            const msg = document.getElementById('contactMessage').value.trim();
             const status = document.getElementById('formStatus');
-            if (!nom || !email || !msg) { status.innerHTML = '<span class="text-warning">⚠️ Tous les champs requis</span>'; return; }
-            status.innerHTML = '<span class="text-success"><i class="fa-regular fa-circle-check me-1"></i> Message envoyé !</span>';
+            status.innerHTML = '<span class="text-success">Message envoyé !</span>';
             document.getElementById('contactFormPremium').reset();
-            setTimeout(() => status.innerHTML = '', 4000);
+            setTimeout(() => status.innerHTML = '', 3000);
         });
+
+        document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+            if (currentModele) downloadPDF(currentModele.titre, currentModele.contenu);
+        });
+
+        window.showModalWithModele = showModalWithModele;
     </script>
 </body>
 </html>
