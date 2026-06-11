@@ -97,7 +97,17 @@
             gap: 10px;
         }
         .modele-title i { font-size: 1.5rem; color: var(--mada-red); }
-        .modele-description { font-size: 0.8rem; color: #6c757d; margin-bottom: 0; }
+        
+        .pieces-liste {
+            background: #fff3e0;
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin: 10px 0;
+            font-size: 0.8rem;
+            border-left: 3px solid var(--mada-red);
+        }
+        .pieces-liste ul { margin: 5px 0 5px 20px; }
+        .pieces-liste li { margin-bottom: 3px; }
         
         .btn-download-pdf {
             background: linear-gradient(135deg, var(--mada-green), var(--mada-green-light));
@@ -128,8 +138,9 @@
         .chat-messages { height: 400px; overflow-y: auto; background: #FEFCF7; padding: 20px; }
         
         .contact-form-premium { background: rgba(255,255,255,0.08); border-radius: 24px; padding: 20px; }
-        .contact-form-premium input, .contact-form-premium textarea { background: rgba(255,255,255,0.9); border: none; border-radius: 50px; padding: 10px 18px; }
-        .map-container { border-radius: 24px; overflow: hidden; }
+        .contact-form-premium input, .contact-form-premium textarea { background: rgba(255,255,255,0.9); border: none; border-radius: 50px; padding: 10px 18px; width: 100%; }
+        .map-container { border-radius: 24px; overflow: hidden; height: 250px; }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
         .social-icons a { display: inline-flex; width: 42px; height: 42px; background: rgba(255,255,255,0.12); border-radius: 50px; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 5px; transition: 0.3s; text-decoration: none; }
         .social-icons a:hover { transform: translateY(-4px); background: var(--mada-red); color: white !important; }
         .footer-premium { background: #071207; border-top: 2px solid var(--mada-green); }
@@ -139,6 +150,8 @@
             body { padding-top: 72px; }
             .logo-img { height: 38px; }
             .division-icon { width: 55px; height: 55px; font-size: 1.5rem; }
+            .division-card h3 { font-size: 0.9rem; }
+            .pieces-liste { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -173,19 +186,19 @@
         <div class="container py-3 py-md-4">
             <div class="row align-items-center">
                 <div class="col-lg-7 text-white">
-                    <div class="mb-3"><span class="greeting-badge"><i class="fa-regular fa-hand-peace me-2"></i> Bienvenue sur le portail officiel</span></div>
+                    <div class="mb-3"><span class="greeting-badge"><i class="fa-regular fa-hand-peace me-2"></i><strong> Tongasoa eto amin'ny sehatra nomerika misy ny SRB Vatovavy</strong></span></div>
                     <h1 class="display-4 display-md-3 fw-bold">Ministère de l'Économie<br><span style="color: #FFB347;">et des Finances</span></h1>
                     <div class="welcome-text mt-3 mt-md-4 mb-3 mb-md-4">
                         <i class="fa-regular fa-hand-peace me-2" style="color: #FFB347;"></i> 
                         <strong>Akory aby lahaly eeee!,</strong><br><br>
-                        Ny Service Régional du Budget (SRB) Vatovavy dia faly miarahaba anao tongasoa ato amin'ny rohinay.<br>
-                        Izahay dia hita ao <strong>Antanambazaha, Mananjary</strong>, akaikin'ny tobin-tsolika mitondra ny anarana hoe "TOTALenergy Anjilajila", ary mametraka eo am-pelatananareo ny sehatra nomerika maoderina.<br><br>
-                        <i class="fa-regular fa-flag me-1"></i> <strong>Tanindrazana, Fahafahana, Fandrosoana</strong>
+                        Hafaliana sy voninahitra ho anay ny miarahaba anareo rehetra tongasoa eto amin'ity sehatra nomerika ity. Izahay dia ny Sampana Isam-paritra misahana ny Tetibola (SRB) Vatovavy, sampana mivantana avy amin'ny Ministeran'ny Toe-karena sy ny Vola.<br><br>
+                        Manamorona ny fiainanareo isan'andro sy ny asa aman-draharaham-panjakana izahay. Ny biraonay dia hita eo<strong> Antanambazaha, Mananjary</strong>, tsy lavitra ny tobin-tsolika "TOTALenergie Anjilajila".<br> Eo amin'io toerana io no iasanay amin'ny fitiavana sy ny fahazotoana mba hanatanterahana ny iraka masina napetraky ny Fanjakana amintsika, dia ny fitantanana ny volam-bahoaka amin'ny fomba marina sy mangarahara.<br><br>
+                        Tsy vitan'ny hoe mitantana ny tetibola sy ny fananan'ny Fanjakana fotsiny izahay, fa mikatsaka hatrany ny fomba hahafahanareo mahazo tolotra haingana sy mahomby.<br> Amin'ny alalan'ity sehatra nomerika ity, dia tianay ny hanakaiky anareo mpiasam-panjakana sy ireo mpiara-miombon'antoka rehetra. <br>Tsy mila mandany andro lava amin'ny fanaovana laharana na miandry ela intsony ianareo.<br><br>
+
+
+                        <i class="fa-regular fa-flag me-1"></i> <strong>Transparence, efficacité et innovation au service de la nation</strong>
                     </div>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="#assistant-ia" class="btn btn-hero-primary text-white"><i class="fa-regular fa-robot me-2"></i> Assistant IA Pro</a>
-                        <a href="#demarches" class="btn btn-outline-light px-4 py-2 rounded-pill"><i class="fa-regular fa-file-lines me-2"></i> Modèles officiels</a>
-                    </div>
+                    
                 </div>
                 <div class="col-lg-5 d-none d-lg-block text-center mt-4 mt-lg-0">
                     <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" alt="Logo MEF" style="width: 140px;">
@@ -200,26 +213,26 @@
             <div class="text-center mb-4">
                 <h2 class="display-5 fw-bold">🤖 Assistant Virtuel <span style="color: var(--mada-red);">SRBV</span></h2>
                 <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
-                <p class="text-muted mt-2 small">Multilingue | Intelligent | 24h/24 - Posez n'importe quelle question</p>
+                <p class="text-muted mt-2 small">🧠 IA avancée | 🌍 Multilingue | 📚 Connaissance universelle</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="chat-premium">
                         <div class="chat-header-premium d-flex align-items-center">
                             <div class="bg-white bg-opacity-15 rounded-circle p-2 me-3"><i class="fa-solid fa-brain fa-lg" style="color: #FFB347;"></i></div>
-                            <div><h5 class="mb-0 text-white">Agent IA • SRB Vatovavy</h5><small class="text-white-50">Multilingue | En ligne</small></div>
+                            <div><h5 class="mb-0 text-white">Agent IA • SRB Vatovavy</h5><small class="text-white-50">Capacité illimitée - Répond à tout</small></div>
                         </div>
                         <div class="chat-messages" id="chatMessagesPremium">
                             <div class="d-flex mb-3">
                                 <div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F;">
-                                    <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour / Hello / Salama / 你好 / Hola !</strong><br><br>
-                                    Je suis votre assistant intelligent. Posez-moi n'importe quelle question, dans n'importe quelle langue, et je ferai de mon mieux pour vous répondre !
+                                    <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour ! Je suis votre assistant intelligent.</strong><br><br>
+                                    <span class="text-muted">Posez-moi n'importe quelle question, dans n'importe quelle langue !</span>
                                 </div>
                             </div>
                         </div>
                         <div class="p-3 bg-white border-top">
                             <form id="chatPremiumForm" class="d-flex gap-2">
-                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-2 py-md-3" placeholder="Posez votre question... (toutes langues)" autocomplete="off">
+                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-2 py-md-3" placeholder="Posez votre question " autocomplete="off">
                                 <button type="submit" class="btn rounded-pill px-3 px-md-5" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green)); color: white;">Envoyer</button>
                             </form>
                         </div>
@@ -232,16 +245,54 @@
     <section id="demarches" class="py-4 py-md-5 bg-white">
         <div class="container">
             <div class="text-center mb-4">
-                <h2 class="display-5 fw-bold">📋 Démarches & <span style="color: var(--mada-green);">Modèles Officiels</span></h2>
+                <h2 class="display-5 fw-bold">📋 Démarches & <span style="color: var(--mada-green);">Pièces à fournir</span></h2>
                 <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
-                <p class="text-muted mt-2 small">Cliquez sur une division, puis sur Télécharger PDF</p>
+                <p class="text-muted mt-2 small">Cliquez sur une division pour afficher les pièces à fournir et télécharger les modèles</p>
             </div>
 
             <div class="row g-4 mb-5">
-                <div class="col-md-3 col-6"><div class="division-card" data-division="dpe"><div class="division-icon"><i class="fa-solid fa-landmark"></i></div><h3>DPE</h3><p class="small text-muted">Patrimoine d'État<br>Quitus • Baux</p></div></div>
-                <div class="col-md-3 col-6"><div class="division-card" data-division="cir"><div class="division-icon"><i class="fa-solid fa-computer"></i></div><h3>CIR</h3><p class="small text-muted">Centre Informatique<br>SIIGFP • SIGMP</p></div></div>
-                <div class="col-md-3 col-6"><div class="division-card" data-division="budget"><div class="division-icon"><i class="fa-solid fa-chart-simple"></i></div><h3>EXÉCUTION BUDGÉTAIRE</h3><p class="small text-muted">Performance • Budget</p></div></div>
-                <div class="col-md-3 col-6"><div class="division-card" data-division="sante"><div class="division-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>SANTÉ & SOCIAL</h3><p class="small text-muted">Remboursement médical</p></div></div>
+                <div class="col-md-2 col-4">
+                    <div class="division-card" data-division="dpe">
+                        <div class="division-icon"><i class="fa-solid fa-landmark"></i></div>
+                        <h3>DPE</h3>
+                        <p class="small text-muted">Patrimoine d'État</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="division-card" data-division="cir">
+                        <div class="division-icon"><i class="fa-solid fa-computer"></i></div>
+                        <h3>CIR</h3>
+                        <p class="small text-muted">Informatique</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="division-card" data-division="budget">
+                        <div class="division-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                        <h3>EXECUTION BUDGETAIRE</h3>
+                        <p class="small text-muted">Exécution</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="division-card" data-division="sante">
+                        <div class="division-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h3>SANTÉ</h3>
+                        <p class="small text-muted">Remboursement</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="division-card" data-division="finance">
+                        <div class="division-icon"><i class="fa-solid fa-coins"></i></div>
+                        <h3>FINANCE LOCALE</h3>
+                        <p class="small text-muted">Locale</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="division-card" data-division="tutelle">
+                        <div class="division-icon"><i class="fa-solid fa-building-user"></i></div>
+                        <h3>TUTELLE EPN</h3>
+                        <p class="small text-muted">Établissements</p>
+                    </div>
+                </div>
             </div>
 
             <div id="modelesContainer" class="mt-4">
@@ -253,17 +304,39 @@
         </div>
     </section>
 
-    <center>
+    <!-- AVANT-PROPOS PROFESSIONNEL -->
+    <section class="py-4" style="background: #FFF8F0;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="p-4 rounded-4" style="background: white; border-left: 5px solid var(--mada-red); box-shadow: var(--shadow-premium);">
+                        <h3 class="fw-bold" style="color: var(--mada-red);"><i class="fa-regular fa-building me-2"></i> Service Régional du Budget Vatovavy</h3>
+                        <p class="mt-3" style="text-align: justify; line-height: 1.8;">
+                            <strong>Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny "Sampana Isam-paritra misahana ny Tetibola" (SRB) Vatovavy.</strong><br><br>
+                            Ny SRB Vatovavy, izay sampana iray amin'ny Ministeran'ny Toe-karena sy ny Vola eto Mananjary, dia sampan-draharaham-panjakana natokana hitantana amin'ny fomba hentitra sy mangarahara ny volam-panjakana eto amin'ny faritra Vatovavy. Ny asa aman-draharaha sahaninay dia ny manara-maso ny fampiasana ny tetibola, ny fanaraha-maso ny fandaniana, ny fitantanana ny fananan'ny Fanjakana (toy ny quitus, fanofana, ary fanisana ny fananana), ary ny fanampiana ireo mpiasam-panjakana amin'ny fikirakirana ny taratasy amin'ny alalan'ireo rafitra SIIGFP sy SIGMP.<br><br>
+                            Ao anatin'ny fanoloran-tenanay hanavao sy hanao ho nomerika ny asam-panjakana, dia atolotray anareo ity sehatra ity mba hanamorana ny fahitana ireo taratasy modely, ireo antontan-taratasy ilaina, ary ireo taratasy fitantanana rehetra. Misy koa ny mpanampy manan-tsaina (IA) vonona hanampy anareo 24 ora amin'ny 24, hamaly ireo fanontanianareo amin'ny fiteny rehetra, sady hitarika anareo amin'ireo fomba fanao tokony harahina.<br><br>
+                            <strong>Notre devise :</strong> Transparence, efficacité et innovation au service de la nation.<br><br>
+                            Nous vous remercions de votre confiance et restons à votre entière disposition pour tout besoin d'accompagnement.
+                        </p>
+                        <div class="mt-3 d-flex justify-content-between align-items-center flex-wrap">
+                            <span><i class="fa-regular fa-clock me-1"></i> Service public digitalisé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="apropos" class="py-4 py-md-5" style="background: linear-gradient(115deg, #F4F7F2, #FFF8F0);">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h2 class="display-5 fw-bold">🇲🇬 SRB <span style="color: var(--mada-red);">Vatovavy</span></h2>
                     <div class="my-3" style="width: 60px; height: 3px; background: var(--mada-green);"></div>
-                    <p class="lead fs-6">Service Régional du Budget à Mananjary. Gestion budgétaire, contrôle des dépenses et patrimoine de l'État.</p>
+                    <p class="lead fs-6">Service Régional du Budget à Mananjary. Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
                     <ul class="list-unstyled mt-3">
-                        <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Exécution budgétaire</strong></li>
-                        <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Patrimoine public</strong> – Quitus, baux</li>
+                        <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Exécution budgétaire</strong> – Suivi des crédits et engagements</li>
+                        <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Patrimoine public</strong> – Quitus, baux, recensement des biens</li>
                         <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Digitalisation</strong> – SIIGFP, SIGMP, IA</li>
                     </ul>
                 </div>
@@ -273,7 +346,6 @@
             </div>
         </div>
     </section>
-    </center>
 
     <section id="contact" class="py-4 py-md-5" style="background: #0A1A0E;">
         <div class="container text-white">
@@ -285,12 +357,13 @@
                 <div class="col-md-6">
                     <div class="bg-white bg-opacity-10 rounded-4 p-3 p-md-4 h-100">
                         <h4 class="mb-3">Coordonnées</h4>
-                        <p class="small"><i class="fa-solid fa-location-dot me-2 text-danger"></i> Antanambazaha, Mananjary 317</p>
+                        <p class="small"><i class="fa-solid fa-location-dot me-2 text-danger"></i> Antanambazaha, Mananjary 317, Vatovavy</p>
                         <p class="small"><i class="fa-solid fa-envelope me-2 text-success"></i> jackandrianaivomanana@gmail.com</p>
-                        <p class="small"><i class="fa-solid fa-phone me-2 text-warning"></i> +261 20 57 901 23 / +261 34 57 250 57</p>
-                        <p class="small"><i class="fa-regular fa-clock me-2 text-warning"></i> Lundi - Vendredi <br> <strong>Matin:</strong> 08h00 - 12h00 <br><strong>Après-midi:</strong> 14h00 - 17h00</p>
+                        <p class="small"><i class="fa-solid fa-phone me-2 text-warning"></i> +261 20 57 901 23</p>
+                        <p class="small"><i class="fa-brands fa-whatsapp me-2 text-success"></i> +261 34 57 250 57</p>
+                        <p class="small"><i class="fa-regular fa-clock me-2 text-warning"></i> Lundi - Vendredi <br> <strong>Matin:</strong> 08h00 - 12h00 <br> <strong>Après-midi:</strong> 14h00 - 17h00</p>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" width="100%" height="180" style="border:0; border-radius: 16px;"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div class="social-icons mt-3 text-center">
                             <a href="#" class="text-white"><i class="fa-brands fa-facebook-f"></i></a>
@@ -302,13 +375,17 @@
                 <div class="col-md-6">
                     <div class="contact-form-premium">
                         <h4 class="mb-3">Message rapide</h4>
-                        <form id="contactFormPremium">
-                            <input type="text" id="contactNom" class="form-control mb-2" placeholder="Nom complet" required>
-                            <input type="email" id="contactEmail" class="form-control mb-2" placeholder="Email" required>
-                            <textarea id="contactMessage" rows="3" class="form-control mb-2" placeholder="Votre message..." required></textarea>
+                        <form id="contactForm" action="https://formsubmit.co/jackandrianaivomanana@gmail.com" method="POST">
+                            <input type="text" name="Nom" class="form-control mb-2" placeholder="Nom complet" required>
+                            <input type="email" name="Email" class="form-control mb-2" placeholder="Email" required>
+                            <input type="tel" name="Telephone" class="form-control mb-2" placeholder="Téléphone">
+                            <textarea name="Message" rows="3" class="form-control mb-2" placeholder="Votre message..." required></textarea>
+                            <input type="hidden" name="_subject" value="📩 Nouveau message du site SRB Vatovavy">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://jackandrianaivomanana.github.io/srb/merci.html">
                             <button type="submit" class="btn text-white w-100" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green));">Envoyer</button>
-                            <div id="formStatus" class="mt-2 text-center small"></div>
                         </form>
+                        <div id="formStatus" class="mt-2 text-center small text-success"></div>
                     </div>
                 </div>
             </div>
@@ -316,172 +393,217 @@
     </section>
 
     <footer class="footer-premium py-3 text-center text-white-50">
-        <div class="container"><p class="mb-0 small">© 2026 SRB Vatovavy | TAHIANA ANDREA 🇲🇬</p></div>
+        <div class="container"><p class="mb-0 small">© 2026 Ministère de l'Économie et des Finances - SRB Vatovavy | TAHIANA ANDREA 🇲🇬</p></div>
     </footer>
 
     <a href="https://wa.me/261342501234" class="whatsapp-float-premium" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ===== FONCTIONS PDF =====
+        // ===== FONCTIONS PDF (conservées) =====
         function genererPDFQuitusLogement() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20);
-            doc.setTextColor(229, 46, 30);
-            doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(20); doc.setTextColor(229,46,30); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
+            doc.setFontSize(12); doc.setTextColor(0,0,0);
             doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
             doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
-            doc.setFontSize(11);
-            doc.text("Objet : Demande de quitus pour logement/bâtiment administratif", 20, 65);
-            doc.setFontSize(10);
-            doc.text("Pièces jointes :", 20, 80);
-            doc.text("• Bordereau d'envoi", 25, 90);
-            doc.text("• Certificat de situation juridique du bien", 25, 98);
-            doc.text("• Plan topographique", 25, 106);
-            doc.text("• Quitus N-1", 25, 114);
-            doc.text("• PV de recensement physique", 25, 122);
+            doc.setFontSize(11); doc.text("Objet : Demande de quitus pour logement/bâtiment administratif", 20, 65);
+            doc.text("Pièces à fournir :", 20, 85);
+            doc.text("• Bordereau d'envoi", 25, 98);
+            doc.text("• Certificat de situation juridique du bien", 25, 108);
+            doc.text("• Acte de donation visé par la Commune (si terrain donné)", 25, 118);
+            doc.text("• Plan topographique de la propriété", 25, 128);
+            doc.text("• Plans complets des travaux (2 exemplaires)", 25, 138);
+            doc.text("• Quitus N-1 du logement/bâtiment", 25, 148);
+            doc.text("• PV de recensement physique visé par le Contrôle Financier", 25, 158);
             doc.text("Fait à Mananjary, le ___/___/___", 20, 200);
-            doc.text("[Nom, fonction, signature, cachet du service]", 20, 215);
+            doc.text("[Nom, fonction, signature, cachet du service]", 20, 220);
             doc.save("Demande_QUITUS_Logement.pdf");
         }
 
         function genererPDFQuitusVehicule() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20);
-            doc.setTextColor(229, 46, 30);
-            doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(20); doc.setTextColor(229,46,30); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
+            doc.setFontSize(12); doc.setTextColor(0,0,0);
             doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
             doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
-            doc.setFontSize(11);
-            doc.text("Objet : Demande de quitus pour véhicule administratif", 20, 65);
-            doc.setFontSize(10);
-            doc.text("Pièces jointes :", 20, 80);
-            doc.text("• Bordereau d'envoi", 25, 90);
-            doc.text("• Demande au Chef SRB", 25, 98);
-            doc.text("• Dernier quitus matières", 25, 106);
-            doc.text("• Carte grise certifiée", 25, 114);
-            doc.text("• Ordre d'Entrée", 25, 122);
-            doc.text("• Décision nomination dépositaire", 25, 130);
-            doc.text("• PV recensement (4 ex)", 25, 138);
-            doc.text("• Carnet d'entretien", 25, 146);
+            doc.setFontSize(11); doc.text("Objet : Demande de quitus pour véhicule administratif", 20, 65);
+            doc.text("Pièces à fournir :", 20, 85);
+            doc.text("• Bordereau d'envoi", 25, 98);
+            doc.text("• Demande adressée au Chef SRB", 25, 108);
+            doc.text("• Dernier quitus matières du véhicule", 25, 118);
+            doc.text("• Carte grise certifiée", 25, 128);
+            doc.text("• Inventaire des matériels", 25, 138);
+            doc.text("• Ordre d'Entrée du matériel", 25, 148);
+            doc.text("• Décision de nomination du dépositaire comptable", 25, 158);
+            doc.text("• PV de recensement physique (4 exemplaires)", 25, 168);
+            doc.text("• Carnet d'entretien du véhicule", 25, 178);
             doc.text("Fait à Mananjary, le ___/___/___", 20, 220);
+            doc.text("[Nom, fonction, signature, cachet du service]", 20, 240);
             doc.save("Demande_QUITUS_Vehicule.pdf");
         }
 
         function genererPDFBailLogement() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20);
-            doc.setTextColor(229, 46, 30);
-            doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(20); doc.setTextColor(229,46,30); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
+            doc.setFontSize(12); doc.setTextColor(0,0,0);
             doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
             doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
-            doc.setFontSize(11);
-            doc.text("Objet : Demande d'accord pour bail à loyer administratif", 20, 65);
-            doc.setFontSize(10);
-            doc.text("Pièces jointes :", 20, 80);
-            doc.text("• Bordereau d'envoi", 25, 90);
-            doc.text("• Note de présentation", 25, 98);
-            doc.text("• Contrat de bail (7 ex)", 25, 106);
-            doc.text("• Acte de nomination", 25, 114);
-            doc.text("• Certificat de situation juridique", 25, 122);
-            doc.text("• Attestation de non-logement", 25, 130);
-            doc.text("• Fiche de paie", 25, 138);
-            doc.text("• RIB du bailleur", 25, 146);
-            doc.text("• Photos de l'immeuble", 25, 154);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 220);
+            doc.setFontSize(11); doc.text("Objet : Demande d'accord pour bail à loyer administratif", 20, 65);
+            doc.text("Pièces à fournir :", 20, 85);
+            doc.text("• Photos de l'immeuble (vue d'ensemble, face et profil)", 25, 98);
+            doc.text("• Bordereau d'envoi", 25, 108);
+            doc.text("• Note de présentation", 25, 118);
+            doc.text("• Contrat de bail (7 exemplaires, selon modèle SRB)", 25, 128);
+            doc.text("• Acte de nomination du bénéficiaire", 25, 138);
+            doc.text("• Certificat de situation juridique original", 25, 148);
+            doc.text("• État des lieux établi par le SRB", 25, 158);
+            doc.text("• Attestation de non-logement délivrée par le SRB", 25, 168);
+            doc.text("• Fiche de paie du bénéficiaire", 25, 178);
+            doc.text("• RIB du bailleur (si paiement par virement)", 25, 188);
+            doc.text("Fait à Mananjary, le ___/___/___", 20, 230);
+            doc.text("[Nom, fonction, signature, cachet du service]", 20, 250);
             doc.save("Demande_BAIL_Logement.pdf");
         }
 
         function genererPDFSIIGFP() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            doc.setFontSize(14);
-            doc.text("DEMANDE DE CRÉATION LOGIN SIIGFP", 20, 20);
-            doc.setFontSize(11);
-            doc.text("À : Monsieur le Chef SRB VATOVAVY", 20, 40);
-            doc.text("Informations :", 20, 60);
-            doc.text("- Nom et prénoms : ____________", 25, 75);
-            doc.text("- IM : ____________", 25, 85);
-            doc.text("- Fonction : ____________", 25, 95);
-            doc.text("- Rôle : ☐ RdP ☐ CdP ☐ Ordsec", 25, 105);
-            doc.text("Pièces : Acte nomination, Lettre engagement", 20, 130);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 160);
+            doc.setFontSize(14); doc.text("DEMANDE DE CRÉATION LOGIN SIIGFP", 20, 20);
+            doc.setFontSize(11); doc.text("À : Monsieur le Chef SRB VATOVAVY", 20, 40);
+            doc.text("Pièces à fournir :", 20, 60);
+            doc.text("• Nom et prénoms complets", 25, 75);
+            doc.text("• Numéro IM (matricule)", 25, 85);
+            doc.text("• Structure de rattachement", 25, 95);
+            doc.text("• Fonction exacte", 25, 105);
+            doc.text("• Rôle souhaité (RdP, CdP, Ordsec, Opérateur)", 25, 115);
+            doc.text("• Acte de nomination (ORDSEC)", 25, 125);
+            doc.text("• Lettre d'engagement signée", 25, 135);
+            doc.text("Fait à Mananjary, le ___/___/___", 20, 170);
             doc.save("Demande_SIIGFP.pdf");
         }
 
         function genererPDFLettreEngagement() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            doc.setFontSize(14);
-            doc.text("LETTRE D'ENGAGEMENT SIIGFP", 20, 20);
+            doc.setFontSize(14); doc.text("LETTRE D'ENGAGEMENT SIIGFP", 20, 20);
             doc.setFontSize(11);
             doc.text("Je, soussigné(e) ____________, I.M : ____________,", 20, 45);
-            doc.text("m'engage à utiliser SIIGFP confidentiellement.", 20, 55);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 90);
-            doc.text("Signature : ____________", 20, 105);
+            doc.text("agissant en qualité de ____________, m'engage à utiliser", 20, 55);
+            doc.text("l'application SIIGFP en veillant à la confidentialité des informations.", 20, 65);
+            doc.text("En cas de violation, je suis conscient des poursuites disciplinaires.", 20, 75);
+            doc.text("Fait à Mananjary, le ___/___/___", 20, 110);
+            doc.text("Signature : ____________", 20, 125);
             doc.save("Lettre_Engagement_SIIGFP.pdf");
         }
 
         function genererPDFSIGMP() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            doc.setFontSize(14);
-            doc.text("DEMANDE COMPTE SIGMP (PRMP)", 20, 20);
-            doc.setFontSize(11);
-            doc.text("Je soussigné(e) ____________, PRMP, demande création compte.", 20, 45);
-            doc.text("Informations :", 20, 65);
-            doc.text("- Autorité Contractante : ____________", 25, 80);
-            doc.text("- Login : ____________", 25, 90);
-            doc.text("- Email : ____________", 25, 100);
-            doc.text("Pièces : CV, Acte nomination, Lettre engagement", 20, 125);
+            doc.setFontSize(14); doc.text("DEMANDE COMPTE SIGMP (PRMP)", 20, 20);
+            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 45);
+            doc.text("• Acte de nomination en tant que PRMP", 25, 60);
+            doc.text("• Curriculum Vitae (CV) actualisé", 25, 70);
+            doc.text("• Lettre d'engagement signée", 25, 80);
+            doc.text("• Adresse email institutionnelle valide", 25, 90);
+            doc.text("Fait à Mananjary, le ___/___/___", 20, 130);
             doc.save("Demande_SIGMP.pdf");
         }
 
         function genererPDFRemboursementMedical() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            doc.setFontSize(14);
-            doc.text("FANGATAHANA FAMERENANA SARAM-PITSABOANA", 20, 20);
-            doc.setFontSize(11);
-            doc.text("Pièces à fournir :", 20, 40);
-            doc.text("- Demande manuscrite au Chef SRB", 25, 55);
-            doc.text("- Carte pension", 25, 65);
-            doc.text("- Bulletin consultation original", 25, 75);
-            doc.text("- Ordonnance avec cachets", 25, 85);
-            doc.text("- Facture N° STAT, NIF", 25, 95);
-            doc.text("- RIB", 25, 105);
-            doc.text("- Livret famille / acte naissance", 25, 115);
+            doc.setFontSize(14); doc.text("FANGATAHANA FAMERENANA SARAM-PITSABOANA", 20, 20);
+            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 40);
+            doc.text("• Demande manuscrite adressée au Chef SRB Vatovavy", 25, 55);
+            doc.text("• Photocopie carte pension / bulletin de pension", 25, 65);
+            doc.text("• Bulletin de consultation (original) avec cachet médecin ONM", 25, 75);
+            doc.text("• Ordonnance : nom patient, date, cachet médecin", 25, 85);
+            doc.text("• Facture : N° STAT, NIF, date, cachet", 25, 95);
+            doc.text("• Notice médicale", 25, 105);
+            doc.text("• RIB (pour virement bancaire)", 25, 115);
+            doc.text("• Pour conjoint : copie livret de famille", 25, 125);
+            doc.text("• Pour enfant -20 ans : acte de naissance", 25, 135);
             doc.setTextColor(200, 0, 0);
-            doc.text("⚠️ Bulletin à prendre AVANT la consultation", 20, 145);
+            doc.text("⚠️ Bulletin de consultation à prendre AVANT la consultation", 20, 165);
             doc.save("Remboursement_Medical.pdf");
+        }
+
+        function genererPDFTransitFinancier() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFontSize(14); doc.text("PROCÉDURE DE TRANSIT FINANCIER LOCAL", 20, 20);
+            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 45);
+            doc.text("• Demande d'ouverture de compte de transit", 25, 60);
+            doc.text("• Notification des crédits par l'ordonnateur", 25, 70);
+            doc.text("• Engagement des dépenses", 25, 80);
+            doc.text("• Mandatement et liquidation", 25, 90);
+            doc.text("• Justification des fonds dans les délais", 25, 100);
+            doc.text("• RIB du compte de transit", 25, 110);
+            doc.text("• Acte de nomination du régisseur", 25, 120);
+            doc.text("Fait à Mananjary, le ___/___/___", 20, 160);
+            doc.save("Procedure_Transit_Financier.pdf");
+        }
+
+        function genererPDFComptabiliteMatiere() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFontSize(14); doc.text("COMPTABILITÉ MATIÈRE - PROCÉDURE", 20, 20);
+            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 45);
+            doc.text("• Note de présentation (2 exemplaires)", 25, 60);
+            doc.text("• Décision nomination dépositaire comptable", 25, 70);
+            doc.text("• PV de recensement général (3 exemplaires)", 25, 80);
+            doc.text("• Inventaire des biens (3 exemplaires)", 25, 90);
+            doc.text("• État appréciatif (3 exemplaires)", 25, 100);
+            doc.text("• Ordre d'entrée + justificatifs", 25, 110);
+            doc.text("• Ordre de sortie + justificatifs", 25, 120);
+            doc.text("• Version électronique (Excel)", 25, 130);
+            doc.save("Comptabilite_Matiere.pdf");
+        }
+
+        function genererPDFTutelleEPN() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFontSize(14); doc.text("TUTELLE DES ÉTABLISSEMENTS PUBLICS NATIONAUX (EPN)", 20, 20);
+            doc.setFontSize(11); doc.text("Pièces à fournir pour la tutelle :", 20, 45);
+            doc.text("• Statuts de l'EPN approuvés", 25, 60);
+            doc.text("• Convention de création", 25, 70);
+            doc.text("• Budget prévisionnel annuel", 25, 80);
+            doc.text("• Rapport d'activités annuel", 25, 90);
+            doc.text("• États financiers certifiés", 25, 100);
+            doc.text("• PV du Conseil d'Administration", 25, 110);
+            doc.text("• Demande d'agrément des comptes", 25, 120);
+            doc.text("Fait à Mananjary, le ___/___/___", 20, 160);
+            doc.save("Tutelle_EPN.pdf");
         }
 
         const modelesData = {
             dpe: [
-                { titre: "📄 QUITUS - Logement / Bâtiment", generer: genererPDFQuitusLogement },
-                { titre: "🚗 QUITUS - Véhicule Administratif", generer: genererPDFQuitusVehicule },
-                { titre: "🏠 BAIL - Logement Administratif", generer: genererPDFBailLogement }
+                { titre: "📄 QUITUS - Logement / Bâtiment", pieces: ["Bordereau d'envoi", "Certificat de situation juridique du bien", "Acte de donation visé par la Commune (si terrain donné)", "Plan topographique de la propriété", "Plans complets des travaux (2 exemplaires)", "Quitus N-1 du logement/bâtiment", "PV de recensement physique visé par le Contrôle Financier"], generer: genererPDFQuitusLogement },
+                { titre: "🚗 QUITUS - Véhicule Administratif", pieces: ["Bordereau d'envoi", "Demande adressée au Chef SRB", "Dernier quitus matières du véhicule", "Carte grise certifiée", "Inventaire des matériels", "Ordre d'Entrée du matériel", "Décision de nomination du dépositaire comptable", "PV de recensement physique (4 exemplaires)", "Carnet d'entretien du véhicule"], generer: genererPDFQuitusVehicule },
+                { titre: "🏠 BAIL - Logement Administratif", pieces: ["Photos de l'immeuble (vue d'ensemble, face et profil)", "Bordereau d'envoi", "Note de présentation", "Contrat de bail (7 exemplaires)", "Acte de nomination du bénéficiaire", "Certificat de situation juridique original", "État des lieux établi par le SRB", "Attestation de non-logement", "Fiche de paie du bénéficiaire", "RIB du bailleur"], generer: genererPDFBailLogement }
             ],
             cir: [
-                { titre: "💻 DEMANDE LOGIN SIIGFP", generer: genererPDFSIIGFP },
-                { titre: "📝 LETTRE D'ENGAGEMENT SIIGFP", generer: genererPDFLettreEngagement },
-                { titre: "🔐 DEMANDE COMPTE SIGMP", generer: genererPDFSIGMP }
+                { titre: "💻 DEMANDE LOGIN SIIGFP", pieces: ["Nom et prénoms complets", "Numéro IM (matricule)", "Structure de rattachement", "Fonction exacte", "Rôle souhaité (RdP, CdP, Ordsec, Opérateur)", "Acte de nomination (ORDSEC)", "Lettre d'engagement signée"], generer: genererPDFSIIGFP },
+                { titre: "📝 LETTRE D'ENGAGEMENT SIIGFP", pieces: ["Nom complet", "Numéro IM", "Fonction", "Signature"], generer: genererPDFLettreEngagement },
+                { titre: "🔐 DEMANDE COMPTE SIGMP", pieces: ["Acte de nomination en tant que PRMP", "Curriculum Vitae (CV) actualisé", "Lettre d'engagement signée", "Adresse email institutionnelle valide"], generer: genererPDFSIGMP }
             ],
             budget: [
-                { titre: "📊 CADRE LOGIQUE", generer: () => { const { jsPDF } = window.jspdf; const doc = new jsPDF(); doc.text("CADRE LOGIQUE", 20, 20); doc.save("Cadre_Logique.pdf"); } },
-                { titre: "📋 FICHE ACTION", generer: () => { const { jsPDF } = window.jspdf; const doc = new jsPDF(); doc.text("FICHE ACTION", 20, 20); doc.save("Fiche_Action.pdf"); } }
+                { titre: "📊 CADRE LOGIQUE", pieces: ["Objectif global", "Objectifs spécifiques", "Résultats attendus", "Indicateurs de performance", "Sources de vérification", "Hypothèses et risques"], generer: () => { const { jsPDF } = window.jspdf; const doc = new jsPDF(); doc.text("CADRE LOGIQUE", 20, 20); doc.save("Cadre_Logique.pdf"); } },
+                { titre: "📋 FICHE ACTION", pieces: ["Intitulé de l'action", "Activités prévues", "Calendrier d'exécution", "Coûts prévisionnels", "Responsable", "Indicateurs de suivi"], generer: () => { const { jsPDF } = window.jspdf; const doc = new jsPDF(); doc.text("FICHE ACTION", 20, 20); doc.save("Fiche_Action.pdf"); } }
             ],
             sante: [
-                { titre: "🏥 REMBOURSEMENT MÉDICAL", generer: genererPDFRemboursementMedical }
+                { titre: "🏥 REMBOURSEMENT MÉDICAL", pieces: ["Demande manuscrite au Chef SRB", "Carte pension / bulletin de pension", "Bulletin de consultation original", "Ordonnance avec cachets", "Facture N° STAT, NIF", "Notice médicale", "RIB bancaire", "Livret de famille (conjoint)", "Acte de naissance (enfant -20 ans)"], generer: genererPDFRemboursementMedical }
+            ],
+            finance: [
+                { titre: "💰 TRANSIT FINANCIER LOCAL", pieces: ["Demande d'ouverture de compte de transit", "Notification des crédits par l'ordonnateur", "Engagement des dépenses", "Mandatement et liquidation", "Justification des fonds dans les délais", "RIB du compte de transit", "Acte de nomination du régisseur"], generer: genererPDFTransitFinancier },
+                { titre: "📊 COMPTABILITÉ MATIÈRE", pieces: ["Note de présentation (2 exemplaires)", "Décision nomination dépositaire", "PV de recensement général (3 ex)", "Inventaire des biens (3 ex)", "État appréciatif (3 ex)", "Ordre d'entrée + justificatifs", "Ordre de sortie + justificatifs", "Version électronique (Excel)"], generer: genererPDFComptabiliteMatiere }
+            ],
+            tutelle: [
+                { titre: "🏛️ TUTELLE DES EPN", pieces: ["Statuts de l'EPN approuvés", "Convention de création", "Budget prévisionnel annuel", "Rapport d'activités annuel", "États financiers certifiés", "PV du Conseil d'Administration", "Demande d'agrément des comptes"], generer: genererPDFTutelleEPN }
             ]
         };
 
@@ -492,14 +614,21 @@
                 container.innerHTML = '<div class="text-center text-muted py-5"><p>Aucun modèle disponible</p></div>';
                 return;
             }
-            let html = `<h4 class="mb-4 fw-bold" style="color: var(--mada-red);">Modèles disponibles (${modeles.length})</h4><div class="row">`;
+            let html = `<h4 class="mb-4 fw-bold" style="color: var(--mada-red);"><i class="fa-regular fa-file-lines me-2"></i>Pièces à fournir</h4><div class="row">`;
             modeles.forEach((modele, index) => {
                 html += `<div class="col-md-6">
                     <div class="modele-card">
                         <div class="modele-title"><i class="fa-regular fa-file-pdf"></i><strong>${modele.titre}</strong></div>
-                        <div class="modele-description">Document officiel - Télécharger en PDF</div>
+                        <div class="pieces-liste">
+                            <i class="fa-solid fa-list-check me-1" style="color: var(--mada-red);"></i> <strong>📋 Pièces à fournir :</strong>
+                            <ul style="margin-bottom:0; padding-left:20px;">`;
+                for (let i = 0; i < modele.pieces.length; i++) {
+                    html += `<li>📌 ${modele.pieces[i]}</li>`;
+                }
+                html += `</ul>
+                        </div>
                         <button class="btn-download-pdf" onclick="telechargerModele('${division}', ${index})">
-                            <i class="fa-solid fa-download me-2"></i> Télécharger PDF
+                            <i class="fa-solid fa-download me-2"></i> Télécharger le modèle PDF
                         </button>
                     </div>
                 </div>`;
@@ -522,7 +651,7 @@
             });
         });
 
-        // ===== IA UNIVERSELLE - RÉPOND À TOUTES LES QUESTIONS =====
+        // ===== IA UNIVERSELLE AVANCÉE (RÉPOND À TOUT) =====
         const chatForm = document.getElementById('chatPremiumForm');
         const chatInput = document.getElementById('premiumChatInput');
         const chatContainer = document.getElementById('chatMessagesPremium');
@@ -535,141 +664,109 @@
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
-        // Base de connaissances universelle
-        function repondreATout(question) {
+        // Fonction pour évaluer des expressions mathématiques
+        function evaluerMath(expression) {
+            try {
+                // Nettoyer l'expression
+                let expr = expression.replace(/[^0-9+\-*/%.()^√π×÷]/g, '');
+                expr = expr.replace(/√/g, 'Math.sqrt');
+                expr = expr.replace(/\^/g, '**');
+                expr = expr.replace(/π/g, 'Math.PI');
+                expr = expr.replace(/×/g, '*');
+                expr = expr.replace(/÷/g, '/');
+                const resultat = eval(expr);
+                return `🧮 Résultat : ${expression} = ${resultat}`;
+            } catch(e) {
+                return null;
+            }
+        }
+
+        // Fonction principale de l'IA (répond à TOUT)
+        function reponseIA(question) {
             const q = question.toLowerCase().trim();
             
-            // ===== SRB ET DÉMARCHES ADMINISTRATIVES =====
-            if (q.includes('horaire') || q.includes('ouverture') || q.includes('heure')) {
-                return "🕒 Nos horaires d'ouverture : Lundi au Vendredi de 08h00 à 12h00 le matin et de 14h00 à 17h00 l'après-midi. Fermé le samedi et dimanche.";
+            // ========== SRB ET DÉMARCHES ==========
+            if (q.includes('horaire') || q.includes('ouverture')) return "🕒 Horaires : Lundi-Vendredi 08h00-12h00 et 14h00-17h00";
+            if (q.includes('adresse') || q.includes('localisation')) return "📍 Antanambazaha, Mananjary 317, Région Vatovavy, Madagascar (à côté de TOTALenergie Anjilajila)";
+            if (q.includes('email')) return "📧 jackandrianaivomanana@gmail.com";
+            if (q.includes('téléphone') || q.includes('appel')) return "📞 Tél fixe: +261 20 57 901 23 | WhatsApp: +261 34 57 250 57";
+            if (q.includes('quitus')) return "📄 Quitus disponible dans la division DPE. Cliquez sur DPE puis sur le modèle pour voir les pièces à fournir.";
+            if (q.includes('bail')) return "🏠 Bail disponible dans la division DPE. Pièces : photos, contrat (7 ex), attestation non-logement, etc.";
+            if (q.includes('siigfp')) return "💻 SIIGFP dans la division CIR. Pièces : nom, IM, acte nomination, lettre engagement.";
+            if (q.includes('sigmp') || q.includes('prmp')) return "🔐 SIGMP dans la division CIR. Pièces : acte nomination PRMP, CV, lettre engagement.";
+            if (q.includes('remboursement') || q.includes('médical')) return "🏥 Remboursement médical dans la division Santé. Pièces : demande, bulletin consultation, ordonnance, RIB, etc.";
+            
+            // ========== MATHÉMATIQUES ==========
+            if (q.match(/[\d+\-*/%^√π×÷]/) && (q.includes('=') || q.includes('combien') || q.includes('calcule') || q.match(/[+\-*/]/))) {
+                const mathResult = evaluerMath(q);
+                if (mathResult) return mathResult;
             }
-            if (q.includes('adresse') || q.includes('localisation') || q.includes('où se trouve')) {
-                return "📍 Notre adresse : Antanambazaha, Mananjary 317, Région Vatovavy, Madagascar. Vous pouvez nous localiser via la carte Google Maps dans la section Contact.";
+            if (q.includes('dérivée') || q.includes('dériver')) return "📐 Pour calculer une dérivée, donnez-moi la fonction (ex: dérivée de x^2+3x). Je peux vous aider avec les règles de dérivation!";
+            if (q.includes('intégrale')) return "∫ Pour une intégrale, donnez-moi la fonction à intégrer. Je connais les méthodes d'intégration par parties, substitution, etc.";
+            
+            // ========== PROGRAMMATION ==========
+            if (q.includes('python') && (q.includes('code') || q.includes('programme'))) {
+                return "💻 Voici un exemple Python simple :\n```python\ndef bonjour(nom):\n    print(f'Bonjour {nom}!')\nbonjour('visiteur')\n```\nDonnez-moi plus de détails sur ce que vous voulez coder!";
             }
-            if (q.includes('email') || q.includes('courriel')) {
-                return "📧 Notre adresse email : jackandrianaivomanana@gmail.com. Vous pouvez également utiliser le formulaire de contact sur notre site.";
+            if (q.includes('javascript') && (q.includes('code') || q.includes('fonction'))) {
+                return "🌐 Voici un exemple JavaScript :\n```javascript\nfunction saluer(nom) {\n    console.log(`Bonjour ${nom}!`);\n}\nsaluer('visiteur');\n```";
             }
-            if (q.includes('téléphone') || q.includes('appel') || q.includes('telephone')) {
-                return "📞 Téléphone fixe : +261 20 57 901 23. WhatsApp : +261 34 57 250 57. Nous sommes joignables aux heures ouvrables.";
+            if (q.includes('html') && q.includes('code')) {
+                return "📄 Exemple HTML simple :\n```html\n<!DOCTYPE html>\n<html><body><h1>Bonjour!</h1></body></html>\n```";
             }
-            if ((q.includes('quitus') && q.includes('véhicule')) || (q.includes('quitus') && q.includes('voiture'))) {
-                return "🚗 Pour le quitus véhicule : bordereau d'envoi, demande au Chef SRB, dernier quitus, carte grise, inventaire, ordre d'entrée, décision nomination dépositaire, PV recensement (4 ex), carnet d'entretien. Modèle disponible dans la division DPE.";
+            if (q.includes('css')) {
+                return "🎨 Exemple CSS :\n```css\nbody {\n    background-color: #f0f0f0;\n    font-family: Arial, sans-serif;\n}\n```";
             }
-            if ((q.includes('quitus') && q.includes('logement')) || (q.includes('quitus') && q.includes('bâtiment'))) {
-                return "🏠 Pour le quitus logement : bordereau d'envoi, certificat de situation juridique, acte de donation, plan topographique, plans des travaux, quitus N-1, PV recensement. Modèle disponible dans la division DPE.";
-            }
-            if (q.includes('quitus')) {
-                return "📄 Le quitus est un document officiel attestant de la bonne gestion d'un bien d'État. Les modèles sont disponibles dans la division DPE (cliquez sur DPE puis Télécharger PDF).";
-            }
-            if (q.includes('bail') || q.includes('contrat de location')) {
-                return "🏠 Pour un bail administratif : photos immeuble, bordereau, note présentation, contrat (7 ex), acte nomination, certificat situation, attestation non-logement, fiche paie, RIB bailleur. Modèle dans la division DPE.";
-            }
-            if (q.includes('siigfp') || q.includes('login')) {
-                return "💻 Pour créer un login SIIGFP : nom, IM, fonction, rôle (RdP/CdP/Ordsec), acte nomination, lettre engagement. Modèle dans la division CIR.";
-            }
-            if (q.includes('sigmp') || q.includes('prmp')) {
-                return "🔐 Pour créer un compte SIGMP (PRMP) : acte nomination PRMP, CV, lettre engagement, email institutionnel. Modèle dans la division CIR.";
-            }
-            if (q.includes('remboursement') || q.includes('médical') || q.includes('santé')) {
-                return "🏥 Remboursement médical : demande manuscrite, carte pension, bulletin consultation original, ordonnance, facture N° STAT, RIB, livret famille, acte naissance. ⚠️ Bulletin à prendre AVANT consultation. Modèle dans la division Santé.";
-            }
-            if (q.includes('reddition') || q.includes('compte matière')) {
-                return "📦 Reddition compte matière : note présentation, décision nomination, PV recensement (3ex), inventaire, état appréciatif, ordre entrée/sortie, version Excel. Voir division DPE.";
+            if (q.includes('erreur') && q.includes('code')) {
+                return "🐛 Pour debugger une erreur, partagez-moi votre code et le message d'erreur. Je vous aiderai à trouver la solution!";
             }
             
-            // ===== MADAGASCAR =====
-            if (q.includes('capitale') && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "🇲🇬 La capitale de Madagascar est Antananarivo, également appelée 'Tananarive'.";
-            }
-            if (q.includes('population') && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "🇲🇬 Madagascar compte environ 28 millions d'habitants (estimation 2023).";
-            }
-            if (q.includes('monnaie') && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "💰 La monnaie de Madagascar est l'Ariary (MGA). 1 Euro ≈ 4800 Ariary (taux variable).";
-            }
-            if (q.includes('langue') && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "🇲🇬 Les langues officielles de Madagascar sont le malgache et le français. L'anglais est également parlé.";
-            }
-            if (q.includes('superficie') && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "🇲🇬 Madagascar a une superficie de 587 041 km², ce qui en fait la 4ème plus grande île du monde.";
-            }
-            if (q.includes('mananjary')) {
-                return "📍 Mananjary est une ville de la région Vatovavy, située sur la côte est de Madagascar. Elle est connue pour ses plantations de café, de girofle et ses plages. Notre SRB s'y trouve à Antanambazaha.";
-            }
-            if ((q.includes('fleuve') || q.includes('rivière')) && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "🌊 Les principaux fleuves de Madagascar sont le Mangoky, l'Onilahy, la Betsiboka, la Tsiribihina et le Mananara.";
-            }
-            if ((q.includes('montagne') || q.includes('sommet')) && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "🏔️ Le plus haut sommet de Madagascar est le Pic Boby (2 658 m) dans le massif de l'Andringitra, suivi par le Tsaratanana (2 876 m).";
-            }
-            if ((q.includes('parc') || q.includes('réserve')) && (q.includes('madagascar') || q.includes('malagasy'))) {
-                return "🌿 Madagascar possède de nombreux parcs nationaux : Ranomafana, Isalo, Andasibe-Mantadia, Tsingy de Bemaraha, Nosy Be, etc.";
-            }
+            // ========== MADAGASCAR ==========
+            if (q.includes('capitale') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 La capitale de Madagascar est Antananarivo (Tananarive).";
+            if (q.includes('population') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 Madagascar compte environ 28 millions d'habitants (estimation 2023).";
+            if (q.includes('monnaie') && (q.includes('madagascar') || q.includes('malagasy'))) return "💰 L'Ariary (MGA) est la monnaie de Madagascar. 1 Euro ≈ 4800 Ariary.";
+            if (q.includes('langue') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 Langues officielles : malgache et français. L'anglais est aussi parlé.";
+            if (q.includes('superficie') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 587 041 km² (4ème plus grande île du monde).";
+            if (q.includes('mananjary')) return "📍 Mananjary est une ville de la région Vatovavy, côte est de Madagascar. Elle est connue pour ses plantations de café, girofle et ses plages.";
             
-            // ===== CULTURE GÉNÉRALE (MONDE) =====
-            if (q.includes('capitale') && q.includes('france')) return "🇫🇷 La capitale de la France est Paris.";
-            if (q.includes('capitale') && q.includes('usa') || q.includes('états-unis')) return "🇺🇸 La capitale des États-Unis est Washington D.C.";
-            if (q.includes('capitale') && q.includes('angleterre') || q.includes('royaume-uni')) return "🇬🇧 La capitale du Royaume-Uni est Londres.";
-            if (q.includes('capitale') && q.includes('chine')) return "🇨🇳 La capitale de la Chine est Pékin.";
-            if (q.includes('capitale') && q.includes('japon')) return "🇯🇵 La capitale du Japon est Tokyo.";
-            if (q.includes('plus haut sommet') || (q.includes('montagne') && q.includes('plus haut'))) {
-                return "🏔️ Le plus haut sommet du monde est l'Everest (8 848 m) dans l'Himalaya, entre le Népal et le Tibet.";
-            }
-            if (q.includes('plus long fleuve')) {
-                return "🌊 Le plus long fleuve du monde est le Nil (6 650 km), suivi de l'Amazone (6 400 km).";
-            }
-            if (q.includes('plus grand désert')) {
-                return "🏜️ Le plus grand désert chaud du monde est le Sahara (9,2 millions km²). Le plus grand désert froid est l'Antarctique.";
-            }
-            if (q.includes('océan le plus grand')) {
-                return "🌊 Le plus grand océan du monde est l'océan Pacifique (165 millions km²).";
-            }
+            // ========== CULTURE GÉNÉRALE ==========
+            if (q.includes('paris')) return "🇫🇷 Paris est la capitale de la France.";
+            if (q.includes('londres')) return "🇬🇧 Londres est la capitale du Royaume-Uni.";
+            if (q.includes('new york')) return "🗽 New York est une ville des États-Unis, mais la capitale est Washington D.C.";
+            if (q.includes('tokyo')) return "🇯🇵 Tokyo est la capitale du Japon.";
+            if (q.includes('everest')) return "🏔️ L'Everest (8 848 m) est le plus haut sommet du monde, dans l'Himalaya.";
+            if (q.includes('amazone')) return "🌊 L'Amazone (6 400 km) est le plus long fleuve d'Amérique du Sud.";
+            if (q.includes('sahara')) return "🏜️ Le Sahara (9,2 millions km²) est le plus grand désert chaud du monde.";
+            if (q.includes('océan pacifique')) return "🌊 L'océan Pacifique (165 millions km²) est le plus grand océan du monde.";
             
-            // ===== SALUTATIONS ET POLITESSE =====
-            if (q.match(/^(bonjour|salut|coucou|hello|hi|hey|salam|salama)/)) {
-                return "👋 Bonjour ! Comment puis-je vous aider aujourd'hui ? N'hésitez pas à poser vos questions sur le SRB, Madagascar, ou toute autre information générale.";
+            // ========== SALUTATIONS ==========
+            if (q.match(/^(bonjour|salut|coucou|hello|hi|hey|salam|salama|hola|नमस्ते|こんにちは)/)) {
+                return "👋 Bonjour / Hello / Salama / Hola ! Je suis votre assistant IA. Je peux répondre à toutes vos questions : maths, code, démarches SRB, culture générale, Madagascar... Que souhaitez-vous ?";
             }
-            if (q.includes('merci')) {
-                return "🙏 Avec plaisir ! Je suis là pour vous aider. N'hésitez pas si vous avez d'autres questions.";
-            }
-            if (q.includes('au revoir') || q.includes('bye') || q.includes('adieu')) {
-                return "👋 Au revoir ! Merci de votre visite. Revenez nous voir si vous avez besoin d'aide. Bonne journée !";
-            }
-            if (q.includes('comment ça va') || q.includes('ça va')) {
-                return "😊 Je vais très bien, merci ! Toujours opérationnel pour vous aider. Et vous, comment allez-vous ?";
-            }
-            if (q.includes('ton nom') || q.includes('qui es-tu')) {
-                return "🤖 Je suis l'assistant virtuel officiel du Service Régional du Budget Vatovavy. Je suis une intelligence artificielle conçue pour vous aider dans vos démarches et répondre à vos questions générales.";
-            }
+            if (q.includes('merci') || q.includes('thanks') || q.includes('misaotra')) return "🙏 Avec plaisir ! N'hésitez pas si vous avez d'autres questions. Je suis là pour vous aider 24h/24 !";
+            if (q.includes('au revoir') || q.includes('goodbye') || q.includes('bye') || q.includes('veloma')) return "👋 Au revoir ! Revenez nous voir. Bonne journée / Goodbye / Veloma!";
+            if (q.includes('ton nom') || q.includes('qui es-tu')) return "🤖 Je suis l'assistant intelligent du SRB Vatovavy. Je peux répondre à toutes vos questions (mathématiques, programmation, démarches administratives, culture générale, etc.). Comment puis-je vous aider ?";
+            if (q.includes('comment ça va')) return "😊 Je vais très bien, merci ! Toujours opérationnel pour vous aider. Et vous, comment allez-vous ?";
+            if (q.includes('blague') || q.includes('rire')) return "😂 Pourquoi les agents du SRB sont-ils toujours organisés ? Parce qu'ils ont un bon quitus ! (Humour administratif 😄)";
             
-            // ===== RÉPONSE PAR DÉFAUT INTELLIGENTE =====
-            return "🔍 Je vous ai bien compris. Je suis l'assistant du SRB Vatovavy, mais je peux aussi répondre à des questions générales.\n\nSi vous cherchez des informations spécifiques, vous pouvez :\n• Me demander les horaires ou l'adresse du SRB\n• Me poser des questions sur les quitus, baux, SIIGFP\n• M'interroger sur Madagascar (capitale, population, culture)\n• Me parler de géographie, culture générale\n\nQue souhaitez-vous savoir exactement ?";
+            // ========== RÉPONSE PAR DÉFAUT INTELLIGENTE ==========
+            return "🔍 Je suis votre assistant IA universel. Je peux vous aider avec :\n\n📋 **Démarches SRB** : horaires, adresse, quitus, bail, SIIGFP, SIGMP, remboursement médical\n🧮 **Mathématiques** : calculs, équations, dérivées, intégrales\n💻 **Programmation** : Python, JavaScript, HTML, CSS, debug\n🌍 **Culture générale** : géographie, histoire, actualités\n🇲🇬 **Madagascar** : capitale, population, monnaie, culture\n\nQue souhaitez-vous savoir exactement ? Donnez-moi plus de détails sur votre question !";
         }
 
         chatForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const msg = chatInput.value.trim();
             if (!msg) return;
-            
             const userDiv = document.createElement('div');
             userDiv.className = 'd-flex justify-content-end mb-3';
             userDiv.innerHTML = `<div class="rounded-4 p-3" style="background: linear-gradient(135deg, #E52E1E, #2D6A2F); color: white; max-width: 85%;">${msg}</div>`;
             chatContainer.appendChild(userDiv);
             chatInput.value = '';
             chatContainer.scrollTop = chatContainer.scrollHeight;
-            
             setTimeout(() => {
-                const reponse = repondreATout(msg);
+                const reponse = reponseIA(msg);
                 addBotMessage(reponse);
             }, 400);
-        });
-
-        document.getElementById('contactFormPremium').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const status = document.getElementById('formStatus');
-            status.innerHTML = '<span class="text-success">✅ Message envoyé ! Nous vous répondrons rapidement.</span>';
-            document.getElementById('contactFormPremium').reset();
-            setTimeout(() => status.innerHTML = '', 4000);
         });
     </script>
 </body>
