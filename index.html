@@ -3,121 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Portail Officiel - SERVICE REGIONAL DU BUDGET VATOVAVY</title>
+    <title>SRB Vatovavy · Portail Officiel Premium</title>
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <!-- jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
+        /* ==========================================================
+           DESIGN ULTRA PREMIUM · LUXE · SOPHISTIQUÉ
+           ========================================================== */
         :root {
-            --mada-red: #E52E1E;
-            --mada-green: #2D6A2F;
-            --mada-green-light: #4CAF50;
-            --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            --transition-smooth: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
+            --mg-red: #C62828;
+            --mg-red-glow: #E53935;
+            --mg-green: #1B5E20;
+            --mg-green-glow: #388E3C;
+            --mg-gold: #C9A84C;
+            --mg-gold-light: #F5E6B0;
+            --mg-gold-glow: #E8C84A;
+            --mg-white: #FFFFFF;
+            --mg-cream: #FDFBF7;
+            --mg-dark: #0B0F0B;
+            --mg-charcoal: #1A1F1A;
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.04);
+            --shadow-lift: 0 20px 50px -8px rgba(0, 0, 0, 0.12);
+            --shadow-glow: 0 0 40px rgba(201, 168, 76, 0.06);
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 18px; }
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #FEF9F5 0%, #F5F7F2 100%);
-            color: #1A2A1F;
-            scroll-behavior: smooth;
-            padding-top: 85px;
+            font-family: 'Inter', sans-serif;
+            background: var(--mg-cream);
+            color: #1A1A1A;
+            line-height: 1.8;
+            padding-top: 80px;
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4, .logo-text { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-        
+        h1, h2, h3, h4, h5, .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        h1 { font-size: 4.4rem; }
+        h2 { font-size: 3rem; }
+        h3 { font-size: 2.2rem; }
+
+        /* Animations globales */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-lift { transition: var(--transition-smooth); }
+        .hover-lift:hover { transform: translateY(-6px); }
+
+        /* ===== NAVBAR LUXE ===== */
         .navbar-premium {
-            background: rgba(10, 26, 14, 0.96);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 0.6rem 0;
+            background: rgba(11, 15, 11, 0.94);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 0.2rem 0;
+            transition: var(--transition-smooth);
         }
-        .logo-premium { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-img { height: 50px; width: auto; object-fit: contain; }
+        .navbar-premium.scrolled { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); }
+        .logo-premium { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-img {
+            height: 48px; width: auto;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+            transition: transform 0.4s ease;
+        }
+        .logo-premium:hover .logo-img { transform: scale(1.04) rotate(-2deg); }
         .logo-fallback { display: none; }
         .logo-img.error { display: none; }
         .logo-img.error + .logo-fallback {
             display: flex; align-items: center; justify-content: center;
-            width: 45px; height: 45px; background: linear-gradient(145deg, var(--mada-red), var(--mada-green));
-            border-radius: 14px; color: white; font-size: 1.5rem;
+            width: 44px; height: 44px;
+            background: linear-gradient(145deg, var(--mg-red), var(--mg-green));
+            border-radius: 12px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(198,40,40,0.25);
         }
-        .logo-text-section { line-height: 1.2; }
-        .logo-text { font-size: 1.3rem; font-weight: 700; color: white; }
-        .logo-text span { background: linear-gradient(135deg, #FFB347, var(--mada-red)); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .logo-badge { font-size: 0.55rem; background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 30px; color: #FFD700; display: inline-block; }
-        .nav-link-premium { color: rgba(255,255,255,0.85) !important; font-weight: 600; font-size: 0.9rem; padding: 6px 16px !important; border-radius: 50px; transition: var(--transition-smooth); }
-        .nav-link-premium:hover { color: white !important; background: rgba(255,255,255,0.1); }
-        .btn-cta-premium { background: linear-gradient(135deg, var(--mada-red), var(--mada-green)); border: none; padding: 6px 18px; border-radius: 50px; color: white; font-weight: 600; margin-left: 5px; }
-        
+        .logo-text-section { line-height: 1.15; }
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        .logo-text span {
+            background: linear-gradient(135deg, #FFD700, var(--mg-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo-badge {
+            font-size: 0.5rem;
+            background: rgba(201,168,76,0.12);
+            padding: 2px 12px;
+            border-radius: 30px;
+            color: var(--mg-gold);
+            border: 1px solid rgba(201,168,76,0.15);
+            display: inline-block;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .nav-link-premium {
+            color: rgba(255,255,255,0.75) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 6px 20px !important;
+            border-radius: 50px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--mg-gold), #FFD700);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-link-premium:hover { color: white !important; background: rgba(255,255,255,0.05); }
+        .nav-link-premium:hover::after { width: 50%; }
+        .btn-cta-premium {
+            background: linear-gradient(135deg, var(--mg-red), var(--mg-green));
+            border: none;
+            padding: 6px 24px;
+            border-radius: 50px;
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(198,40,40,0.15);
+        }
+        .btn-cta-premium:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 25px rgba(198,40,40,0.2);
+            color: white !important;
+        }
+
+        /* ===== HERO SPECTACULAIRE ===== */
         .hero-premium {
-            background: linear-gradient(120deg, #0A1A0E 0%, #1A3A1E 100%);
-            position: relative; overflow: hidden;
+            position: relative;
+            min-height: 94vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--mg-dark);
         }
         .hero-premium::before {
-            content: ''; position: absolute; inset: 0;
-            background: url('https://images.unsplash.com/photo-1562771379-e0a6ab3a6e72?auto=format&fit=crop&w=1920&q=80') center/cover;
-            opacity: 0.08;
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://img.freepik.com/vecteurs-premium/joyeux-jour-independance-madagascar-26-juin-celebration-pour-publicite-banniere-affiche-carte-voeux_252051-3147.jpg?w=1380') center/cover no-repeat;
+            opacity: 0.12;
+            z-index: 0;
+            animation: heroFloat 20s infinite alternate ease-in-out;
         }
-        .greeting-badge { background: rgba(255,215,0,0.2); backdrop-filter: blur(8px); border: 1px solid rgba(255,215,0,0.4); border-radius: 60px; padding: 6px 18px; display: inline-block; font-size: 0.85rem; }
-        .welcome-text { font-size: 1rem; line-height: 1.6; background: rgba(255,255,245,0.08); padding: 18px 22px; border-radius: 28px; border-left: 4px solid #FFB347; }
-        .btn-hero-primary { background: linear-gradient(135deg, var(--mada-red), #FF6B5E); border: none; padding: 12px 28px; border-radius: 60px; font-weight: 700; }
-        .btn-hero-primary:hover { transform: translateY(-3px); }
-        
-        .division-card {
-            background: white; border-radius: 28px; padding: 25px 15px; text-align: center;
-            transition: var(--transition-smooth); cursor: pointer; box-shadow: 0 10px 25px -10px rgba(0,0,0,0.1);
-            height: 100%; border: 1px solid rgba(0,0,0,0.05);
+        @keyframes heroFloat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.04); }
         }
-        .division-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-premium); border-color: var(--mada-red); }
-        .division-icon { width: 70px; height: 70px; background: linear-gradient(145deg, var(--mada-red), var(--mada-green)); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white; }
-        .division-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--mada-red); }
-        
-        .modele-card {
-            background: #f8fafc;
+        .hero-premium::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11,15,11,0.85) 0%, rgba(11,15,11,0.35) 60%, rgba(11,15,11,0.15) 100%);
+            z-index: 1;
+        }
+        .hero-premium .container { position: relative; z-index: 2; }
+        .greeting-badge {
+            background: rgba(201,168,76,0.12);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(201,168,76,0.20);
+            border-radius: 60px;
+            padding: 8px 28px;
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--mg-gold-light);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        .hero-premium h1 {
+            font-size: 4.8rem;
+            text-shadow: 0 4px 40px rgba(0,0,0,0.4);
+            line-height: 1.05;
+            color: white;
+        }
+        .hero-premium h1 span { color: #FFB347; }
+        .welcome-text {
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-radius: 20px;
-            padding: 20px;
-            transition: 0.3s;
-            border-left: 4px solid var(--mada-green);
+            padding: 28px 36px;
+            border-left: 4px solid var(--mg-gold);
+            font-size: 1.05rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.92);
+        }
+        .welcome-text strong { color: var(--mg-gold-light); }
+        .btn-hero-primary {
+            background: linear-gradient(135deg, var(--mg-red), var(--mg-red-glow));
+            border: none;
+            padding: 14px 40px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 30px rgba(198,40,40,0.2);
+        }
+        .btn-hero-primary:hover { transform: translateY(-5px); box-shadow: 0 18px 45px rgba(198,40,40,0.3); }
+        .btn-hero-secondary {
+            border: 1.5px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(6px);
+            padding: 12px 36px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition-smooth);
+        }
+        .btn-hero-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); color: white; }
+
+        /* ===== DIVISIONS LUXE ===== */
+        .division-card {
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 30px 18px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            height: 100%;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .division-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(198,40,40,0.02), rgba(27,94,32,0.02));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .division-card:hover::before { opacity: 1; }
+        .division-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--mg-gold);
+            background: white;
+        }
+        .division-icon {
+            width: 76px; height: 76px;
+            background: linear-gradient(145deg, rgba(198,40,40,0.06), rgba(27,94,32,0.06));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 2.2rem;
+            color: var(--mg-red);
+            transition: var(--transition-smooth);
+        }
+        .division-card:hover .division-icon {
+            background: linear-gradient(145deg, var(--mg-red), var(--mg-green));
+            color: white;
+            transform: scale(1.05) rotate(-4deg);
+        }
+        .division-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--mg-red);
+        }
+        .division-card p { font-size: 0.85rem; color: #4a4a4a; }
+
+        /* ===== MODÈLES ===== */
+        .modele-card {
+            background: var(--mg-white);
+            border-radius: 20px;
+            padding: 22px;
+            transition: var(--transition-smooth);
+            border-left: 4px solid var(--mg-green);
             margin-bottom: 20px;
             height: 100%;
+            box-shadow: var(--shadow-soft);
         }
         .modele-card:hover {
-            background: white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            transform: translateY(-3px);
-            border-left-color: var(--mada-red);
+            box-shadow: var(--shadow-lift);
+            transform: translateY(-4px);
+            border-left-color: var(--mg-gold);
         }
         .modele-title {
             font-weight: 700;
-            font-size: 1rem;
-            color: #1A2A1F;
+            font-size: 1.05rem;
+            color: var(--mg-dark);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .modele-title i { font-size: 1.5rem; color: var(--mada-red); }
-        
+        .modele-title i { font-size: 1.5rem; color: var(--mg-red); }
         .pieces-liste {
-            background: #fff3e0;
+            background: #FFF8F0;
             border-radius: 12px;
-            padding: 12px 15px;
+            padding: 12px 16px;
             margin: 10px 0;
-            font-size: 0.8rem;
-            border-left: 3px solid var(--mada-red);
+            font-size: 0.85rem;
+            border-left: 3px solid var(--mg-gold);
         }
-        .pieces-liste ul { margin: 5px 0 5px 20px; }
+        .pieces-liste ul { margin: 4px 0 4px 20px; }
         .pieces-liste li { margin-bottom: 3px; }
-        
         .btn-download-pdf {
-            background: linear-gradient(135deg, var(--mada-green), var(--mada-green-light));
+            background: linear-gradient(135deg, var(--mg-green), var(--mg-green-glow));
             border: none;
             border-radius: 40px;
-            padding: 10px 20px;
+            padding: 10px 18px;
             color: white;
             font-weight: 700;
             font-size: 0.85rem;
-            transition: all 0.3s ease;
+            transition: var(--transition-smooth);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -125,46 +348,333 @@
             gap: 8px;
             width: 100%;
             margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(27,94,32,0.12);
         }
         .btn-download-pdf:hover {
-            background: linear-gradient(135deg, var(--mada-green-light), var(--mada-green));
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(45,106,47,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(27,94,32,0.18);
             color: white;
         }
-        
-        .chat-premium { border-radius: 28px; background: white; overflow: hidden; box-shadow: var(--shadow-premium); }
-        .chat-header-premium { background: linear-gradient(135deg, #0A1A0E, #1A3A1E); padding: 15px 20px; }
-        .chat-messages { height: 400px; overflow-y: auto; background: #FEFCF7; padding: 20px; }
-        
-        .contact-form-premium { background: rgba(255,255,255,0.08); border-radius: 24px; padding: 20px; }
-        .contact-form-premium input, .contact-form-premium textarea { background: rgba(255,255,255,0.9); border: none; border-radius: 50px; padding: 10px 18px; width: 100%; }
-        .map-container { border-radius: 24px; overflow: hidden; height: 250px; }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
-        .social-icons a { display: inline-flex; width: 42px; height: 42px; background: rgba(255,255,255,0.12); border-radius: 50px; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 5px; transition: 0.3s; text-decoration: none; }
-        .social-icons a:hover { transform: translateY(-4px); background: var(--mada-red); color: white !important; }
-        .footer-premium { background: #071207; border-top: 2px solid var(--mada-green); }
-        .whatsapp-float-premium { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(145deg, #25D366, #128C7E); width: 55px; height: 55px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; z-index: 1000; text-decoration: none; }
-        
+
+        /* ===== CHAT LUXE ===== */
+        .chat-premium {
+            border-radius: 32px;
+            background: var(--mg-white);
+            overflow: hidden;
+            box-shadow: var(--shadow-lift);
+            border: 1px solid rgba(201,168,76,0.08);
+        }
+        .chat-header-premium {
+            background: linear-gradient(135deg, var(--mg-dark), #1A2A1E);
+            padding: 18px 28px;
+            border-bottom: 2px solid rgba(201,168,76,0.08);
+        }
+        .chat-messages {
+            height: 460px;
+            overflow-y: auto;
+            background: #FEFCF7;
+            padding: 26px;
+        }
+        .chat-messages::-webkit-scrollbar { width: 6px; }
+        .chat-messages::-webkit-scrollbar-track { background: #f0ede8; border-radius: 10px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: var(--mg-green); border-radius: 10px; }
+        .chat-messages .bubble {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding: 14px 22px;
+            border-radius: 22px;
+        }
+        .chat-messages .message-bot .bubble {
+            background: var(--mg-white);
+            border-left: 4px solid var(--mg-gold);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            color: var(--mg-dark);
+        }
+        .chat-messages .message-user .bubble {
+            background: linear-gradient(135deg, var(--mg-red), #C62828);
+            color: white;
+        }
+        #premiumChatInput {
+            border: 2px solid #E8E2D8;
+            border-radius: 60px;
+            padding: 14px 22px;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            background: #FAF8F5;
+        }
+        #premiumChatInput:focus {
+            border-color: var(--mg-gold);
+            box-shadow: 0 0 0 4px rgba(201,168,76,0.08);
+            outline: none;
+        }
+
+        /* ===== À PROPOS IMMERSIF ===== */
+        .apropos-section {
+            position: relative;
+            padding: 80px 0;
+            background: var(--mg-dark);
+            overflow: hidden;
+        }
+        .apropos-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://thfvnext.bing.com/th/id/OIP.l9BZ3iLSicKjWwnRMdlRgwHaHa?w=161&h=180&c=7&r=0&o=7&cb=thfvnextfalcon2&pid=1.7&rm=3') center/cover no-repeat;
+            opacity: 0.04;
+            z-index: 0;
+            animation: bgFloat 25s infinite alternate ease-in-out;
+        }
+        @keyframes bgFloat {
+            0% { transform: scale(1.1) rotate(-2deg); }
+            100% { transform: scale(1) rotate(2deg); }
+        }
+        .apropos-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.03), transparent 60%);
+            z-index: 0;
+        }
+        .apropos-section .container { position: relative; z-index: 1; }
+        .apropos-section h2 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--mg-gold), #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .apropos-section .lead {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.15rem;
+        }
+        .apropos-section ul li {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+        .apropos-card-luxe {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(201,168,76,0.08);
+            border-radius: 28px;
+            padding: 32px 36px;
+            transition: var(--transition-smooth);
+        }
+        .apropos-card-luxe:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(201,168,76,0.15);
+        }
+        .apropos-card-luxe strong { color: var(--mg-gold-light); }
+        .apropos-card-luxe i { color: var(--mg-gold); }
+        .apropos-image-container {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(201,168,76,0.06);
+            border-radius: 28px;
+            padding: 20px;
+            transition: var(--transition-smooth);
+        }
+        .apropos-image-container:hover { border-color: rgba(201,168,76,0.15); }
+        .apropos-image-container img {
+            border-radius: 18px;
+            border: 2px solid rgba(201,168,76,0.08);
+            transition: var(--transition-smooth);
+        }
+        .apropos-image-container:hover img { transform: scale(1.02); }
+
+        /* ===== CONTACT LUXE ===== */
+        .contact-section {
+            background: var(--mg-charcoal);
+            padding: 80px 0;
+            position: relative;
+        }
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.02), transparent 60%);
+        }
+        .contact-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 28px;
+            padding: 32px;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        .contact-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(201,168,76,0.10);
+            transform: translateY(-4px);
+        }
+        .contact-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--mg-gold);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .contact-card p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.9;
+            margin-bottom: 0.6rem;
+        }
+        .contact-card p i {
+            width: 28px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .contact-card .map-container {
+            border-radius: 18px;
+            overflow: hidden;
+            height: 180px;
+            margin-top: 16px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .contact-card .map-container iframe { width: 100%; height: 100%; border: 0; }
+        .social-icons a {
+            display: inline-flex;
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50px;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 4px;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            color: rgba(255,255,255,0.35);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: var(--mg-red);
+            color: white !important;
+            border-color: var(--mg-red);
+        }
+        .contact-form-luxe {
+            background: rgba(255,255,255,0.04);
+            border-radius: 28px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.04);
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        .contact-form-luxe:hover { border-color: rgba(201,168,76,0.08); }
+        .contact-form-luxe h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--mg-gold);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .contact-form-luxe input,
+        .contact-form-luxe textarea {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 50px;
+            padding: 14px 22px;
+            width: 100%;
+            color: white;
+            font-size: 1rem;
+            transition: 0.3s;
+            margin-bottom: 1rem;
+        }
+        .contact-form-luxe input:focus,
+        .contact-form-luxe textarea:focus {
+            background: rgba(255,255,255,0.10);
+            border-color: var(--mg-gold);
+            outline: none;
+            box-shadow: 0 0 30px rgba(201,168,76,0.04);
+        }
+        .contact-form-luxe textarea { border-radius: 20px; min-height: 120px; }
+        .contact-form-luxe input::placeholder,
+        .contact-form-luxe textarea::placeholder { color: rgba(255,255,255,0.30); font-size: 0.95rem; }
+        .contact-form-luxe .btn-submit {
+            background: linear-gradient(135deg, var(--mg-red), var(--mg-red-glow));
+            border: none;
+            border-radius: 60px;
+            padding: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            width: 100%;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 16px rgba(198,40,40,0.12);
+        }
+        .contact-form-luxe .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(198,40,40,0.18);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-premium {
+            background: #070B07;
+            border-top: 1px solid rgba(201,168,76,0.06);
+            padding: 24px 0;
+        }
+        .footer-premium p { font-size: 0.8rem; color: rgba(255,255,255,0.2); }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float-premium {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: linear-gradient(145deg, #25D366, #128C7E);
+            width: 58px; height: 58px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 8px 30px rgba(37,211,102,0.2);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        .whatsapp-float-premium:hover {
+            transform: scale(1.06) rotate(-4deg);
+            color: white;
+            box-shadow: 0 12px 40px rgba(37,211,102,0.3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            html { font-size: 16px; }
+            .hero-premium h1 { font-size: 3.2rem; }
+            h2 { font-size: 2.4rem; }
+            .apropos-section h2 { font-size: 2.6rem; }
+        }
         @media (max-width: 768px) {
             body { padding-top: 72px; }
-            .logo-img { height: 38px; }
-            .division-icon { width: 55px; height: 55px; font-size: 1.5rem; }
-            .division-card h3 { font-size: 0.9rem; }
-            .pieces-liste { font-size: 0.7rem; }
+            html { font-size: 15px; }
+            .logo-img { height: 36px; }
+            .hero-premium h1 { font-size: 2.4rem; }
+            .welcome-text { font-size: 0.9rem; padding: 18px; }
+            .division-icon { width: 60px; height: 60px; font-size: 1.8rem; }
+            .division-card h3 { font-size: 1.2rem; }
+            .pieces-liste { font-size: 0.8rem; }
+            .chat-messages { height: 340px; padding: 16px; }
+            .contact-card p { font-size: 0.95rem; }
+            .apropos-card-luxe { padding: 24px; }
+        }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 1.1rem; }
+            .logo-badge { display: none; }
+            .hero-premium h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-premium fixed-top navbar-expand-lg">
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-premium fixed-top navbar-expand-lg" id="mainNav">
         <div class="container">
             <a class="logo-premium" href="#accueil">
                 <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" class="logo-img" onerror="this.classList.add('error'); this.onerror=null;">
                 <div class="logo-fallback"><i class="fa-solid fa-landmark"></i></div>
                 <div class="logo-text-section">
-                    <div class="logo-text">SERVICE REGIONAL DU BUDGET <span>VATOVAVY</span></div>
-                    <div class="logo-badge">MINISTÈRE DE L'ÉCONOMIE ET DES FINANCES</div>
+                    <div class="logo-text">SRB <span>Vatovavy</span></div>
+                    <div class="logo-badge">MEF · Madagascar</div>
                 </div>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
@@ -182,58 +692,63 @@
         </div>
     </nav>
 
-    <section id="accueil" class="hero-premium py-4 py-md-5">
-        <div class="container py-3 py-md-4">
+    <!-- ===== HERO ===== -->
+    <section id="accueil" class="hero-premium py-5">
+        <div class="container py-4">
             <div class="row align-items-center">
                 <div class="col-lg-7 text-white">
-                    <div class="mb-3"><span class="greeting-badge"><i class="fa-regular fa-hand-peace me-2"></i><strong> Tongasoa eto amin'ny sehatra nomerika misy ny SRB Vatovavy</strong></span></div>
-                    <h1 class="display-4 display-md-3 fw-bold">Ministère de l'Économie<br><span style="color: #FFB347;">et des Finances</span></h1>
-                    <div class="welcome-text mt-3 mt-md-4 mb-3 mb-md-4">
-                        <i class="fa-regular fa-hand-peace me-2" style="color: #FFB347;"></i> 
+                    <div class="mb-3"><span class="greeting-badge"><i class="fa-regular fa-hand-peace me-2"></i> Bienvenue · Tongasoa</span></div>
+                    <h1 class="fw-bold">Ministère de l'Économie<br><span>et des Finances</span></h1>
+                    <div class="welcome-text mt-4">
+                        <i class="fa-regular fa-hand-peace me-2" style="color: var(--mg-gold-light);"></i>
                         <strong>Akory aby lahaly eeee!,</strong><br><br>
-                        Hafaliana sy voninahitra ho anay ny miarahaba anareo rehetra tongasoa eto amin'ity sehatra nomerika ity. Izahay dia ny Sampana Isam-paritra misahana ny Tetibola (SRB) Vatovavy, sampana mivantana avy amin'ny Ministeran'ny Toe-karena sy ny Vola.<br><br>
-                        Manamorona ny fiainanareo isan'andro sy ny asa aman-draharaham-panjakana izahay. Ny biraonay dia hita eo<strong> Antanambazaha, Mananjary</strong>, tsy lavitra ny tobin-tsolika "TOTALenergie Anjilajila".<br> Eo amin'io toerana io no iasanay amin'ny fitiavana sy ny fahazotoana mba hanatanterahana ny iraka masina napetraky ny Fanjakana amintsika, dia ny fitantanana ny volam-bahoaka amin'ny fomba marina sy mangarahara.<br><br>
-                        Tsy vitan'ny hoe mitantana ny tetibola sy ny fananan'ny Fanjakana fotsiny izahay, fa mikatsaka hatrany ny fomba hahafahanareo mahazo tolotra haingana sy mahomby.<br> Amin'ny alalan'ity sehatra nomerika ity, dia tianay ny hanakaiky anareo mpiasam-panjakana sy ireo mpiara-miombon'antoka rehetra. <br>Tsy mila mandany andro lava amin'ny fanaovana laharana na miandry ela intsony ianareo.<br><br>
-
-
-                        <i class="fa-regular fa-flag me-1"></i> <strong>Transparence, efficacité et innovation au service de la nation</strong>
+                        Ny SRB Vatovavy dia faly miarahaba anareo. Izahay dia sampana mivantana avy amin'ny Ministeran'ny Toe-karena sy ny Vola.<br><br>
+                        Ny biraonay dia hita eo <strong>Antanambazaha, Mananjary</strong>. Eto no iasanay amin'ny fitiavana sy ny fahazotoana.<br><br>
+                        <i class="fa-regular fa-flag me-1"></i> <strong>Transparence · Efficacité · Innovation</strong>
                     </div>
-                    
+                    <div class="d-flex gap-3 flex-wrap mt-4">
+                        <a href="#assistant-ia" class="btn btn-hero-primary text-white"><i class="fa-regular fa-robot me-2"></i> Assistant IA</a>
+                        <a href="#demarches" class="btn btn-hero-secondary"><i class="fa-regular fa-file-lines me-2"></i> Modèles</a>
+                    </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block text-center mt-4 mt-lg-0">
-                    <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" alt="Logo MEF" style="width: 140px;">
-                    <div class="mt-3 bg-white bg-opacity-10 rounded-4 p-2"><p class="mb-0 small"><i class="fa-regular fa-circle-check me-1 text-success"></i> Merci infiniment pour votre visite</p></div>
+                    <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" alt="Logo MEF" style="width: 140px; filter: drop-shadow(0 8px 30px rgba(0,0,0,0.3));">
+                    <div class="mt-3 bg-white bg-opacity-10 rounded-4 p-3 backdrop-blur-sm border border-white border-opacity-10">
+                        <p class="mb-0"><i class="fa-regular fa-circle-check me-1 text-success"></i> Merci de votre visite</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="assistant-ia" class="py-4 py-md-5">
-        <div class="container py-2 py-md-4">
-            <div class="text-center mb-4">
-                <h2 class="display-5 fw-bold">🤖 Assistant Virtuel <span style="color: var(--mada-red);">SRBV</span></h2>
-                <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
-                <p class="text-muted mt-2 small">🧠 IA avancée | 🌍 Multilingue | 📚 Connaissance universelle</p>
+    <!-- ===== ASSISTANT IA ===== -->
+    <section id="assistant-ia" class="py-5">
+        <div class="container py-3">
+            <div class="text-center mb-5 fade-up">
+                <h2 class="display-4 fw-bold">🤖 Assistant <span style="color: var(--mg-red);">Virtuel</span></h2>
+                <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mg-red), var(--mg-gold)); border-radius: 4px;"></div>
+                <p class="text-muted mt-3" style="font-size: 1.05rem;">🧠 IA avancée · 🌍 Multilingue · 📚 Répond à tout</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="chat-premium">
                         <div class="chat-header-premium d-flex align-items-center">
-                            <div class="bg-white bg-opacity-15 rounded-circle p-2 me-3"><i class="fa-solid fa-brain fa-lg" style="color: #FFB347;"></i></div>
-                            <div><h5 class="mb-0 text-white">Agent IA • SRB Vatovavy</h5><small class="text-white-50">Capacité illimitée - Répond à tout</small></div>
+                            <div class="bg-white bg-opacity-10 rounded-circle p-2 me-3"><i class="fa-solid fa-brain fa-lg" style="color: var(--mg-gold);"></i></div>
+                            <div><h5 class="mb-0 text-white" style="font-size: 1.2rem;">Agent IA · SRB Vatovavy</h5><small class="text-white-50 opacity-75" style="font-size: 0.85rem;">Capacité illimitée</small></div>
                         </div>
                         <div class="chat-messages" id="chatMessagesPremium">
-                            <div class="d-flex mb-3">
-                                <div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F;">
-                                    <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour ! Je suis votre assistant intelligent.</strong><br><br>
-                                    <span class="text-muted">Posez-moi n'importe quelle question, dans n'importe quelle langue !</span>
+                            <div class="d-flex mb-3 message-bot">
+                                <div class="bubble shadow-sm" style="max-width: 90%;">
+                                    <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour !</strong><br><br>
+                                    Je suis votre assistant. Posez-moi vos questions sur les démarches SRB, les maths, l'histoire, Madagascar...<br>
+                                    <span class="text-muted">N'hésitez pas !</span>
                                 </div>
                             </div>
                         </div>
                         <div class="p-3 bg-white border-top">
                             <form id="chatPremiumForm" class="d-flex gap-2">
-                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-2 py-md-3" placeholder="Posez votre question " autocomplete="off">
-                                <button type="submit" class="btn rounded-pill px-3 px-md-5" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green)); color: white;">Envoyer</button>
+                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-3 px-4" placeholder="Posez votre question..." autocomplete="off">
+                                <button type="submit" class="btn rounded-pill px-5" style="background: linear-gradient(135deg, var(--mg-red), var(--mg-green)); color: white; font-weight: 600; font-size: 1rem; border: none;"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer</button>
                             </form>
                         </div>
                     </div>
@@ -242,128 +757,105 @@
         </div>
     </section>
 
-    <section id="demarches" class="py-4 py-md-5 bg-white">
+    <!-- ===== DÉMARCHES ===== -->
+    <section id="demarches" class="py-5" style="background: var(--mg-white);">
         <div class="container">
-            <div class="text-center mb-4">
-                <h2 class="display-5 fw-bold">📋 Démarches & <span style="color: var(--mada-green);">Pièces à fournir</span></h2>
-                <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mada-red), var(--mada-green)); border-radius: 4px;"></div>
-                <p class="text-muted mt-2 small">Cliquez sur une division pour afficher les pièces à fournir et télécharger les modèles</p>
+            <div class="text-center mb-5 fade-up">
+                <h2 class="display-4 fw-bold">📋 Démarches & <span style="color: var(--mg-green);">Pièces à fournir</span></h2>
+                <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mg-red), var(--mg-gold)); border-radius: 4px;"></div>
+                <p class="text-muted mt-3" style="font-size: 1.05rem;">Cliquez sur une division pour afficher les pièces et télécharger les modèles</p>
             </div>
 
             <div class="row g-4 mb-5">
-                <div class="col-md-2 col-4">
-                    <div class="division-card" data-division="dpe">
-                        <div class="division-icon"><i class="fa-solid fa-landmark"></i></div>
-                        <h3>DPE</h3>
-                        <p class="small text-muted">Patrimoine d'État</p>
-                    </div>
-                </div>
-                <div class="col-md-2 col-4">
-                    <div class="division-card" data-division="cir">
-                        <div class="division-icon"><i class="fa-solid fa-computer"></i></div>
-                        <h3>CIR</h3>
-                        <p class="small text-muted">Informatique</p>
-                    </div>
-                </div>
-                <div class="col-md-2 col-4">
-                    <div class="division-card" data-division="budget">
-                        <div class="division-icon"><i class="fa-solid fa-chart-simple"></i></div>
-                        <h3>EXECUTION BUDGETAIRE</h3>
-                        <p class="small text-muted">Exécution</p>
-                    </div>
-                </div>
-                <div class="col-md-2 col-4">
-                    <div class="division-card" data-division="sante">
-                        <div class="division-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                        <h3>SANTÉ</h3>
-                        <p class="small text-muted">Remboursement</p>
-                    </div>
-                </div>
-                <div class="col-md-2 col-4">
-                    <div class="division-card" data-division="finance">
-                        <div class="division-icon"><i class="fa-solid fa-coins"></i></div>
-                        <h3>FINANCE LOCALE</h3>
-                        <p class="small text-muted">Locale</p>
-                    </div>
-                </div>
-                <div class="col-md-2 col-4">
-                    <div class="division-card" data-division="tutelle">
-                        <div class="division-icon"><i class="fa-solid fa-building-user"></i></div>
-                        <h3>TUTELLE EPN</h3>
-                        <p class="small text-muted">Établissements</p>
-                    </div>
-                </div>
+                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="dpe"><div class="division-icon"><i class="fa-solid fa-landmark"></i></div><h3>DPE</h3><p class="small text-muted">Patrimoine</p></div></div>
+                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="cir"><div class="division-icon"><i class="fa-solid fa-computer"></i></div><h3>CIR</h3><p class="small text-muted">Informatique</p></div></div>
+                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="budget"><div class="division-icon"><i class="fa-solid fa-chart-simple"></i></div><h3>BUDGET</h3><p class="small text-muted">Exécution</p></div></div>
+                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="sante"><div class="division-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>SANTÉ</h3><p class="small text-muted">Remboursement</p></div></div>
+                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="finance"><div class="division-icon"><i class="fa-solid fa-coins"></i></div><h3>FINANCE</h3><p class="small text-muted">Locale</p></div></div>
+                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="tutelle"><div class="division-icon"><i class="fa-solid fa-building-user"></i></div><h3>TUTELLE</h3><p class="small text-muted">EPN</p></div></div>
             </div>
 
             <div id="modelesContainer" class="mt-4">
                 <div class="text-center text-muted py-5">
                     <i class="fa-regular fa-folder-open fa-3x mb-3"></i>
-                    <p>Sélectionnez une division ci-dessus</p>
+                    <p style="font-size: 1.1rem;">Sélectionnez une division</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AVANT-PROPOS PROFESSIONNEL -->
-    <section class="py-4" style="background: #FFF8F0;">
+    <!-- ===== AVANT-PROPOS ===== -->
+    <section class="py-5" style="background: #F8F5F0;">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="p-4 rounded-4" style="background: white; border-left: 5px solid var(--mada-red); box-shadow: var(--shadow-premium);">
-                        <h3 class="fw-bold" style="color: var(--mada-red);"><i class="fa-regular fa-building me-2"></i> Service Régional du Budget Vatovavy</h3>
-                        <p class="mt-3" style="text-align: justify; line-height: 1.8;">
-                            <strong>Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny "Sampana Isam-paritra misahana ny Tetibola" (SRB) Vatovavy.</strong><br><br>
-                            Ny SRB Vatovavy, izay sampana iray amin'ny Ministeran'ny Toe-karena sy ny Vola eto Mananjary, dia sampan-draharaham-panjakana natokana hitantana amin'ny fomba hentitra sy mangarahara ny volam-panjakana eto amin'ny faritra Vatovavy. Ny asa aman-draharaha sahaninay dia ny manara-maso ny fampiasana ny tetibola, ny fanaraha-maso ny fandaniana, ny fitantanana ny fananan'ny Fanjakana (toy ny quitus, fanofana, ary fanisana ny fananana), ary ny fanampiana ireo mpiasam-panjakana amin'ny fikirakirana ny taratasy amin'ny alalan'ireo rafitra SIIGFP sy SIGMP.<br><br>
-                            Ao anatin'ny fanoloran-tenanay hanavao sy hanao ho nomerika ny asam-panjakana, dia atolotray anareo ity sehatra ity mba hanamorana ny fahitana ireo taratasy modely, ireo antontan-taratasy ilaina, ary ireo taratasy fitantanana rehetra. Misy koa ny mpanampy manan-tsaina (IA) vonona hanampy anareo 24 ora amin'ny 24, hamaly ireo fanontanianareo amin'ny fiteny rehetra, sady hitarika anareo amin'ireo fomba fanao tokony harahina.<br><br>
-                            <strong>Notre devise :</strong> Transparence, efficacité et innovation au service de la nation.<br><br>
-                            Nous vous remercions de votre confiance et restons à votre entière disposition pour tout besoin d'accompagnement.
+                <div class="col-lg-10 fade-up">
+                    <div class="p-5 rounded-4" style="background: var(--mg-white); border-left: 5px solid var(--mg-red); box-shadow: var(--shadow-lift);">
+                        <h3 class="fw-bold" style="color: var(--mg-red); font-size: 2.2rem;"><i class="fa-regular fa-building me-2"></i> Service Régional du Budget</h3>
+                        <p class="mt-3" style="text-align: justify; line-height: 2; font-size: 1.05rem;">
+                            <strong>Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny SRB Vatovavy.</strong><br><br>
+                            Ny SRB Vatovavy dia sampana iray amin'ny Ministeran'ny Toe-karena sy ny Vola eto Mananjary. Ny asa sahaninay dia ny fanaraha-maso ny tetibola, ny fandaniana, ny fitantanana ny fananan'ny Fanjakana, ary ny fanampiana ireo mpiasam-panjakana.<br><br>
+                            <strong>Notre devise :</strong> Transparence, efficacité et innovation au service de la nation.
                         </p>
-                        <div class="mt-3 d-flex justify-content-between align-items-center flex-wrap">
-                            <span><i class="fa-regular fa-clock me-1"></i> Service public digitalisé</span>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="apropos" class="py-4 py-md-5" style="background: linear-gradient(115deg, #F4F7F2, #FFF8F0);">
+    <!-- ===== À PROPOS IMMERSIF ===== -->
+    <section id="apropos" class="apropos-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="display-5 fw-bold">🇲🇬 SRB <span style="color: var(--mada-red);">Vatovavy</span></h2>
-                    <div class="my-3" style="width: 60px; height: 3px; background: var(--mada-green);"></div>
-                    <p class="lead fs-6">Service Régional du Budget à Mananjary. Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
-                    <ul class="list-unstyled mt-3">
-                        <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Exécution budgétaire</strong> – Suivi des crédits et engagements</li>
-                        <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Patrimoine public</strong> – Quitus, baux, recensement des biens</li>
-                        <li class="mb-2 small"><i class="fa-regular fa-circle-check me-2 text-success"></i> <strong>Digitalisation</strong> – SIIGFP, SIGMP, IA</li>
-                    </ul>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 fade-up">
+                    <h2 class="fw-bold">🇲🇬 SRB <span style="color: var(--mg-red);">Vatovavy</span></h2>
+                    <div class="my-3" style="width: 70px; height: 3px; background: var(--mg-gold); border-radius: 4px;"></div>
+                    <p class="lead">Service Régional du Budget à Mananjary. Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
+                    <div class="apropos-card-luxe mt-4">
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="fa-regular fa-circle-check me-3 mt-1" style="color: var(--mg-gold); font-size: 1.3rem;"></i>
+                                <div><strong style="color: var(--mg-gold-light); font-size: 1.1rem;">Exécution budgétaire</strong><br><span style="color: rgba(255,255,255,0.6);">Suivi rigoureux des crédits et engagements financiers</span></div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="fa-regular fa-circle-check me-3 mt-1" style="color: var(--mg-gold); font-size: 1.3rem;"></i>
+                                <div><strong style="color: var(--mg-gold-light); font-size: 1.1rem;">Patrimoine public</strong><br><span style="color: rgba(255,255,255,0.6);">Gestion des quitus, baux et recensement des biens de l'État</span></div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="fa-regular fa-circle-check me-3 mt-1" style="color: var(--mg-gold); font-size: 1.3rem;"></i>
+                                <div><strong style="color: var(--mg-gold-light); font-size: 1.1rem;">Digitalisation</strong><br><span style="color: rgba(255,255,255,0.6);">Modernisation via SIIGFP, SIGMP et Intelligence Artificielle</span></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-6 text-center">
-                    <div class="bg-white p-3 rounded-5 shadow-lg"><img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" class="img-fluid rounded-4" style="max-height: 280px; width: 100%; object-fit: cover;"></div>
+                <div class="col-lg-6 text-center fade-up">
+                    <div class="apropos-image-container">
+                        <img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" class="img-fluid" style="max-height: 280px; width: 100%; object-fit: cover;" alt="Mananjary">
+                        <p class="mt-3 small text-white-50" style="font-size: 0.9rem;"><i class="fa-regular fa-flag me-1"></i> Mananjary · Région Vatovavy</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-4 py-md-5" style="background: #0A1A0E;">
-        <div class="container text-white">
-            <div class="text-center mb-4">
-                <h2 class="display-5 fw-bold text-white">📞 Contacter <span style="color: var(--mada-red);">Nous</span></h2>
-                <div class="mx-auto" style="width: 60px; height: 3px; background: var(--mada-green);"></div>
+    <!-- ===== CONTACT LUXE ===== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5 fade-up">
+                <h2 class="display-4 fw-bold text-white">📞 Contacter <span style="color: var(--mg-red);">Nous</span></h2>
+                <div class="mx-auto" style="width: 70px; height: 3px; background: var(--mg-gold); border-radius: 4px;"></div>
+                <p class="text-white-50 mt-3" style="font-size: 1.05rem;">Réponse sous 48h · Appels aux heures ouvrables</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="bg-white bg-opacity-10 rounded-4 p-3 p-md-4 h-100">
-                        <h4 class="mb-3">Coordonnées</h4>
-                        <p class="small"><i class="fa-solid fa-location-dot me-2 text-danger"></i> Antanambazaha, Mananjary 317, Vatovavy</p>
-                        <p class="small"><i class="fa-solid fa-envelope me-2 text-success"></i> jackandrianaivomanana@gmail.com</p>
-                        <p class="small"><i class="fa-solid fa-phone me-2 text-warning"></i> +261 20 57 901 23</p>
-                        <p class="small"><i class="fa-brands fa-whatsapp me-2 text-success"></i> +261 34 57 250 57</p>
-                        <p class="small"><i class="fa-regular fa-clock me-2 text-warning"></i> Lundi - Vendredi <br> <strong>Matin:</strong> 08h00 - 12h00 <br> <strong>Après-midi:</strong> 14h00 - 17h00</p>
-                        <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="col-md-6 fade-up">
+                    <div class="contact-card">
+                        <h4><i class="fa-regular fa-building me-2" style="color: var(--mg-red);"></i> Coordonnées</h4>
+                        <p><i class="fa-solid fa-location-dot me-3" style="color: var(--mg-red);"></i> Antanambazaha, Mananjary 317</p>
+                        <p><i class="fa-solid fa-envelope me-3" style="color: var(--mg-green);"></i> jackandrianaivomanana@gmail.com</p>
+                        <p><i class="fa-solid fa-phone me-3" style="color: var(--mg-gold);"></i> +261 20 57 901 23</p>
+                        <p><i class="fa-brands fa-whatsapp me-3" style="color: #25D366;"></i> +261 34 57 250 57</p>
+                        <p><i class="fa-regular fa-clock me-3" style="color: var(--mg-gold);"></i> Lundi-Vendredi<br> &nbsp;&nbsp;08h00–12h00 · 14h00–17h00</p>
+                        <div class="map-container mt-3">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                         <div class="social-icons mt-3 text-center">
                             <a href="#" class="text-white"><i class="fa-brands fa-facebook-f"></i></a>
@@ -372,39 +864,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="contact-form-premium">
-                        <h4 class="mb-3">Message rapide</h4>
+                <div class="col-md-6 fade-up">
+                    <div class="contact-form-luxe">
+                        <h4><i class="fa-regular fa-pen-to-square me-2" style="color: var(--mg-gold);"></i> Message rapide</h4>
                         <form id="contactForm" action="https://formsubmit.co/jackandrianaivomanana@gmail.com" method="POST">
-                            <input type="text" name="Nom" class="form-control mb-2" placeholder="Nom complet" required>
-                            <input type="email" name="Email" class="form-control mb-2" placeholder="Email" required>
-                            <input type="tel" name="Telephone" class="form-control mb-2" placeholder="Téléphone">
-                            <textarea name="Message" rows="3" class="form-control mb-2" placeholder="Votre message..." required></textarea>
-                            <input type="hidden" name="_subject" value="📩 Nouveau message du site SRB Vatovavy">
+                            <input type="text" name="Nom" placeholder="Nom complet" required>
+                            <input type="email" name="Email" placeholder="Email" required>
+                            <input type="tel" name="Telephone" placeholder="Téléphone">
+                            <textarea name="Message" placeholder="Votre message..." required></textarea>
+                            <input type="hidden" name="_subject" value="📩 Message site SRB Vatovavy">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://jackandrianaivomanana.github.io/srb/merci.html">
-                            <button type="submit" class="btn text-white w-100" style="background: linear-gradient(135deg, var(--mada-red), var(--mada-green));">Envoyer</button>
+                            <button type="submit" class="btn-submit"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer</button>
                         </form>
-                        <div id="formStatus" class="mt-2 text-center small text-success"></div>
+                        <div id="formStatus" class="mt-3 text-center small text-success"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer-premium py-3 text-center text-white-50">
-        <div class="container"><p class="mb-0 small">© 2026 Ministère de l'Économie et des Finances - SRB Vatovavy | TAHIANA ANDREA 🇲🇬</p></div>
+    <footer class="footer-premium text-center">
+        <div class="container">
+            <p class="mb-0 small">© 2026 Ministère de l'Économie et des Finances · SRB Vatovavy · TAHIANA ANDREA 🇲🇬</p>
+        </div>
     </footer>
 
     <a href="https://wa.me/261342501234" class="whatsapp-float-premium" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ===== FONCTIONS PDF (conservées) =====
+        // ===== FONCTIONS PDF =====
         function genererPDFQuitusLogement() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20); doc.setTextColor(229,46,30); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
+            doc.setFontSize(20); doc.setTextColor(198,40,40); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
             doc.setFontSize(12); doc.setTextColor(0,0,0);
             doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
             doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
@@ -421,11 +915,10 @@
             doc.text("[Nom, fonction, signature, cachet du service]", 20, 220);
             doc.save("Demande_QUITUS_Logement.pdf");
         }
-
         function genererPDFQuitusVehicule() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20); doc.setTextColor(229,46,30); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
+            doc.setFontSize(20); doc.setTextColor(198,40,40); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
             doc.setFontSize(12); doc.setTextColor(0,0,0);
             doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
             doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
@@ -444,11 +937,10 @@
             doc.text("[Nom, fonction, signature, cachet du service]", 20, 240);
             doc.save("Demande_QUITUS_Vehicule.pdf");
         }
-
         function genererPDFBailLogement() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20); doc.setTextColor(229,46,30); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
+            doc.setFontSize(20); doc.setTextColor(198,40,40); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
             doc.setFontSize(12); doc.setTextColor(0,0,0);
             doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
             doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
@@ -468,7 +960,6 @@
             doc.text("[Nom, fonction, signature, cachet du service]", 20, 250);
             doc.save("Demande_BAIL_Logement.pdf");
         }
-
         function genererPDFSIIGFP() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -485,7 +976,6 @@
             doc.text("Fait à Mananjary, le ___/___/___", 20, 170);
             doc.save("Demande_SIIGFP.pdf");
         }
-
         function genererPDFLettreEngagement() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -499,7 +989,6 @@
             doc.text("Signature : ____________", 20, 125);
             doc.save("Lettre_Engagement_SIIGFP.pdf");
         }
-
         function genererPDFSIGMP() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -512,7 +1001,6 @@
             doc.text("Fait à Mananjary, le ___/___/___", 20, 130);
             doc.save("Demande_SIGMP.pdf");
         }
-
         function genererPDFRemboursementMedical() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -531,7 +1019,6 @@
             doc.text("⚠️ Bulletin de consultation à prendre AVANT la consultation", 20, 165);
             doc.save("Remboursement_Medical.pdf");
         }
-
         function genererPDFTransitFinancier() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -547,7 +1034,6 @@
             doc.text("Fait à Mananjary, le ___/___/___", 20, 160);
             doc.save("Procedure_Transit_Financier.pdf");
         }
-
         function genererPDFComptabiliteMatiere() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -563,7 +1049,6 @@
             doc.text("• Version électronique (Excel)", 25, 130);
             doc.save("Comptabilite_Matiere.pdf");
         }
-
         function genererPDFTutelleEPN() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -614,21 +1099,21 @@
                 container.innerHTML = '<div class="text-center text-muted py-5"><p>Aucun modèle disponible</p></div>';
                 return;
             }
-            let html = `<h4 class="mb-4 fw-bold" style="color: var(--mada-red);"><i class="fa-regular fa-file-lines me-2"></i>Pièces à fournir</h4><div class="row">`;
+            let html = `<h4 class="mb-4 fw-bold" style="color: var(--mg-red); font-size: 1.5rem;"><i class="fa-regular fa-file-lines me-2"></i>Pièces à fournir</h4><div class="row">`;
             modeles.forEach((modele, index) => {
                 html += `<div class="col-md-6">
                     <div class="modele-card">
                         <div class="modele-title"><i class="fa-regular fa-file-pdf"></i><strong>${modele.titre}</strong></div>
                         <div class="pieces-liste">
-                            <i class="fa-solid fa-list-check me-1" style="color: var(--mada-red);"></i> <strong>📋 Pièces à fournir :</strong>
-                            <ul style="margin-bottom:0; padding-left:20px;">`;
+                            <i class="fa-solid fa-list-check me-1" style="color: var(--mg-red);"></i> <strong>📋 Pièces :</strong>
+                            <ul>`;
                 for (let i = 0; i < modele.pieces.length; i++) {
                     html += `<li>📌 ${modele.pieces[i]}</li>`;
                 }
                 html += `</ul>
                         </div>
                         <button class="btn-download-pdf" onclick="telechargerModele('${division}', ${index})">
-                            <i class="fa-solid fa-download me-2"></i> Télécharger le modèle PDF
+                            <i class="fa-solid fa-download me-2"></i> Télécharger le PDF
                         </button>
                     </div>
                 </div>`;
@@ -651,106 +1136,93 @@
             });
         });
 
-        // ===== IA UNIVERSELLE AVANCÉE (RÉPOND À TOUT) =====
+        // ===== IA =====
         const chatForm = document.getElementById('chatPremiumForm');
         const chatInput = document.getElementById('premiumChatInput');
         const chatContainer = document.getElementById('chatMessagesPremium');
 
         function addBotMessage(text) {
             const div = document.createElement('div');
-            div.className = 'd-flex mb-3';
-            div.innerHTML = `<div class="bg-white rounded-4 p-3 shadow-sm" style="border-left: 4px solid #2D6A2F;"><i class="fa-regular fa-robot text-success me-2"></i> ${text}</div>`;
+            div.className = 'd-flex mb-3 message-bot';
+            div.innerHTML = `<div class="bubble shadow-sm" style="max-width: 90%;"><i class="fa-regular fa-robot text-success me-2"></i> ${text.replace(/\n/g, '<br>')}</div>`;
             chatContainer.appendChild(div);
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
-        // Fonction pour évaluer des expressions mathématiques
-        function evaluerMath(expression) {
-            try {
-                // Nettoyer l'expression
-                let expr = expression.replace(/[^0-9+\-*/%.()^√π×÷]/g, '');
-                expr = expr.replace(/√/g, 'Math.sqrt');
-                expr = expr.replace(/\^/g, '**');
-                expr = expr.replace(/π/g, 'Math.PI');
-                expr = expr.replace(/×/g, '*');
-                expr = expr.replace(/÷/g, '/');
-                const resultat = eval(expr);
-                return `🧮 Résultat : ${expression} = ${resultat}`;
-            } catch(e) {
-                return null;
+        function getConnaissance(question) {
+            const q = question.toLowerCase().trim();
+            const map = {
+                'horaire': "🕒 Horaires : Lundi-Vendredi 08h00-12h00 et 14h00-17h00",
+                'adresse': "📍 Antanambazaha, Mananjary 317, Vatovavy",
+                'email': "📧 jackandrianaivomanana@gmail.com",
+                'telephone': "📞 +261 20 57 901 23 · WhatsApp +261 34 57 250 57",
+                'quitus': "📄 Quitus : division DPE",
+                'bail': "🏠 Bail : division DPE",
+                'siigfp': "💻 SIIGFP : division CIR",
+                'sigmp': "🔐 SIGMP : division CIR",
+                'remboursement': "🏥 Remboursement médical : division Santé"
+            };
+            for (let key in map) {
+                if (q.includes(key)) return map[key];
             }
+            return null;
         }
 
-        // Fonction principale de l'IA (répond à TOUT)
-        function reponseIA(question) {
+        function getHistoire(question) {
             const q = question.toLowerCase().trim();
-            
-            // ========== SRB ET DÉMARCHES ==========
-            if (q.includes('horaire') || q.includes('ouverture')) return "🕒 Horaires : Lundi-Vendredi 08h00-12h00 et 14h00-17h00";
-            if (q.includes('adresse') || q.includes('localisation')) return "📍 Antanambazaha, Mananjary 317, Région Vatovavy, Madagascar (à côté de TOTALenergie Anjilajila)";
-            if (q.includes('email')) return "📧 jackandrianaivomanana@gmail.com";
-            if (q.includes('téléphone') || q.includes('appel')) return "📞 Tél fixe: +261 20 57 901 23 | WhatsApp: +261 34 57 250 57";
-            if (q.includes('quitus')) return "📄 Quitus disponible dans la division DPE. Cliquez sur DPE puis sur le modèle pour voir les pièces à fournir.";
-            if (q.includes('bail')) return "🏠 Bail disponible dans la division DPE. Pièces : photos, contrat (7 ex), attestation non-logement, etc.";
-            if (q.includes('siigfp')) return "💻 SIIGFP dans la division CIR. Pièces : nom, IM, acte nomination, lettre engagement.";
-            if (q.includes('sigmp') || q.includes('prmp')) return "🔐 SIGMP dans la division CIR. Pièces : acte nomination PRMP, CV, lettre engagement.";
-            if (q.includes('remboursement') || q.includes('médical')) return "🏥 Remboursement médical dans la division Santé. Pièces : demande, bulletin consultation, ordonnance, RIB, etc.";
-            
-            // ========== MATHÉMATIQUES ==========
-            if (q.match(/[\d+\-*/%^√π×÷]/) && (q.includes('=') || q.includes('combien') || q.includes('calcule') || q.match(/[+\-*/]/))) {
-                const mathResult = evaluerMath(q);
-                if (mathResult) return mathResult;
+            if (q.includes('histoire') || q.includes('conte') || q.includes('légende') || q.includes('raconte')) {
+                const histoires = [
+                    { titre: "📖 Légende de Madagascar", contenu: "Selon la tradition, Madagascar serait née d'un combat entre deux géants. L'un, vaincu, se coucha dans l'océan, formant l'île. Ses montagnes sont ses os, ses côtes ses déchirures. Les Malgaches l'appellent 'Nosy Manga'." },
+                    { titre: "📖 Le lémurien Indri", contenu: "L'Indri est sacré. La légende raconte qu'il était un homme qui commit un crime envers les esprits. Transformé en animal, son cri plaintif dans les forêts d'Andasibe est l'appel de son âme." },
+                    { titre: "📖 Roi Andrianampoinimerina", contenu: "Au XVIIIe siècle, il unifia Madagascar. Son dicton : 'Ny ranomasina no valampariako' (La mer est ma limite). Il fonda Antananarivo." }
+                ];
+                const choix = histoires[Math.floor(Math.random() * histoires.length)];
+                return `${choix.titre}\n\n${choix.contenu}\n\n💡 Encore une histoire ? Dites « encore ».`;
             }
-            if (q.includes('dérivée') || q.includes('dériver')) return "📐 Pour calculer une dérivée, donnez-moi la fonction (ex: dérivée de x^2+3x). Je peux vous aider avec les règles de dérivation!";
-            if (q.includes('intégrale')) return "∫ Pour une intégrale, donnez-moi la fonction à intégrer. Je connais les méthodes d'intégration par parties, substitution, etc.";
-            
-            // ========== PROGRAMMATION ==========
-            if (q.includes('python') && (q.includes('code') || q.includes('programme'))) {
-                return "💻 Voici un exemple Python simple :\n```python\ndef bonjour(nom):\n    print(f'Bonjour {nom}!')\nbonjour('visiteur')\n```\nDonnez-moi plus de détails sur ce que vous voulez coder!";
+            return null;
+        }
+
+        function getResolution(question) {
+            const q = question.toLowerCase().trim();
+            if (q.includes('=') || q.includes('calcule') || q.match(/[\d+\-*/%^]/)) {
+                try {
+                    let expr = q.replace(/[^0-9+\-*/%.()^]/g, '');
+                    const resultat = eval(expr);
+                    return `🧮 Résultat : ${expr} = ${resultat}`;
+                } catch(e) {}
             }
-            if (q.includes('javascript') && (q.includes('code') || q.includes('fonction'))) {
-                return "🌐 Voici un exemple JavaScript :\n```javascript\nfunction saluer(nom) {\n    console.log(`Bonjour ${nom}!`);\n}\nsaluer('visiteur');\n```";
+            if (q.includes('problème') || q.includes('résoudre')) {
+                return "💡 Méthode : 1. Définir · 2. Analyser · 3. Chercher · 4. Choisir · 5. Mettre en œuvre.\nDécrivez votre problème pour plus d'aide.";
             }
-            if (q.includes('html') && q.includes('code')) {
-                return "📄 Exemple HTML simple :\n```html\n<!DOCTYPE html>\n<html><body><h1>Bonjour!</h1></body></html>\n```";
+            return null;
+        }
+
+        function getCulture(question) {
+            const q = question.toLowerCase().trim();
+            const sujets = {
+                'madagascar': "🇲🇬 Madagascar : île de l'océan Indien, 4ème plus grande. Capitale Antananarivo. ~28 M d'habitants. Monnaie Ariary.",
+                'capitale': "🇲🇬 Antananarivo",
+                'population': "🇲🇬 ~28 millions",
+                'monnaie': "💰 Ariary (MGA). 1€ ≈ 4800 Ar",
+                'mananjary': "📍 Mananjary, région Vatovavy, côte est"
+            };
+            for (let key in sujets) {
+                if (q.includes(key)) return sujets[key];
             }
-            if (q.includes('css')) {
-                return "🎨 Exemple CSS :\n```css\nbody {\n    background-color: #f0f0f0;\n    font-family: Arial, sans-serif;\n}\n```";
-            }
-            if (q.includes('erreur') && q.includes('code')) {
-                return "🐛 Pour debugger une erreur, partagez-moi votre code et le message d'erreur. Je vous aiderai à trouver la solution!";
-            }
-            
-            // ========== MADAGASCAR ==========
-            if (q.includes('capitale') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 La capitale de Madagascar est Antananarivo (Tananarive).";
-            if (q.includes('population') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 Madagascar compte environ 28 millions d'habitants (estimation 2023).";
-            if (q.includes('monnaie') && (q.includes('madagascar') || q.includes('malagasy'))) return "💰 L'Ariary (MGA) est la monnaie de Madagascar. 1 Euro ≈ 4800 Ariary.";
-            if (q.includes('langue') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 Langues officielles : malgache et français. L'anglais est aussi parlé.";
-            if (q.includes('superficie') && (q.includes('madagascar') || q.includes('malagasy'))) return "🇲🇬 587 041 km² (4ème plus grande île du monde).";
-            if (q.includes('mananjary')) return "📍 Mananjary est une ville de la région Vatovavy, côte est de Madagascar. Elle est connue pour ses plantations de café, girofle et ses plages.";
-            
-            // ========== CULTURE GÉNÉRALE ==========
-            if (q.includes('paris')) return "🇫🇷 Paris est la capitale de la France.";
-            if (q.includes('londres')) return "🇬🇧 Londres est la capitale du Royaume-Uni.";
-            if (q.includes('new york')) return "🗽 New York est une ville des États-Unis, mais la capitale est Washington D.C.";
-            if (q.includes('tokyo')) return "🇯🇵 Tokyo est la capitale du Japon.";
-            if (q.includes('everest')) return "🏔️ L'Everest (8 848 m) est le plus haut sommet du monde, dans l'Himalaya.";
-            if (q.includes('amazone')) return "🌊 L'Amazone (6 400 km) est le plus long fleuve d'Amérique du Sud.";
-            if (q.includes('sahara')) return "🏜️ Le Sahara (9,2 millions km²) est le plus grand désert chaud du monde.";
-            if (q.includes('océan pacifique')) return "🌊 L'océan Pacifique (165 millions km²) est le plus grand océan du monde.";
-            
-            // ========== SALUTATIONS ==========
-            if (q.match(/^(bonjour|salut|coucou|hello|hi|hey|salam|salama|hola|नमस्ते|こんにちは)/)) {
-                return "👋 Bonjour / Hello / Salama / Hola ! Je suis votre assistant IA. Je peux répondre à toutes vos questions : maths, code, démarches SRB, culture générale, Madagascar... Que souhaitez-vous ?";
-            }
-            if (q.includes('merci') || q.includes('thanks') || q.includes('misaotra')) return "🙏 Avec plaisir ! N'hésitez pas si vous avez d'autres questions. Je suis là pour vous aider 24h/24 !";
-            if (q.includes('au revoir') || q.includes('goodbye') || q.includes('bye') || q.includes('veloma')) return "👋 Au revoir ! Revenez nous voir. Bonne journée / Goodbye / Veloma!";
-            if (q.includes('ton nom') || q.includes('qui es-tu')) return "🤖 Je suis l'assistant intelligent du SRB Vatovavy. Je peux répondre à toutes vos questions (mathématiques, programmation, démarches administratives, culture générale, etc.). Comment puis-je vous aider ?";
-            if (q.includes('comment ça va')) return "😊 Je vais très bien, merci ! Toujours opérationnel pour vous aider. Et vous, comment allez-vous ?";
-            if (q.includes('blague') || q.includes('rire')) return "😂 Pourquoi les agents du SRB sont-ils toujours organisés ? Parce qu'ils ont un bon quitus ! (Humour administratif 😄)";
-            
-            // ========== RÉPONSE PAR DÉFAUT INTELLIGENTE ==========
-            return "🔍 Je suis votre assistant IA universel. Je peux vous aider avec :\n\n📋 **Démarches SRB** : horaires, adresse, quitus, bail, SIIGFP, SIGMP, remboursement médical\n🧮 **Mathématiques** : calculs, équations, dérivées, intégrales\n💻 **Programmation** : Python, JavaScript, HTML, CSS, debug\n🌍 **Culture générale** : géographie, histoire, actualités\n🇲🇬 **Madagascar** : capitale, population, monnaie, culture\n\nQue souhaitez-vous savoir exactement ? Donnez-moi plus de détails sur votre question !";
+            return null;
+        }
+
+        function reponseIA(question) {
+            let rep = getConnaissance(question) || getHistoire(question) || getResolution(question) || getCulture(question);
+            if (rep) return rep;
+
+            const q = question.toLowerCase().trim();
+            if (q.match(/^(bonjour|salut|hello|salama)/)) return "👋 Bonjour ! Je suis votre assistant SRB Vatovavy. Que puis-je faire pour vous ?";
+            if (q.includes('merci')) return "🙏 Avec plaisir !";
+            if (q.includes('au revoir')) return "👋 Au revoir ! Bonne journée.";
+            if (q.includes('blague')) return "😂 Pourquoi les agents du SRB sont-ils organisés ? Parce qu'ils ont un bon quitus !";
+
+            return "🔍 Je suis votre assistant universel.\n\n📋 SRB : horaires, adresse, quitus, bail, SIIGFP\n🧮 Maths : calculs, équations\n📖 Histoires : contes malgaches\n🌍 Culture : Madagascar, géographie\n\nQue souhaitez-vous ?";
         }
 
         chatForm.addEventListener('submit', (e) => {
@@ -758,8 +1230,8 @@
             const msg = chatInput.value.trim();
             if (!msg) return;
             const userDiv = document.createElement('div');
-            userDiv.className = 'd-flex justify-content-end mb-3';
-            userDiv.innerHTML = `<div class="rounded-4 p-3" style="background: linear-gradient(135deg, #E52E1E, #2D6A2F); color: white; max-width: 85%;">${msg}</div>`;
+            userDiv.className = 'd-flex justify-content-end mb-3 message-user';
+            userDiv.innerHTML = `<div class="bubble shadow-sm" style="max-width: 85%;">${msg}</div>`;
             chatContainer.appendChild(userDiv);
             chatInput.value = '';
             chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -768,6 +1240,15 @@
                 addBotMessage(reponse);
             }, 400);
         });
+
+        // ---- Animation au scroll ----
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        fadeElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
