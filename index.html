@@ -45,22 +45,49 @@
         }
         h1, h2, h3, h4, h5, .logo-text {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-weight: 500;
             letter-spacing: -0.02em;
         }
-        h1 { font-size: 4.4rem; }
+        h1 { font-size: 2.2rem; }
         h2 { font-size: 3rem; }
         h3 { font-size: 2.2rem; }
 
-        /* Animations globales */
+        /* Animations globales améliorées */
         .fade-up {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(50px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
         }
         .hover-lift { transition: var(--transition-smooth); }
         .hover-lift:hover { transform: translateY(-6px); }
@@ -408,7 +435,9 @@
             outline: none;
         }
 
-        /* ===== À PROPOS IMMERSIF ===== */
+        /* ==========================================================
+           À PROPOS AMÉLIORÉ AVEC STYLE ULTRA PREMIUM
+           ========================================================== */
         .apropos-section {
             position: relative;
             padding: 80px 0;
@@ -436,50 +465,148 @@
             z-index: 0;
         }
         .apropos-section .container { position: relative; z-index: 1; }
+
+        /* Carte d'introduction blanche */
+        .apropos-intro-card {
+            background: linear-gradient(145deg, #ffffff, #f8f4f0);
+            border-radius: 28px;
+            padding: 40px 48px;
+            border: 1px solid rgba(201,168,76,0.10);
+            border-top: 4px solid var(--mg-gold);
+            box-shadow: var(--shadow-lift);
+            transition: var(--transition-smooth);
+        }
+        .apropos-intro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
+        }
+        .apropos-intro-card h3 {
+            color: var(--mg-red);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        .apropos-intro-card p {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #1A1A1A;
+        }
+        .apropos-intro-card strong {
+            color: var(--mg-red);
+        }
+        .apropos-intro-card .devise {
+            color: var(--mg-gold);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Badge premium */
+        .apropos-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--mg-gold), #FFD700);
+            color: var(--mg-dark);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            box-shadow: 0 4px 12px rgba(201,168,76,0.2);
+        }
+
+        /* Titre principal */
         .apropos-section h2 {
             font-size: 3.2rem;
             background: linear-gradient(135deg, var(--mg-gold), #FFD700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Lead texte */
         .apropos-section .lead {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.8;
         }
-        .apropos-section ul li {
-            color: rgba(255,255,255,0.7);
-            font-size: 1rem;
-        }
+
+        /* Carte des missions */
         .apropos-card-luxe {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(201,168,76,0.08);
             border-radius: 28px;
-            padding: 32px 36px;
+            padding: 34px 40px;
             transition: var(--transition-smooth);
         }
         .apropos-card-luxe:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.06);
             border-color: rgba(201,168,76,0.15);
+            transform: translateY(-4px);
         }
-        .apropos-card-luxe strong { color: var(--mg-gold-light); }
-        .apropos-card-luxe i { color: var(--mg-gold); }
+
+        /* Icônes premium en dégradé */
+        .icon-circle-premium {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, var(--mg-red), var(--mg-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 14px rgba(198,40,40,0.2);
+            transition: var(--transition-smooth);
+        }
+        .apropos-card-luxe .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: var(--transition-smooth);
+            cursor: default;
+        }
+        .apropos-card-luxe .list-item:last-child { border-bottom: none; }
+        .apropos-card-luxe .list-item:hover .icon-circle-premium {
+            transform: scale(1.08) rotate(-4deg);
+            box-shadow: 0 6px 20px rgba(198,40,40,0.3);
+        }
+        .apropos-card-luxe .list-item strong {
+            color: var(--mg-gold-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .apropos-card-luxe .list-item span {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+        }
+
+        /* Image container */
         .apropos-image-container {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,255,255,0.03);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(201,168,76,0.06);
             border-radius: 28px;
-            padding: 20px;
+            padding: 24px;
             transition: var(--transition-smooth);
         }
-        .apropos-image-container:hover { border-color: rgba(201,168,76,0.15); }
+        .apropos-image-container:hover {
+            border-color: rgba(201,168,76,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 0 40px rgba(201,168,76,0.04);
+        }
         .apropos-image-container img {
             border-radius: 18px;
             border: 2px solid rgba(201,168,76,0.08);
             transition: var(--transition-smooth);
         }
-        .apropos-image-container:hover img { transform: scale(1.02); }
+        .apropos-image-container:hover img {
+            transform: scale(1.02);
+        }
 
         /* ===== CONTACT LUXE ===== */
         .contact-section {
@@ -643,6 +770,7 @@
             .hero-premium h1 { font-size: 3.2rem; }
             h2 { font-size: 2.4rem; }
             .apropos-section h2 { font-size: 2.6rem; }
+            .apropos-intro-card { padding: 28px 24px; }
         }
         @media (max-width: 768px) {
             body { padding-top: 72px; }
@@ -656,6 +784,9 @@
             .chat-messages { height: 340px; padding: 16px; }
             .contact-card p { font-size: 0.95rem; }
             .apropos-card-luxe { padding: 24px; }
+            .apropos-image-container { padding: 16px; }
+            .icon-circle-premium { width: 40px; height: 40px; min-width: 40px; font-size: 1rem; }
+            .apropos-intro-card h3 { font-size: 1.8rem; }
         }
         @media (max-width: 480px) {
             .logo-text { font-size: 1.1rem; }
@@ -673,7 +804,7 @@
                 <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" class="logo-img" onerror="this.classList.add('error'); this.onerror=null;">
                 <div class="logo-fallback"><i class="fa-solid fa-landmark"></i></div>
                 <div class="logo-text-section">
-                    <div class="logo-text">SRB <span>Vatovavy</span></div>
+                    <div class="logo-text">SERVICE REGIONAL DU BUDGET <span>VATOVAVY</span></div>
                     <div class="logo-badge">MEF · Madagascar</div>
                 </div>
             </a>
@@ -702,13 +833,9 @@
                     <div class="welcome-text mt-4">
                         <i class="fa-regular fa-hand-peace me-2" style="color: var(--mg-gold-light);"></i>
                         <strong>Akory aby lahaly eeee!,</strong><br><br>
-                        Ny SRB Vatovavy dia faly miarahaba anareo. Izahay dia sampana mivantana avy amin'ny Ministeran'ny Toe-karena sy ny Vola.<br><br>
-                        Ny biraonay dia hita eo <strong>Antanambazaha, Mananjary</strong>. Eto no iasanay amin'ny fitiavana sy ny fahazotoana.<br><br>
+                        Ny sampan'asam-paritra misahana ny teti-bola eto Vatovavy (SRBV: Service Regional du Budget Vatovavy) dia faly miarahaba anareo nitsidika ny rohinay. Izahay dia sampana mivantana avy amin'ny Ministeran'ny Toe-karena sy ny Vola.<br><br>
+                        Ny biraonay dia hita eo <strong>Antanambazaha akaikin'ny tobin-tsolika mitondra ny anarana hoe "totalenergie", Mananjary</strong>. Eto no iasanay amin'ny fitiavana sy ny fahazotoana.<br><br>
                         <i class="fa-regular fa-flag me-1"></i> <strong>Transparence · Efficacité · Innovation</strong>
-                    </div>
-                    <div class="d-flex gap-3 flex-wrap mt-4">
-                        <a href="#assistant-ia" class="btn btn-hero-primary text-white"><i class="fa-regular fa-robot me-2"></i> Assistant IA</a>
-                        <a href="#demarches" class="btn btn-hero-secondary"><i class="fa-regular fa-file-lines me-2"></i> Modèles</a>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block text-center mt-4 mt-lg-0">
@@ -740,7 +867,7 @@
                             <div class="d-flex mb-3 message-bot">
                                 <div class="bubble shadow-sm" style="max-width: 90%;">
                                     <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour !</strong><br><br>
-                                    Je suis votre assistant. Posez-moi vos questions sur les démarches SRB, les maths, l'histoire, Madagascar...<br>
+                                    Posez-moi vos questions.<br>
                                     <span class="text-muted">N'hésitez pas !</span>
                                 </div>
                             </div>
@@ -784,17 +911,69 @@
         </div>
     </section>
 
-    <!-- ===== AVANT-PROPOS ===== -->
-    <section class="py-5" style="background: #F8F5F0;">
+    <!-- ==========================================================
+         À PROPOS AMÉLIORÉ AVEC STYLE ULTRA PREMIUM
+         ========================================================== -->
+    <section id="apropos" class="apropos-section">
+        <!-- Première carte : introduction -->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10 fade-up">
-                    <div class="p-5 rounded-4" style="background: var(--mg-white); border-left: 5px solid var(--mg-red); box-shadow: var(--shadow-lift);">
-                        <h3 class="fw-bold" style="color: var(--mg-red); font-size: 2.2rem;"><i class="fa-regular fa-building me-2"></i> Service Régional du Budget</h3>
-                        <p class="mt-3" style="text-align: justify; line-height: 2; font-size: 1.05rem;">
+                    <div class="apropos-intro-card">
+                        <h3><i class="fa-regular fa-building me-2"></i> Service Régional du Budget</h3>
+                        <p class="mt-3">
                             <strong>Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny SRB Vatovavy.</strong><br><br>
                             Ny SRB Vatovavy dia sampana iray amin'ny Ministeran'ny Toe-karena sy ny Vola eto Mananjary. Ny asa sahaninay dia ny fanaraha-maso ny tetibola, ny fandaniana, ny fitantanana ny fananan'ny Fanjakana, ary ny fanampiana ireo mpiasam-panjakana.<br><br>
-                            <strong>Notre devise :</strong> Transparence, efficacité et innovation au service de la nation.
+                            <span class="devise"><i class="fa-regular fa-flag me-1"></i> Notre devise :</span> Transparence, efficacité et innovation au service de la nation.
+                        </p>
+                        <div class="mt-3 d-flex justify-content-between align-items-center flex-wrap">
+                            <span><i class="fa-regular fa-clock me-1"></i> Service public digitalisé</span>
+                            <span><i class="fa-regular fa-flag me-1"></i> Mananjary · Vatovavy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deuxième partie : détails avec icônes premium -->
+        <div class="container mt-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 fade-left">
+                    <span class="apropos-badge"><i class="fa-regular fa-circle-check me-1"></i> Notre mission</span>
+                    <h2 class="fw-bold mt-3">🇲🇬 SRB <span style="color: var(--mg-red);">Vatovavy</span></h2>
+                    <div class="my-3" style="width: 80px; height: 4px; background: var(--mg-gold); border-radius: 4px;"></div>
+                    <p class="lead">Service Régional du Budget à Mananjary. Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
+                    <div class="apropos-card-luxe mt-4">
+                        <ul class="list-unstyled">
+                            <li class="list-item">
+                                <div class="icon-circle-premium"><i class="fa-regular fa-circle-check"></i></div>
+                                <div>
+                                    <strong>Exécution budgétaire</strong>
+                                    <br><span>Suivi rigoureux des crédits et engagements financiers</span>
+                                </div>
+                            </li>
+                            <li class="list-item">
+                                <div class="icon-circle-premium"><i class="fa-regular fa-building"></i></div>
+                                <div>
+                                    <strong>Patrimoine public</strong>
+                                    <br><span>Gestion des quitus, baux et recensement des biens de l'État</span>
+                                </div>
+                            </li>
+                            <li class="list-item">
+                                <div class="icon-circle-premium"><i class="fa-regular fa-microchip"></i></div>
+                                <div>
+                                    <strong>Digitalisation</strong>
+                                    <br><span>Modernisation via SIIGFP, SIGMP et Intelligence Artificielle</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center fade-right">
+                    <div class="apropos-image-container">
+                        <img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" class="img-fluid" style="max-height: 320px; width: 100%; object-fit: cover;" alt="Mananjary">
+                        <p class="mt-3 small text-white-50" style="font-size: 0.9rem;">
+                            <i class="fa-regular fa-flag me-1"></i> Mananjary · Région Vatovavy
                         </p>
                     </div>
                 </div>
@@ -802,42 +981,7 @@
         </div>
     </section>
 
-    <!-- ===== À PROPOS IMMERSIF ===== -->
-    <section id="apropos" class="apropos-section">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6 fade-up">
-                    <h2 class="fw-bold">🇲🇬 SRB <span style="color: var(--mg-red);">Vatovavy</span></h2>
-                    <div class="my-3" style="width: 70px; height: 3px; background: var(--mg-gold); border-radius: 4px;"></div>
-                    <p class="lead">Service Régional du Budget à Mananjary. Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
-                    <div class="apropos-card-luxe mt-4">
-                        <ul class="list-unstyled">
-                            <li class="mb-3 d-flex align-items-start">
-                                <i class="fa-regular fa-circle-check me-3 mt-1" style="color: var(--mg-gold); font-size: 1.3rem;"></i>
-                                <div><strong style="color: var(--mg-gold-light); font-size: 1.1rem;">Exécution budgétaire</strong><br><span style="color: rgba(255,255,255,0.6);">Suivi rigoureux des crédits et engagements financiers</span></div>
-                            </li>
-                            <li class="mb-3 d-flex align-items-start">
-                                <i class="fa-regular fa-circle-check me-3 mt-1" style="color: var(--mg-gold); font-size: 1.3rem;"></i>
-                                <div><strong style="color: var(--mg-gold-light); font-size: 1.1rem;">Patrimoine public</strong><br><span style="color: rgba(255,255,255,0.6);">Gestion des quitus, baux et recensement des biens de l'État</span></div>
-                            </li>
-                            <li class="mb-3 d-flex align-items-start">
-                                <i class="fa-regular fa-circle-check me-3 mt-1" style="color: var(--mg-gold); font-size: 1.3rem;"></i>
-                                <div><strong style="color: var(--mg-gold-light); font-size: 1.1rem;">Digitalisation</strong><br><span style="color: rgba(255,255,255,0.6);">Modernisation via SIIGFP, SIGMP et Intelligence Artificielle</span></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center fade-up">
-                    <div class="apropos-image-container">
-                        <img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" class="img-fluid" style="max-height: 280px; width: 100%; object-fit: cover;" alt="Mananjary">
-                        <p class="mt-3 small text-white-50" style="font-size: 0.9rem;"><i class="fa-regular fa-flag me-1"></i> Mananjary · Région Vatovavy</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CONTACT LUXE ===== -->
+    <!-- ===== CONTACT LUXE AVEC ENVOI DIRECT SUR VOTRE EMAIL ===== -->
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="text-center mb-5 fade-up">
@@ -846,7 +990,7 @@
                 <p class="text-white-50 mt-3" style="font-size: 1.05rem;">Réponse sous 48h · Appels aux heures ouvrables</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 fade-up">
+                <div class="col-md-6 fade-left">
                     <div class="contact-card">
                         <h4><i class="fa-regular fa-building me-2" style="color: var(--mg-red);"></i> Coordonnées</h4>
                         <p><i class="fa-solid fa-location-dot me-3" style="color: var(--mg-red);"></i> Antanambazaha, Mananjary 317</p>
@@ -864,9 +1008,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 fade-up">
+                <div class="col-md-6 fade-right">
                     <div class="contact-form-luxe">
                         <h4><i class="fa-regular fa-pen-to-square me-2" style="color: var(--mg-gold);"></i> Message rapide</h4>
+                        <!-- Envoi direct sur votre email jackandrianaivomanana@gmail.com -->
                         <form id="contactForm" action="https://formsubmit.co/jackandrianaivomanana@gmail.com" method="POST">
                             <input type="text" name="Nom" placeholder="Nom complet" required>
                             <input type="email" name="Email" placeholder="Email" required>
@@ -1241,14 +1386,25 @@
             }, 400);
         });
 
-        // ---- Animation au scroll ----
-        const fadeElements = document.querySelectorAll('.fade-up');
+        // ---- Animation au scroll améliorée ----
+        const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-        fadeElements.forEach(el => observer.observe(el));
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        animatedElements.forEach(el => observer.observe(el));
+
+        // ---- Gestion du formulaire de contact (statut d'envoi) ----
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const status = document.getElementById('formStatus');
+            status.innerHTML = '<span class="text-success"><i class="fa-regular fa-spinner fa-spin me-1"></i> Envoi en cours...</span>';
+            setTimeout(() => {
+                status.innerHTML = '<span class="text-success"><i class="fa-regular fa-circle-check me-1"></i> Message envoyé avec succès !</span>';
+            }, 1500);
+        });
     </script>
 </body>
 </html>
