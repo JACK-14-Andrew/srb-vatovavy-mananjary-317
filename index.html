@@ -41,7 +41,6 @@
             color: var(--text-light);
             line-height: 1.7;
             min-height: 100vh;
-            /* Nouvelle image de fond */
             background-image: url('https://media.matoketours.nl/wordpress/full/iStock-858655308.jpg');
             background-size: cover;
             background-position: center;
@@ -255,10 +254,15 @@
         .navbar-glass .logo-img {
             height: 44px;
             width: auto;
+            /* Suppression du fond blanc du logo */
             mix-blend-mode: multiply;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+            background: transparent;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
             transition: var(--transition);
             border-radius: 4px;
+        }
+        .navbar-glass .logo-img:hover {
+            transform: scale(1.04) rotate(-2deg);
         }
         .navbar-glass .logo-text {
             font-family: 'Playfair Display', serif;
@@ -405,11 +409,13 @@
             letter-spacing: 0.5px;
         }
         .hero-logo-img {
-            max-width: 140px;
+            max-width: 180px;
             height: auto;
             border-radius: 10px;
-            filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.08));
+            filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.15));
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
         }
         .hero-logo-img:hover {
             transform: scale(1.02);
@@ -777,6 +783,10 @@
             height: 100%;
             border: 0;
             display: block;
+            /* Permet le zoom et le plein écran dans la page */
+            allow: "geolocation; fullscreen";
+            allowfullscreen: true;
+            webkitallowfullscreen: true;
         }
         .social-glass a {
             display: inline-flex;
@@ -937,7 +947,7 @@
                 font-size: 1.6rem;
             }
             .hero-logo-img {
-                max-width: 120px;
+                max-width: 150px;
             }
             .navbar-glass .logo-img {
                 height: 38px;
@@ -992,7 +1002,7 @@
                 font-size: 0.6rem;
             }
             .hero-logo-img {
-                max-width: 100px;
+                max-width: 120px;
             }
             .section-title-glass {
                 font-size: 1.4rem;
@@ -1190,7 +1200,7 @@
 </head>
 <body>
 
-    <!-- DRAPEAUX FLOTTANTS (très clairs) -->
+    <!-- DRAPEAUX FLOTTANTS -->
     <div class="flags-container">
         <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
         <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
@@ -1203,6 +1213,7 @@
     <nav class="navbar navbar-glass fixed-top navbar-expand-lg" id="mainNav">
         <div class="container">
             <a class="logo" href="#accueil">
+                <!-- Logo avec fond transparent (mix-blend-mode) -->
                 <img src="https://thfvnext.bing.com/th/id/OIP.taBK_n5twN4-G4aw3kAKGgHaG1?r=0&o=7&cb=thfvnextfalcon2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Logo SRB" class="logo-img" onerror="this.classList.add('error'); this.onerror=null;" />
                 <span class="logo-fallback"><i class="fa-solid fa-landmark"></i> SRB</span>
                 <div>
@@ -1243,7 +1254,8 @@
                     </div>
                     <div class="col-lg-5 text-center fade-right">
                         <div class="glass-card p-3 p-md-4">
-                            <img src="https://thfvnext.bing.com/th/id/OIP.taBK_n5twN4-G4aw3kAKGgHaG1?r=0&o=7&cb=thfvnextfalcon2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="SRB Vatovavy" class="hero-logo-img" onerror="this.style.display='none'; this.nextSibling.style.display='block';" />
+                            <!-- Nouvelle image MEF dans la Hero -->
+                            <img src="https://www.mef.gov.mg/assets/img/upload/actualite/1898.jpg" alt="Ministère de l'Économie et des Finances" class="hero-logo-img" onerror="this.style.display='none'; this.nextSibling.style.display='block';" />
                             <span style="display:none; font-size:2rem; color:var(--accent);"><i class="fa-solid fa-landmark"></i></span>
                             <p class="mt-2 text-muted" style="font-size:0.8rem;"><i class="fa-regular fa-circle-check me-1 text-success"></i> Service public de proximité</p>
                             <p class="text-muted small mb-0">📌 Antanambazaha · Mananjary</p>
@@ -1277,7 +1289,7 @@
                                 <div class="d-flex mb-3 message-bot">
                                     <div class="bubble shadow-sm" style="max-width:92%;">
                                         <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour !</strong><br><br>
-                                        Posez-moi vos questions !!!!
+                                        Posez-moi vos questions !
                                     </div>
                                 </div>
                             </div>
@@ -1286,6 +1298,52 @@
                                     <input type="text" id="chatInputGlass" class="form-control rounded-pill" placeholder="Posez votre question..." autocomplete="off">
                                     <button type="submit" class="btn btn-chat-glass"><i class="fa-regular fa-paper-plane me-1"></i> Envoyer</button>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- À PROPOS (placé avant Démarches) -->
+        <section id="apropos" class="py-4 py-md-5 about-glass">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 fade-up">
+                        <div class="glass-card p-3 p-md-5">
+                            <h3 style="font-family:'Playfair Display',serif; color:var(--accent); font-size:1.4rem;">
+                                <i class="fa-regular fa-building me-2"></i> Service Régional du Budget
+                            </h3>
+                            <p class="mt-3" style="color:var(--text-muted); line-height:1.9; font-size:0.9rem;">
+                                <strong style="color:white;">Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny SRB Vatovavy.</strong><br><br>
+                                Ny SRB Vatovavy dia sampana iray amin'ny Ministeran'ny Toe-karena sy ny Vola eto Mananjary. Ny asa sahaninay dia ny fanaraha-maso ny tetibola, ny fandaniana, ny fitantanana ny fananan'ny Fanjakana, ary ny fanampiana ireo mpiasam-panjakana.<br><br>
+                                <span style="color:var(--accent); font-weight:600;"><i class="fa-regular fa-flag me-1"></i> Notre devise :</span> Transparence, efficacité et innovation au service de la nation.
+                            </p>
+                            <div class="mt-3 d-flex flex-wrap gap-3 text-muted small">
+                                <span><i class="fa-regular fa-clock me-1"></i> Service public digitalisé</span>
+                                <span><i class="fa-regular fa-flag me-1"></i> Mananjary · Vatovavy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center g-4 mt-3">
+                    <div class="col-lg-6 fade-left">
+                        <span class="badge" style="background:var(--accent); color:#0B1A2E; font-weight:700; padding:5px 16px; border-radius:30px; font-size:0.7rem;">
+                            <i class="fa-regular fa-circle-check me-1"></i> Notre mission
+                        </span>
+                        <h2 class="section-title-glass mt-3" style="font-size:1.5rem;">🇲🇬 Service Regional du Budget <span class="highlight">Vatovavy</span></h2>
+                        <p class="text-muted" style="font-size:0.9rem;">Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
+                        <div class="mt-3">
+                            <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-circle-check"></i></div><div><strong>Exécution budgétaire</strong><br><span>Suivi rigoureux des crédits et engagements financiers</span></div></div>
+                            <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-building"></i></div><div><strong>Patrimoine public</strong><br><span>Gestion des quitus, baux et recensement des biens de l'État</span></div></div>
+                            <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-microchip"></i></div><div><strong>Digitalisation</strong><br><span>Modernisation via SIIGFP, SIGMP et Intelligence Artificielle</span></div></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-right">
+                        <div class="about-image-glass">
+                            <img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" alt="Mananjary">
+                            <div class="p-2 text-center" style="background:rgba(0,0,0,0.12); border-top:1px solid var(--glass-border);">
+                                <small class="text-muted"><i class="fa-regular fa-flag me-1"></i> Mananjary · Région Vatovavy</small>
                             </div>
                         </div>
                     </div>
@@ -1344,52 +1402,6 @@
             </div>
         </section>
 
-        <!-- À PROPOS -->
-        <section id="apropos" class="py-4 py-md-5 about-glass">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10 fade-up">
-                        <div class="glass-card p-3 p-md-5">
-                            <h3 style="font-family:'Playfair Display',serif; color:var(--accent); font-size:1.4rem;">
-                                <i class="fa-regular fa-building me-2"></i> Service Régional du Budget
-                            </h3>
-                            <p class="mt-3" style="color:var(--text-muted); line-height:1.9; font-size:0.9rem;">
-                                <strong style="color:white;">Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny SRB Vatovavy.</strong><br><br>
-                                Ny SRB Vatovavy dia sampana iray amin'ny Ministeran'ny Toe-karena sy ny Vola eto Mananjary. Ny asa sahaninay dia ny fanaraha-maso ny tetibola, ny fandaniana, ny fitantanana ny fananan'ny Fanjakana, ary ny fanampiana ireo mpiasam-panjakana.<br><br>
-                                <span style="color:var(--accent); font-weight:600;"><i class="fa-regular fa-flag me-1"></i> Notre devise :</span> Transparence, efficacité et innovation au service de la nation.
-                            </p>
-                            <div class="mt-3 d-flex flex-wrap gap-3 text-muted small">
-                                <span><i class="fa-regular fa-clock me-1"></i> Service public digitalisé</span>
-                                <span><i class="fa-regular fa-flag me-1"></i> Mananjary · Vatovavy</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row align-items-center g-4 mt-3">
-                    <div class="col-lg-6 fade-left">
-                        <span class="badge" style="background:var(--accent); color:#0B1A2E; font-weight:700; padding:5px 16px; border-radius:30px; font-size:0.7rem;">
-                            <i class="fa-regular fa-circle-check me-1"></i> Notre mission
-                        </span>
-                        <h2 class="section-title-glass mt-3" style="font-size:1.5rem;">🇲🇬 Service Regional du Budget <span class="highlight">Vatovavy</span></h2>
-                        <p class="text-muted" style="font-size:0.9rem;">Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
-                        <div class="mt-3">
-                            <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-circle-check"></i></div><div><strong>Exécution budgétaire</strong><br><span>Suivi rigoureux des crédits et engagements financiers</span></div></div>
-                            <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-building"></i></div><div><strong>Patrimoine public</strong><br><span>Gestion des quitus, baux et recensement des biens de l'État</span></div></div>
-                            <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-microchip"></i></div><div><strong>Digitalisation</strong><br><span>Modernisation via SIIGFP, SIGMP et Intelligence Artificielle</span></div></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 fade-right">
-                        <div class="about-image-glass">
-                            <img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" alt="Mananjary">
-                            <div class="p-2 text-center" style="background:rgba(0,0,0,0.12); border-top:1px solid var(--glass-border);">
-                                <small class="text-muted"><i class="fa-regular fa-flag me-1"></i> Mananjary · Région Vatovavy</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- CONTACT -->
         <section id="contact" class="py-4 py-md-5 contact-glass">
             <div class="container">
@@ -1408,7 +1420,7 @@
                             <p><i class="fa-brands fa-whatsapp me-3" style="color:#25D366;"></i> +261 34 57 250 57</p>
                             <p><i class="fa-regular fa-clock me-3"></i> Lundi-Vendredi<br> &nbsp;&nbsp;08h00–12h00 · 14h00–17h00</p>
                             <div class="map-wrapper">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" allow="geolocation; fullscreen" loading="lazy" allowfullscreen webkitallowfullscreen></iframe>
                             </div>
                             <div class="social-glass mt-3 text-center">
                                 <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -1599,7 +1611,6 @@
                     const divKey = this.dataset.division;
                     afficherDetails(divKey, scId);
                 });
-                // Support tactile
                 card.addEventListener('touchstart', function() {
                     this.style.transform = 'scale(0.96)';
                 }, { passive: true });
