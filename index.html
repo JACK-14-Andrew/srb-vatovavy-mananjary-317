@@ -1,881 +1,637 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>SRB Vatovavy · Site Officiel </title>
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
-    <!-- jsPDF -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" />
+    <title>SRB Vatovavy · Fullstack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        /* ==========================================================
-           DESIGN ULTRA PREMIUM · LUXE · SOPHISTIQUÉ
-           ========================================================== */
+        /* =============================================================
+           DESIGN GLASS · IMAGE DE FOND · DRAPEAUX FLOTTANTS
+           ============================================================= */
         :root {
-            --mg-red: #C62828;
-            --mg-red-glow: #E53935;
-            --mg-green: #1B5E20;
-            --mg-green-glow: #388E3C;
-            --mg-gold: #C9A84C;
-            --mg-gold-light: #F5E6B0;
-            --mg-gold-glow: #E8C84A;
-            --mg-white: #FFFFFF;
-            --mg-cream: #FDFBF7;
-            --mg-dark: #0B0F0B;
-            --mg-charcoal: #1A1F1A;
-            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.04);
-            --shadow-lift: 0 20px 50px -8px rgba(0, 0, 0, 0.12);
-            --shadow-glow: 0 0 40px rgba(201, 168, 76, 0.06);
-            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            --glass-hover: rgba(255, 255, 255, 0.22);
+            --text-light: #FFFFFF;
+            --text-muted: rgba(255, 255, 255, 0.80);
+            --accent: #F5C96A;
+            --accent-light: rgba(245, 201, 106, 0.15);
+            --radius-card: 24px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 18px; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--mg-cream);
-            color: #1A1A1A;
-            line-height: 1.8;
-            padding-top: 80px;
+            font-family: 'Poppins', sans-serif;
+            background: #0B1A2E;
+            color: var(--text-light);
+            line-height: 1.7;
+            min-height: 100vh;
+            background-image: url('https://tse4.mm.bing.net/th/id/OIP.stsI9kBVjRuVL-0J2NMWbgHaE3?r=0&cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5, .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-        h1 { font-size: 2.2rem; }
-        h2 { font-size: 3rem; }
-        h3 { font-size: 2.2rem; }
-
-        /* Animations globales améliorées */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .fade-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .fade-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .zoom-in {
-            opacity: 0;
-            transform: scale(0.92);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .zoom-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .hover-lift { transition: var(--transition-smooth); }
-        .hover-lift:hover { transform: translateY(-6px); }
-
-        /* ===== NAVBAR LUXE ===== */
-        .navbar-premium {
-            background: rgba(11, 15, 11, 0.94);
-            backdrop-filter: blur(18px) saturate(180%);
-            -webkit-backdrop-filter: blur(18px) saturate(180%);
-            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-            padding: 0.2rem 0;
-            transition: var(--transition-smooth);
-        }
-        .navbar-premium.scrolled { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); }
-        .logo-premium { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        .logo-img {
-            height: 48px; width: auto;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-            transition: transform 0.4s ease;
-        }
-        .logo-premium:hover .logo-img { transform: scale(1.04) rotate(-2deg); }
-        .logo-fallback { display: none; }
-        .logo-img.error { display: none; }
-        .logo-img.error + .logo-fallback {
-            display: flex; align-items: center; justify-content: center;
-            width: 44px; height: 44px;
-            background: linear-gradient(145deg, var(--mg-red), var(--mg-green));
-            border-radius: 12px;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(198,40,40,0.25);
-        }
-        .logo-text-section { line-height: 1.15; }
-        .logo-text {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: white;
-            letter-spacing: -0.5px;
-        }
-        .logo-text span {
-            background: linear-gradient(135deg, #FFD700, var(--mg-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .logo-badge {
-            font-size: 0.5rem;
-            background: rgba(201,168,76,0.12);
-            padding: 2px 12px;
-            border-radius: 30px;
-            color: var(--mg-gold);
-            border: 1px solid rgba(201,168,76,0.15);
-            display: inline-block;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        .nav-link-premium {
-            color: rgba(255,255,255,0.75) !important;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 6px 20px !important;
-            border-radius: 50px;
-            transition: var(--transition-smooth);
-            position: relative;
-        }
-        .nav-link-premium::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--mg-gold), #FFD700);
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-        .nav-link-premium:hover { color: white !important; background: rgba(255,255,255,0.05); }
-        .nav-link-premium:hover::after { width: 50%; }
-        .btn-cta-premium {
-            background: linear-gradient(135deg, var(--mg-red), var(--mg-green));
-            border: none;
-            padding: 6px 24px;
-            border-radius: 50px;
-            color: white !important;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 15px rgba(198,40,40,0.15);
-        }
-        .btn-cta-premium:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 25px rgba(198,40,40,0.2);
-            color: white !important;
-        }
-
-        /* ===== HERO SPECTACULAIRE ===== */
-        .hero-premium {
-            position: relative;
-            min-height: 94vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background: var(--mg-dark);
-        }
-        .hero-premium::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://img.freepik.com/vecteurs-premium/joyeux-jour-independance-madagascar-26-juin-celebration-pour-publicite-banniere-affiche-carte-voeux_252051-3147.jpg?w=1380') center/cover no-repeat;
-            opacity: 0.12;
-            z-index: 0;
-            animation: heroFloat 20s infinite alternate ease-in-out;
-        }
-        @keyframes heroFloat {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.04); }
-        }
-        .hero-premium::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(11,15,11,0.85) 0%, rgba(11,15,11,0.35) 60%, rgba(11,15,11,0.15) 100%);
-            z-index: 1;
-        }
-        .hero-premium .container { position: relative; z-index: 2; }
-        .greeting-badge {
-            background: rgba(201,168,76,0.12);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(201,168,76,0.20);
-            border-radius: 60px;
-            padding: 8px 28px;
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--mg-gold-light);
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-        .hero-premium h1 {
-            font-size: 4.8rem;
-            text-shadow: 0 4px 40px rgba(0,0,0,0.4);
-            line-height: 1.05;
-            color: white;
-        }
-        .hero-premium h1 span { color: #FFB347; }
-        .welcome-text {
-            background: rgba(0,0,0,0.35);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-radius: 20px;
-            padding: 28px 36px;
-            border-left: 4px solid var(--mg-gold);
-            font-size: 1.05rem;
-            line-height: 2;
-            color: rgba(255,255,255,0.92);
-        }
-        .welcome-text strong { color: var(--mg-gold-light); }
-        .btn-hero-primary {
-            background: linear-gradient(135deg, var(--mg-red), var(--mg-red-glow));
-            border: none;
-            padding: 14px 40px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            transition: var(--transition-smooth);
-            box-shadow: 0 10px 30px rgba(198,40,40,0.2);
-        }
-        .btn-hero-primary:hover { transform: translateY(-5px); box-shadow: 0 18px 45px rgba(198,40,40,0.3); }
-        .btn-hero-secondary {
-            border: 1.5px solid rgba(255,255,255,0.25);
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(6px);
-            padding: 12px 36px;
-            border-radius: 60px;
-            color: white;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: var(--transition-smooth);
-        }
-        .btn-hero-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); color: white; }
-
-        /* ===== DIVISIONS LUXE ===== */
-        .division-card {
-            background: rgba(255,255,255,0.94);
-            backdrop-filter: blur(4px);
-            border-radius: 28px;
-            padding: 30px 18px;
-            text-align: center;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            box-shadow: var(--shadow-soft);
-            height: 100%;
-            border: 1px solid rgba(255,255,255,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .division-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(198,40,40,0.02), rgba(27,94,32,0.02));
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .division-card:hover::before { opacity: 1; }
-        .division-card:hover {
-            transform: translateY(-10px) scale(1.01);
-            box-shadow: var(--shadow-lift);
-            border-color: var(--mg-gold);
-            background: white;
-        }
-        .division-icon {
-            width: 76px; height: 76px;
-            background: linear-gradient(145deg, rgba(198,40,40,0.06), rgba(27,94,32,0.06));
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 18px;
-            font-size: 2.2rem;
-            color: var(--mg-red);
-            transition: var(--transition-smooth);
-        }
-        .division-card:hover .division-icon {
-            background: linear-gradient(145deg, var(--mg-red), var(--mg-green));
-            color: white;
-            transform: scale(1.05) rotate(-4deg);
-        }
-        .division-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--mg-red);
-        }
-        .division-card p { font-size: 0.85rem; color: #4a4a4a; }
-
-        /* ===== MODÈLES ===== */
-        .modele-card {
-            background: var(--mg-white);
-            border-radius: 20px;
-            padding: 22px;
-            transition: var(--transition-smooth);
-            border-left: 4px solid var(--mg-green);
-            margin-bottom: 20px;
-            height: 100%;
-            box-shadow: var(--shadow-soft);
-        }
-        .modele-card:hover {
-            box-shadow: var(--shadow-lift);
-            transform: translateY(-4px);
-            border-left-color: var(--mg-gold);
-        }
-        .modele-title {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--mg-dark);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .modele-title i { font-size: 1.5rem; color: var(--mg-red); }
-        .pieces-liste {
-            background: #FFF8F0;
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin: 10px 0;
-            font-size: 0.85rem;
-            border-left: 3px solid var(--mg-gold);
-        }
-        .pieces-liste ul { margin: 4px 0 4px 20px; }
-        .pieces-liste li { margin-bottom: 3px; }
-        .btn-download-pdf {
-            background: linear-gradient(135deg, var(--mg-green), var(--mg-green-glow));
-            border: none;
-            border-radius: 40px;
-            padding: 10px 18px;
-            color: white;
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(27,94,32,0.12);
-        }
-        .btn-download-pdf:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(27,94,32,0.18);
-            color: white;
-        }
-
-        /* ===== CHAT LUXE ===== */
-        .chat-premium {
-            border-radius: 32px;
-            background: var(--mg-white);
-            overflow: hidden;
-            box-shadow: var(--shadow-lift);
-            border: 1px solid rgba(201,168,76,0.08);
-        }
-        .chat-header-premium {
-            background: linear-gradient(135deg, var(--mg-dark), #1A2A1E);
-            padding: 18px 28px;
-            border-bottom: 2px solid rgba(201,168,76,0.08);
-        }
-        .chat-messages {
-            height: 460px;
-            overflow-y: auto;
-            background: #FEFCF7;
-            padding: 26px;
-        }
-        .chat-messages::-webkit-scrollbar { width: 6px; }
-        .chat-messages::-webkit-scrollbar-track { background: #f0ede8; border-radius: 10px; }
-        .chat-messages::-webkit-scrollbar-thumb { background: var(--mg-green); border-radius: 10px; }
-        .chat-messages .bubble {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            padding: 14px 22px;
-            border-radius: 22px;
-        }
-        .chat-messages .message-bot .bubble {
-            background: var(--mg-white);
-            border-left: 4px solid var(--mg-gold);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
-            color: var(--mg-dark);
-        }
-        .chat-messages .message-user .bubble {
-            background: linear-gradient(135deg, var(--mg-red), #C62828);
-            color: white;
-        }
-        #premiumChatInput {
-            border: 2px solid #E8E2D8;
-            border-radius: 60px;
-            padding: 14px 22px;
-            font-size: 0.95rem;
-            transition: var(--transition-smooth);
-            background: #FAF8F5;
-        }
-        #premiumChatInput:focus {
-            border-color: var(--mg-gold);
-            box-shadow: 0 0 0 4px rgba(201,168,76,0.08);
-            outline: none;
-        }
-
-        /* ==========================================================
-           À PROPOS AMÉLIORÉ AVEC STYLE ULTRA PREMIUM
-           ========================================================== */
-        .apropos-section {
-            position: relative;
-            padding: 80px 0;
-            background: var(--mg-dark);
-            overflow: hidden;
-        }
-        .apropos-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://thfvnext.bing.com/th/id/OIP.l9BZ3iLSicKjWwnRMdlRgwHaHa?w=161&h=180&c=7&r=0&o=7&cb=thfvnextfalcon2&pid=1.7&rm=3') center/cover no-repeat;
-            opacity: 0.04;
-            z-index: 0;
-            animation: bgFloat 25s infinite alternate ease-in-out;
-        }
-        @keyframes bgFloat {
-            0% { transform: scale(1.1) rotate(-2deg); }
-            100% { transform: scale(1) rotate(2deg); }
-        }
-        .apropos-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.03), transparent 60%);
-            z-index: 0;
-        }
-        .apropos-section .container { position: relative; z-index: 1; }
-
-        /* Carte d'introduction blanche */
-        .apropos-intro-card {
-            background: linear-gradient(145deg, #ffffff, #f8f4f0);
-            border-radius: 28px;
-            padding: 40px 48px;
-            border: 1px solid rgba(201,168,76,0.10);
-            border-top: 4px solid var(--mg-gold);
-            box-shadow: var(--shadow-lift);
-            transition: var(--transition-smooth);
-        }
-        .apropos-intro-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
-        }
-        .apropos-intro-card h3 {
-            color: var(--mg-red);
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-        .apropos-intro-card p {
-            font-size: 1.05rem;
-            line-height: 2;
-            color: #1A1A1A;
-        }
-        .apropos-intro-card strong {
-            color: var(--mg-red);
-        }
-        .apropos-intro-card .devise {
-            color: var(--mg-gold);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        /* Badge premium */
-        .apropos-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--mg-gold), #FFD700);
-            color: var(--mg-dark);
-            padding: 6px 20px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: none;
-            box-shadow: 0 4px 12px rgba(201,168,76,0.2);
-        }
-
-        /* Titre principal */
-        .apropos-section h2 {
-            font-size: 3.2rem;
-            background: linear-gradient(135deg, var(--mg-gold), #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Lead texte */
-        .apropos-section .lead {
-            color: rgba(255,255,255,0.85);
-            font-size: 1.2rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        /* Carte des missions */
-        .apropos-card-luxe {
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(201,168,76,0.08);
-            border-radius: 28px;
-            padding: 34px 40px;
-            transition: var(--transition-smooth);
-        }
-        .apropos-card-luxe:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(201,168,76,0.15);
-            transform: translateY(-4px);
-        }
-
-        /* Icônes premium en dégradé */
-        .icon-circle-premium {
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
-            background: linear-gradient(135deg, var(--mg-red), var(--mg-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 14px rgba(198,40,40,0.2);
-            transition: var(--transition-smooth);
-        }
-        .apropos-card-luxe .list-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            transition: var(--transition-smooth);
-            cursor: default;
-        }
-        .apropos-card-luxe .list-item:last-child { border-bottom: none; }
-        .apropos-card-luxe .list-item:hover .icon-circle-premium {
-            transform: scale(1.08) rotate(-4deg);
-            box-shadow: 0 6px 20px rgba(198,40,40,0.3);
-        }
-        .apropos-card-luxe .list-item strong {
-            color: var(--mg-gold-light);
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        .apropos-card-luxe .list-item span {
-            color: rgba(255,255,255,0.65);
-            font-size: 0.95rem;
-        }
-
-        /* Image container */
-        .apropos-image-container {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(201,168,76,0.06);
-            border-radius: 28px;
-            padding: 24px;
-            transition: var(--transition-smooth);
-        }
-        .apropos-image-container:hover {
-            border-color: rgba(201,168,76,0.15);
-            transform: translateY(-4px);
-            box-shadow: 0 0 40px rgba(201,168,76,0.04);
-        }
-        .apropos-image-container img {
-            border-radius: 18px;
-            border: 2px solid rgba(201,168,76,0.08);
-            transition: var(--transition-smooth);
-        }
-        .apropos-image-container:hover img {
-            transform: scale(1.02);
-        }
-
-        /* ===== CONTACT LUXE ===== */
-        .contact-section {
-            background: var(--mg-charcoal);
-            padding: 80px 0;
-            position: relative;
-        }
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.02), transparent 60%);
-        }
-        .contact-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 28px;
-            padding: 32px;
-            height: 100%;
-            transition: var(--transition-smooth);
-        }
-        .contact-card:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(201,168,76,0.10);
-            transform: translateY(-4px);
-        }
-        .contact-card h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--mg-gold);
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-        }
-        .contact-card p {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.88);
-            line-height: 1.9;
-            margin-bottom: 0.6rem;
-        }
-        .contact-card p i {
-            width: 28px;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        .contact-card .map-container {
-            border-radius: 18px;
-            overflow: hidden;
-            height: 180px;
-            margin-top: 16px;
-            border: 1px solid rgba(255,255,255,0.04);
-        }
-        .contact-card .map-container iframe { width: 100%; height: 100%; border: 0; }
-        .social-icons a {
-            display: inline-flex;
-            width: 44px; height: 44px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 50px;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            margin: 0 4px;
-            transition: var(--transition-smooth);
-            text-decoration: none;
-            color: rgba(255,255,255,0.35);
-            border: 1px solid rgba(255,255,255,0.04);
-        }
-        .social-icons a:hover {
-            transform: translateY(-5px);
-            background: var(--mg-red);
-            color: white !important;
-            border-color: var(--mg-red);
-        }
-        .contact-form-luxe {
-            background: rgba(255,255,255,0.04);
-            border-radius: 28px;
-            padding: 32px;
-            border: 1px solid rgba(255,255,255,0.04);
-            height: 100%;
-            transition: var(--transition-smooth);
-        }
-        .contact-form-luxe:hover { border-color: rgba(201,168,76,0.08); }
-        .contact-form-luxe h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--mg-gold);
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-        }
-        .contact-form-luxe input,
-        .contact-form-luxe textarea {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 50px;
-            padding: 14px 22px;
-            width: 100%;
-            color: white;
-            font-size: 1rem;
-            transition: 0.3s;
-            margin-bottom: 1rem;
-        }
-        .contact-form-luxe input:focus,
-        .contact-form-luxe textarea:focus {
-            background: rgba(255,255,255,0.10);
-            border-color: var(--mg-gold);
-            outline: none;
-            box-shadow: 0 0 30px rgba(201,168,76,0.04);
-        }
-        .contact-form-luxe textarea { border-radius: 20px; min-height: 120px; }
-        .contact-form-luxe input::placeholder,
-        .contact-form-luxe textarea::placeholder { color: rgba(255,255,255,0.30); font-size: 0.95rem; }
-        .contact-form-luxe .btn-submit {
-            background: linear-gradient(135deg, var(--mg-red), var(--mg-red-glow));
-            border: none;
-            border-radius: 60px;
-            padding: 14px;
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-            width: 100%;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 16px rgba(198,40,40,0.12);
-        }
-        .contact-form-luxe .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(198,40,40,0.18);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer-premium {
-            background: #070B07;
-            border-top: 1px solid rgba(201,168,76,0.06);
-            padding: 24px 0;
-        }
-        .footer-premium p { font-size: 0.8rem; color: rgba(255,255,255,0.2); }
-
-        /* ===== WHATSAPP FLOAT ===== */
-        .whatsapp-float-premium {
+        body::before { content:''; position:fixed; inset:0; background:rgba(11,26,46,0.50); z-index:0; pointer-events:none; }
+        .flags-container {
             position: fixed;
-            bottom: 28px;
-            right: 28px;
-            background: linear-gradient(145deg, #25D366, #128C7E);
-            width: 58px; height: 58px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            color: white;
-            z-index: 1000;
-            box-shadow: 0 8px 30px rgba(37,211,102,0.2);
-            text-decoration: none;
-            transition: var(--transition-smooth);
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
         }
-        .whatsapp-float-premium:hover {
-            transform: scale(1.06) rotate(-4deg);
-            color: white;
-            box-shadow: 0 12px 40px rgba(37,211,102,0.3);
+        .flag-float {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: floatFlag linear infinite;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.10));
+            user-select: none;
+            will-change: transform;
         }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            html { font-size: 16px; }
-            .hero-premium h1 { font-size: 3.2rem; }
-            h2 { font-size: 2.4rem; }
-            .apropos-section h2 { font-size: 2.6rem; }
-            .apropos-intro-card { padding: 28px 24px; }
+        .flag-float:nth-child(1){left:2%;top:5%;animation-duration:22s;font-size:4rem;opacity:0.10}
+        .flag-float:nth-child(2){left:15%;top:70%;animation-duration:28s;animation-delay:-3s;font-size:3.5rem;opacity:0.12}
+        .flag-float:nth-child(3){left:30%;top:15%;animation-duration:25s;animation-delay:-7s;font-size:4.5rem;opacity:0.08}
+        .flag-float:nth-child(4){left:50%;top:80%;animation-duration:30s;animation-delay:-12s;font-size:3rem;opacity:0.10}
+        .flag-float:nth-child(5){left:70%;top:10%;animation-duration:20s;animation-delay:-5s;font-size:4rem;opacity:0.09}
+        .flag-float:nth-child(6){left:85%;top:60%;animation-duration:26s;animation-delay:-9s;font-size:3.8rem;opacity:0.11}
+        .flag-float:nth-child(7){left:92%;top:25%;animation-duration:24s;animation-delay:-15s;font-size:3.2rem;opacity:0.08}
+        .flag-float:nth-child(8){left:5%;top:92%;animation-duration:32s;animation-delay:-2s;font-size:3.6rem;opacity:0.10}
+        .flag-float:nth-child(9){left:45%;top:45%;animation-duration:27s;animation-delay:-18s;font-size:4.2rem;opacity:0.06}
+        .flag-float:nth-child(10){left:60%;top:92%;animation-duration:29s;animation-delay:-6s;font-size:3.4rem;opacity:0.09}
+        @keyframes floatFlag {
+            0%{transform:translate(0,0) rotate(0deg) scale(1)}
+            25%{transform:translate(30px,-40px) rotate(8deg) scale(1.02)}
+            50%{transform:translate(-20px,-80px) rotate(-5deg) scale(0.98)}
+            75%{transform:translate(40px,-30px) rotate(12deg) scale(1.01)}
+            100%{transform:translate(0,0) rotate(0deg) scale(1)}
         }
-        @media (max-width: 768px) {
-            body { padding-top: 72px; }
-            html { font-size: 15px; }
-            .logo-img { height: 36px; }
-            .hero-premium h1 { font-size: 2.4rem; }
-            .welcome-text { font-size: 0.9rem; padding: 18px; }
-            .division-icon { width: 60px; height: 60px; font-size: 1.8rem; }
-            .division-card h3 { font-size: 1.2rem; }
-            .pieces-liste { font-size: 0.8rem; }
-            .chat-messages { height: 340px; padding: 16px; }
-            .contact-card p { font-size: 0.95rem; }
-            .apropos-card-luxe { padding: 24px; }
-            .apropos-image-container { padding: 16px; }
-            .icon-circle-premium { width: 40px; height: 40px; min-width: 40px; font-size: 1rem; }
-            .apropos-intro-card h3 { font-size: 1.8rem; }
+        .app-container { position:relative; z-index:1; padding-top:88px; min-height:100vh; }
+        h1,h2,h3,h4,.heading-serif { font-family:'Playfair Display',serif; font-weight:700; letter-spacing:-0.01em; }
+        .fade-up { opacity:0; transform:translateY(40px); transition:opacity 0.9s ease, transform 0.9s ease; }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+        .fade-left { opacity:0; transform:translateX(-40px); transition:opacity 0.9s ease, transform 0.9s ease; }
+        .fade-left.visible { opacity:1; transform:translateX(0); }
+        .fade-right { opacity:0; transform:translateX(40px); transition:opacity 0.9s ease, transform 0.9s ease; }
+        .fade-right.visible { opacity:1; transform:translateX(0); }
+        .zoom-in { opacity:0; transform:scale(0.92); transition:opacity 0.9s ease, transform 0.9s ease; }
+        .zoom-in.visible { opacity:1; transform:scale(1); }
+        .glass-card {
+            background:var(--glass-bg);
+            backdrop-filter:blur(16px);
+            -webkit-backdrop-filter:blur(16px);
+            border:1px solid var(--glass-border);
+            border-radius:var(--radius-card);
+            box-shadow:var(--glass-shadow);
+            transition:var(--transition);
         }
-        @media (max-width: 480px) {
-            .logo-text { font-size: 1.1rem; }
-            .logo-badge { display: none; }
-            .hero-premium h1 { font-size: 1.8rem; }
+        .glass-card:hover {
+            background:var(--glass-hover);
+            border-color:rgba(255,255,255,0.30);
+            transform:translateY(-6px);
+            box-shadow:0 16px 48px rgba(0,0,0,0.12);
+        }
+        .navbar-glass {
+            background:rgba(11,26,46,0.80);
+            backdrop-filter:blur(20px);
+            -webkit-backdrop-filter:blur(20px);
+            border-bottom:1px solid rgba(255,255,255,0.06);
+            padding:0.6rem 0;
+            transition:var(--transition);
+            min-height:84px;
+        }
+        .navbar-glass .logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
+        .navbar-glass .logo-img {
+            height:58px;
+            width:auto;
+            mix-blend-mode:multiply;
+            filter:drop-shadow(0 4px 12px rgba(0,0,0,0.10));
+            transition:var(--transition);
+            border-radius:4px;
+        }
+        .navbar-glass .logo-img:hover { transform:scale(1.04) rotate(-2deg); }
+        .navbar-glass .logo-text { font-family:'Playfair Display',serif; font-weight:700; font-size:1.4rem; color:white; line-height:1.2; }
+        .navbar-glass .logo-text span { color:var(--accent); }
+        .navbar-glass .logo-badge {
+            font-size:0.45rem;
+            background:rgba(245,201,106,0.12);
+            color:var(--accent);
+            padding:2px 12px;
+            border-radius:30px;
+            font-weight:600;
+            letter-spacing:0.5px;
+            border:1px solid rgba(245,201,106,0.08);
+        }
+        .logo-fallback { display:none; font-size:1.5rem; font-weight:700; color:var(--accent); background:#0B1A2E; padding:0.4rem 1rem; border-radius:8px; border:1px solid rgba(245,201,106,0.1); }
+        .logo-img.error + .logo-fallback { display:block; }
+        .nav-link-glass {
+            color:rgba(255,255,255,0.70) !important;
+            font-weight:500;
+            font-size:0.95rem;
+            padding:8px 22px !important;
+            border-radius:30px;
+            transition:var(--transition);
+            position:relative;
+        }
+        .nav-link-glass::after {
+            content:'';
+            position:absolute;
+            bottom:2px;
+            left:50%;
+            transform:translateX(-50%);
+            width:0;
+            height:2px;
+            background:var(--accent);
+            transition:width 0.3s ease;
+            border-radius:2px;
+        }
+        .nav-link-glass:hover::after { width:50%; }
+        .nav-link-glass:hover { color:white !important; background:rgba(255,255,255,0.06); }
+        .btn-cta-glass {
+            background:linear-gradient(145deg, var(--accent), #E8B84A);
+            border:none;
+            padding:8px 28px;
+            border-radius:30px;
+            color:#0B1A2E !important;
+            font-weight:700;
+            font-size:0.9rem;
+            transition:var(--transition);
+            box-shadow:0 4px 20px rgba(245,201,106,0.15);
+        }
+        .btn-cta-glass:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 10px 32px rgba(245,201,106,0.22); color:#0B1A2E !important; }
+        .hero-glass { padding:70px 0 80px; position:relative; }
+        .hero-glass .hero-badge {
+            display:inline-block;
+            background:var(--accent-light);
+            border:1px solid rgba(245,201,106,0.15);
+            padding:8px 24px;
+            border-radius:40px;
+            font-weight:600;
+            font-size:0.8rem;
+            color:var(--accent);
+            animation:pulseBadge 3s ease-in-out infinite;
+        }
+        @keyframes pulseBadge { 0%,100% { box-shadow:0 0 0 0 rgba(245,201,106,0); } 50% { box-shadow:0 0 20px rgba(245,201,106,0.06); } }
+        .hero-glass h1 { font-size:3.6rem; font-weight:700; color:white; line-height:1.1; text-shadow:0 4px 30px rgba(0,0,0,0.15); }
+        .hero-glass h1 .highlight { color:var(--accent); }
+        .hero-glass p { font-size:1.1rem; color:var(--text-muted); max-width:560px; line-height:1.9; }
+        .hero-glass p strong { color:white; }
+        .btn-primary-glass {
+            background:linear-gradient(145deg, var(--accent), #E8B84A);
+            border:none;
+            padding:16px 44px;
+            border-radius:60px;
+            font-weight:700;
+            font-size:1.05rem;
+            color:#0B1A2E;
+            transition:var(--transition);
+            box-shadow:0 8px 36px rgba(245,201,106,0.15);
+        }
+        .btn-primary-glass:hover { transform:translateY(-5px) scale(1.02); box-shadow:0 16px 52px rgba(245,201,106,0.20); color:#0B1A2E; }
+        .btn-outline-glass {
+            border:1.5px solid rgba(255,255,255,0.15);
+            background:rgba(255,255,255,0.04);
+            padding:16px 44px;
+            border-radius:60px;
+            font-weight:700;
+            font-size:1.05rem;
+            color:white;
+            transition:var(--transition);
+        }
+        .btn-outline-glass:hover { border-color:var(--accent); background:rgba(245,201,106,0.04); color:white; transform:translateY(-5px); }
+        .hero-stats-glass { display:flex; gap:48px; margin-top:32px; }
+        .hero-stats-glass .stat-number { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:var(--accent); display:block; line-height:1.2; }
+        .hero-stats-glass .stat-label { font-size:0.85rem; color:var(--text-muted); font-weight:500; }
+        .section-title-glass { font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:700; color:white; }
+        .section-title-glass .highlight { color:var(--accent); }
+        .section-divider-glass { width:70px; height:3px; background:linear-gradient(90deg, var(--accent), #E8B84A); border-radius:4px; margin:12px auto 0; }
+        .section-sub-glass { color:var(--text-muted); font-size:1.1rem; }
+        .division-card-glass {
+            background:var(--glass-bg);
+            backdrop-filter:blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            border:1px solid var(--glass-border);
+            border-radius:var(--radius-card);
+            padding:28px 16px;
+            text-align:center;
+            transition:var(--transition);
+            cursor:pointer;
+            height:100%;
+        }
+        .division-card-glass:hover {
+            background:var(--glass-hover);
+            border-color:rgba(245,201,106,0.20);
+            transform:translateY(-10px) scale(1.02);
+            box-shadow:0 16px 48px rgba(0,0,0,0.12);
+        }
+        .division-card-glass .div-icon {
+            width:68px; height:68px;
+            background:var(--accent-light);
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:0 auto 16px;
+            font-size:1.8rem;
+            color:var(--accent);
+            transition:var(--transition);
+        }
+        .division-card-glass:hover .div-icon { background:var(--accent); color:#0B1A2E; transform:scale(1.08) rotate(-4deg); }
+        .division-card-glass h3 { font-family:'Poppins',sans-serif; font-weight:700; font-size:1.15rem; color:white; }
+        .division-card-glass p { font-size:0.85rem; color:var(--text-muted); margin-bottom:0; }
+        .modele-card-glass {
+            background:var(--glass-bg);
+            backdrop-filter:blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            border:1px solid var(--glass-border);
+            border-left:4px solid var(--accent);
+            border-radius:var(--radius-card);
+            padding:22px 24px;
+            transition:var(--transition);
+            height:100%;
+        }
+        .modele-card-glass:hover { background:var(--glass-hover); transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,0.10); }
+        .modele-card-glass .modele-title { font-weight:700; font-size:1rem; color:white; display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+        .modele-card-glass .modele-title i { color:var(--accent); }
+        .pieces-liste-glass {
+            background:rgba(0,0,0,0.15);
+            border-radius:12px;
+            padding:14px 18px;
+            font-size:0.85rem;
+            margin:12px 0;
+            border-left:3px solid var(--accent);
+        }
+        .pieces-liste-glass ul { margin:4px 0 4px 20px; }
+        .pieces-liste-glass li { margin-bottom:3px; color:var(--text-muted); }
+        .btn-pdf-glass {
+            background:linear-gradient(145deg, var(--accent), #E8B84A);
+            border:none;
+            border-radius:40px;
+            padding:12px 20px;
+            color:#0B1A2E;
+            font-weight:700;
+            font-size:0.85rem;
+            transition:var(--transition);
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:10px;
+            width:100%;
+            margin-top:12px;
+        }
+        .btn-pdf-glass:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(245,201,106,0.20); color:#0B1A2E; }
+        .chat-glass {
+            background:var(--glass-bg);
+            backdrop-filter:blur(16px);
+            -webkit-backdrop-filter:blur(16px);
+            border:1px solid var(--glass-border);
+            border-radius:var(--radius-card);
+            overflow:hidden;
+        }
+        .chat-header-glass {
+            background:rgba(0,0,0,0.20);
+            padding:18px 28px;
+            border-bottom:2px solid var(--accent);
+        }
+        .chat-header-glass h5 { font-family:'Playfair Display',serif; color:white; font-weight:700; font-size:1.2rem; }
+        .chat-header-glass small { color:var(--text-muted); font-size:0.8rem; }
+        .chat-messages-glass {
+            height:420px;
+            overflow-y:auto;
+            padding:24px 28px;
+            background:rgba(0,0,0,0.08);
+        }
+        .chat-messages-glass::-webkit-scrollbar { width:5px; }
+        .chat-messages-glass::-webkit-scrollbar-track { background:rgba(255,255,255,0.04); border-radius:10px; }
+        .chat-messages-glass::-webkit-scrollbar-thumb { background:var(--accent); border-radius:10px; }
+        .chat-messages-glass .bubble { font-size:0.95rem; line-height:1.8; padding:14px 22px; border-radius:18px; }
+        .chat-messages-glass .message-bot .bubble { background:rgba(255,255,255,0.06); border-left:4px solid var(--accent); color:var(--text-light); }
+        .chat-messages-glass .message-user .bubble { background:var(--accent); color:#0B1A2E; }
+        #chatInputGlass {
+            background:rgba(255,255,255,0.06);
+            border:1px solid var(--glass-border);
+            border-radius:60px;
+            padding:14px 24px;
+            font-size:0.95rem;
+            color:white;
+            transition:var(--transition);
+        }
+        #chatInputGlass:focus { border-color:var(--accent); box-shadow:0 0 0 4px rgba(245,201,106,0.04); outline:none; background:rgba(255,255,255,0.08); }
+        #chatInputGlass::placeholder { color:var(--text-muted); }
+        .btn-chat-glass {
+            background:linear-gradient(145deg, var(--accent), #E8B84A);
+            border:none;
+            border-radius:60px;
+            padding:14px 32px;
+            font-weight:700;
+            font-size:0.95rem;
+            color:#0B1A2E;
+            transition:var(--transition);
+        }
+        .btn-chat-glass:hover { transform:scale(1.03); box-shadow:0 4px 24px rgba(245,201,106,0.15); color:#0B1A2E; }
+        .about-glass .about-item {
+            display:flex;
+            align-items:flex-start;
+            gap:18px;
+            padding:14px 0;
+            border-bottom:1px solid rgba(255,255,255,0.04);
+        }
+        .about-glass .about-item:last-child { border-bottom:none; }
+        .about-glass .about-item .icon-circle-sm {
+            width:40px; height:40px; min-width:40px;
+            background:var(--accent-light);
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:var(--accent);
+            font-size:1rem;
+            transition:var(--transition);
+        }
+        .about-glass .about-item:hover .icon-circle-sm { background:var(--accent); color:#0B1A2E; transform:scale(1.05); }
+        .about-glass .about-item strong { color:white; }
+        .about-glass .about-item span { color:var(--text-muted); font-size:0.95rem; }
+        .about-image-glass {
+            border-radius:var(--radius-card);
+            overflow:hidden;
+            border:1px solid var(--glass-border);
+            transition:var(--transition);
+        }
+        .about-image-glass:hover { border-color:var(--accent); transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,0.10); }
+        .about-image-glass img { width:100%; height:300px; object-fit:cover; }
+        .contact-glass .contact-card {
+            background:var(--glass-bg);
+            backdrop-filter:blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            border:1px solid var(--glass-border);
+            border-radius:var(--radius-card);
+            padding:32px 36px;
+            height:100%;
+            transition:var(--transition);
+        }
+        .contact-glass .contact-card:hover { background:var(--glass-hover); border-color:rgba(245,201,106,0.15); transform:translateY(-6px); }
+        .contact-glass .contact-card h4 { font-family:'Playfair Display',serif; color:var(--accent); font-size:1.4rem; font-weight:700; }
+        .contact-glass .contact-card p { color:var(--text-muted); font-size:1rem; line-height:2; margin-bottom:0.6rem; }
+        .contact-glass .contact-card p i { width:28px; text-align:center; color:var(--accent); }
+        .map-wrapper {
+            border-radius:16px;
+            overflow:hidden;
+            margin-top:18px;
+            border:1px solid var(--glass-border);
+            position:relative;
+            height:220px;
+            transition:var(--transition);
+        }
+        .map-wrapper:hover { border-color:var(--accent); box-shadow:0 8px 32px rgba(0,0,0,0.08); }
+        .map-wrapper iframe { width:100%; height:100%; border:0; display:block; }
+        .social-glass a {
+            display:inline-flex;
+            width:42px; height:42px;
+            background:rgba(255,255,255,0.04);
+            border-radius:50px;
+            align-items:center;
+            justify-content:center;
+            font-size:1.1rem;
+            margin:0 4px;
+            transition:var(--transition);
+            text-decoration:none;
+            color:var(--text-muted);
+            border:1px solid var(--glass-border);
+        }
+        .social-glass a:hover { transform:translateY(-6px) scale(1.05); background:var(--accent); color:#0B1A2E !important; border-color:var(--accent); }
+        .form-glass {
+            background:var(--glass-bg);
+            backdrop-filter:blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            border:1px solid var(--glass-border);
+            border-radius:var(--radius-card);
+            padding:32px 36px;
+            height:100%;
+            transition:var(--transition);
+        }
+        .form-glass:hover { border-color:rgba(245,201,106,0.15); }
+        .form-glass h4 { font-family:'Playfair Display',serif; color:var(--accent); font-size:1.4rem; font-weight:700; }
+        .form-glass input, .form-glass textarea {
+            background:rgba(255,255,255,0.06);
+            border:1px solid var(--glass-border);
+            border-radius:40px;
+            padding:14px 22px;
+            width:100%;
+            color:white;
+            font-size:0.95rem;
+            transition:0.3s;
+            margin-bottom:1rem;
+        }
+        .form-glass input:focus, .form-glass textarea:focus {
+            background:rgba(255,255,255,0.10);
+            border-color:var(--accent);
+            outline:none;
+            box-shadow:0 0 30px rgba(245,201,106,0.02);
+        }
+        .form-glass textarea { border-radius:18px; min-height:110px; }
+        .form-glass input::placeholder, .form-glass textarea::placeholder { color:var(--text-muted); font-size:0.95rem; }
+        .form-glass .btn-submit-glass {
+            background:linear-gradient(135deg, var(--accent), #E8B84A);
+            border:none;
+            border-radius:60px;
+            padding:16px;
+            font-weight:700;
+            font-size:1rem;
+            color:#0B1A2E;
+            width:100%;
+            transition:var(--transition);
+            box-shadow:0 4px 16px rgba(245,201,106,0.08);
+        }
+        .form-glass .btn-submit-glass:hover { transform:translateY(-4px); box-shadow:0 10px 36px rgba(245,201,106,0.15); }
+        .footer-glass { border-top:1px solid rgba(255,255,255,0.04); padding:24px 0; }
+        .footer-glass p { font-size:0.8rem; color:var(--text-muted); margin:0; }
+        .whatsapp-float-glass {
+            position:fixed;
+            bottom:28px;
+            right:28px;
+            background:#25D366;
+            width:58px; height:58px;
+            border-radius:18px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:30px;
+            color:white;
+            z-index:1000;
+            box-shadow:0 6px 28px rgba(37,211,102,0.18);
+            text-decoration:none;
+            transition:var(--transition);
+            animation:floatPulse 3s ease-in-out infinite;
+        }
+        @keyframes floatPulse { 0%,100% { transform:scale(1); box-shadow:0 6px 28px rgba(37,211,102,0.18); } 50% { transform:scale(1.06); box-shadow:0 12px 44px rgba(37,211,102,0.25); } }
+        .whatsapp-float-glass:hover { transform:scale(1.08) rotate(-4deg); color:white; box-shadow:0 12px 44px rgba(37,211,102,0.30); }
+        @media (max-width:992px) {
+            .app-container { padding-top:76px; }
+            .hero-glass h1 { font-size:2.8rem; }
+            .section-title-glass { font-size:2rem; }
+            .navbar-glass .logo-img { height:48px; }
+            .navbar-glass .logo-text { font-size:1.2rem; }
+        }
+        @media (max-width:768px) {
+            .app-container { padding-top:68px; }
+            .navbar-glass { padding:0.4rem 0; min-height:64px; }
+            .navbar-glass .logo-img { height:40px; }
+            .navbar-glass .logo-text { font-size:1rem; }
+            .navbar-glass .logo-badge { display:none; }
+            .nav-link-glass { font-size:0.9rem; padding:6px 16px !important; }
+            .btn-cta-glass { font-size:0.8rem; padding:6px 20px; }
+            .hero-glass { padding:40px 0 50px; }
+            .hero-glass h1 { font-size:2rem; }
+            .hero-glass p { font-size:0.95rem; }
+            .hero-stats-glass { gap:24px; flex-wrap:wrap; }
+            .hero-stats-glass .stat-number { font-size:1.6rem; }
+            .btn-primary-glass, .btn-outline-glass { font-size:0.9rem; padding:12px 28px; }
+            .section-title-glass { font-size:1.6rem; }
+            .section-sub-glass { font-size:0.95rem; }
+            .division-card-glass { padding:20px 12px; }
+            .division-card-glass .div-icon { width:54px; height:54px; font-size:1.4rem; }
+            .division-card-glass h3 { font-size:1rem; }
+            .modele-card-glass { padding:18px 16px; }
+            .pieces-liste-glass { font-size:0.8rem; padding:10px 14px; }
+            .chat-messages-glass { height:320px; padding:16px 18px; }
+            .chat-header-glass { padding:14px 18px; }
+            .chat-header-glass h5 { font-size:1rem; }
+            #chatInputGlass { font-size:0.85rem; padding:12px 18px; }
+            .btn-chat-glass { font-size:0.85rem; padding:12px 20px; }
+            .contact-glass .contact-card, .form-glass { padding:22px 20px; }
+            .contact-glass .contact-card h4, .form-glass h4 { font-size:1.2rem; }
+            .map-wrapper { height:180px; }
+            .about-image-glass img { height:220px; }
+            .whatsapp-float-glass { width:50px; height:50px; font-size:26px; bottom:20px; right:20px; }
+            .flag-float { font-size:2.5rem !important; }
+        }
+        @media (max-width:480px) {
+            .hero-glass h1 { font-size:1.6rem; }
+            .btn-primary-glass, .btn-outline-glass { font-size:0.8rem; padding:10px 20px; }
+            .hero-stats-glass { gap:16px; }
+            .hero-stats-glass .stat-number { font-size:1.3rem; }
+            .hero-stats-glass .stat-label { font-size:0.7rem; }
+            .section-title-glass { font-size:1.4rem; }
+            .navbar-glass .logo-img { height:34px; }
+            .navbar-glass .logo-text { font-size:0.8rem; }
+            .map-wrapper { height:150px; }
+            .flag-float { font-size:2rem !important; opacity:0.08 !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar navbar-premium fixed-top navbar-expand-lg" id="mainNav">
-        <div class="container">
-            <a class="logo-premium" href="#accueil">
-                <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" class="logo-img" onerror="this.classList.add('error'); this.onerror=null;">
-                <div class="logo-fallback"><i class="fa-solid fa-landmark"></i></div>
-                <div class="logo-text-section">
-                    <div class="logo-text">SERVICE REGIONAL DU BUDGET <span>VATOVAVY</span></div>
-                    <div class="logo-badge">MEF · Madagascar</div>
-                </div>
-            </a>
-            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
-                <i class="fa-solid fa-bars-staggered fs-3"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="premiumNavbar">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#accueil">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#demarches">Démarches</a></li>
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#apropos">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link-premium nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item ms-lg-2"><a href="#assistant-ia" class="btn btn-cta-premium">IA</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- DRAPEAUX FLOTTANTS -->
+<div class="flags-container">
+    <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
+    <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
+    <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
+    <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
+    <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
+</div>
 
-    <!-- ===== HERO ===== -->
-    <section id="accueil" class="hero-premium py-5">
-        <div class="container py-4">
+<!-- NAVBAR -->
+<nav class="navbar navbar-glass fixed-top navbar-expand-lg" id="mainNav">
+    <div class="container">
+        <a class="logo" href="#accueil">
+            <img src="https://thfvnext.bing.com/th/id/OIP.taBK_n5twN4-G4aw3kAKGgHaG1?r=0&o=7&cb=thfvnextfalcon2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Logo SRB" class="logo-img" onerror="this.classList.add('error'); this.onerror=null;" />
+            <span class="logo-fallback"><i class="fa-solid fa-landmark"></i> SRB</span>
+            <div>
+                <div class="logo-text">SRB <span>Vatovavy</span></div>
+                <div class="logo-badge">Ministère des Finances</div>
+            </div>
+        </a>
+        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#glassNavbar">
+            <i class="fa-solid fa-bars-staggered fs-3"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="glassNavbar">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link-glass nav-link" href="#accueil">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link-glass nav-link" href="#demarches">Démarches</a></li>
+                <li class="nav-item"><a class="nav-link-glass nav-link" href="#apropos">À propos</a></li>
+                <li class="nav-item"><a class="nav-link-glass nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a href="#assistant" class="btn btn-cta-glass">IA</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="app-container">
+
+    <!-- HERO -->
+    <section id="accueil" class="hero-glass">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7 text-white">
-                    <div class="mb-3"><span class="greeting-badge"><i class="fa-regular fa-hand-peace me-2"></i> Bienvenue · Tongasoa</span></div>
-                    <h1 class="fw-bold">Ministère de l'Économie<br><span>et des Finances</span></h1>
-                    <div class="welcome-text mt-4">
-                        <i class="fa-regular fa-hand-peace me-2" style="color: var(--mg-gold-light);"></i>
-                        <strong>Akory aby lahaly eeee!,</strong><br><br>
-                        Ny sampan'asam-paritra misahana ny teti-bola eto Vatovavy (SRBV: Service Regional du Budget Vatovavy) dia faly miarahaba anareo nitsidika ny rohinay. Izahay dia sampana mivantana avy amin'ny Ministeran'ny Toe-karena sy ny Vola.<br><br>
-                        Ny biraonay dia hita eo <strong>Antanambazaha akaikin'ny tobin-tsolika mitondra ny anarana hoe "totalenergie", Mananjary</strong>. Eto no iasanay amin'ny fitiavana sy ny fahazotoana.<br><br>
-                        <i class="fa-regular fa-flag me-1"></i> <strong>Transparence · Efficacité · Innovation</strong>
+                <div class="col-lg-7 fade-up">
+                    <span class="hero-badge"><i class="fa-regular fa-hand-peace me-2"></i> Bienvenue · Tongasoa</span>
+                    <h1 class="mt-3">Service Régional <br><span class="highlight">du Budget Vatovavy</span></h1>
+                    <p class="mt-3">
+                        <i class="fa-regular fa-hand-peace me-2" style="color: var(--accent);"></i>
+                        <strong>Akory aby lahaly eeee !</strong><br>
+                        Ny sampan'asam-paritra misahana ny teti-bola eto Vatovavy (SRBV) dia faly miarahaba anareo. Ny biraonay dia hita ao <strong style="color: white;">Antanambazaha akaikin'ny tobin-tsolika TotalEnergie, Mananjary</strong>.
+                    </p>
+                    <div class="hero-stats-glass">
+                        <div><span class="stat-number">12+</span><span class="stat-label">Services</span></div>
+                        <div><span class="stat-number">100%</span><span class="stat-label">Digitalisation</span></div>
+                        <div><span class="stat-number">24/7</span><span class="stat-label">Assistance IA</span></div>
+                    </div>
+                    <div class="mt-4 d-flex flex-wrap gap-3">
+                        <a href="#demarches" class="btn btn-primary-glass"><i class="fa-regular fa-file-lines me-2"></i>Nos démarches</a>
+                        <a href="#assistant" class="btn btn-outline-glass"><i class="fa-regular fa-comment-dots me-2"></i>Assistant IA</a>
                     </div>
                 </div>
-                <div class="col-lg-5 d-none d-lg-block text-center mt-4 mt-lg-0">
-                    <img src="https://th.bing.com/th/id/R.b5a04afe7e6dc0de3e1b86b0de400a1a?rik=X5dziRy7mVkjGQ&riu=http%3a%2f%2fcentral.mefb.gov.mg%2fassets%2fimg%2flogo%2f2024%2fLOGO_MEF_DGBF.png&ehk=ERrO3e1NSJr7h9M3XlkyXxAS%2fZThrxZGhj4j4xD4dsw%3d&risl=&pid=ImgRaw&r=0" alt="Logo MEF" style="width: 140px; filter: drop-shadow(0 8px 30px rgba(0,0,0,0.3));">
-                    <div class="mt-3 bg-white bg-opacity-10 rounded-4 p-3 backdrop-blur-sm border border-white border-opacity-10">
-                        <p class="mb-0"><i class="fa-regular fa-circle-check me-1 text-success"></i> Merci de votre visite</p>
+                <div class="col-lg-5 d-none d-lg-block text-center fade-right">
+                    <div class="glass-card p-4">
+                        <i class="fa-solid fa-landmark" style="font-size:4.5rem; color:var(--accent); opacity:0.30;"></i>
+                        <p class="mt-3 text-muted"><i class="fa-regular fa-circle-check me-1 text-success"></i> Service public de proximité</p>
+                        <p class="text-muted small mb-0">📌 Antanambazaha · Mananjary</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ASSISTANT IA ===== -->
-    <section id="assistant-ia" class="py-5">
-        <div class="container py-3">
+    <!-- ASSISTANT IA -->
+    <section id="assistant" class="py-5">
+        <div class="container">
             <div class="text-center mb-5 fade-up">
-                <h2 class="display-4 fw-bold">🤖 Assistant <span style="color: var(--mg-red);">Virtuel</span></h2>
-                <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mg-red), var(--mg-gold)); border-radius: 4px;"></div>
-                <p class="text-muted mt-3" style="font-size: 1.05rem;">🧠 IA avancée · 🌍 Multilingue · 📚 Répond à tout</p>
+                <h2 class="section-title-glass">🤖 Assistant <span class="highlight">Virtuel</span></h2>
+                <div class="section-divider-glass"></div>
+                <p class="section-sub-glass mt-3">🧠 IA avancée · 🌍 Multilingue · 📚 Répond à tout</p>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="chat-premium">
-                        <div class="chat-header-premium d-flex align-items-center">
-                            <div class="bg-white bg-opacity-10 rounded-circle p-2 me-3"><i class="fa-solid fa-brain fa-lg" style="color: var(--mg-gold);"></i></div>
-                            <div><h5 class="mb-0 text-white" style="font-size: 1.2rem;">Agent IA · SRB Vatovavy</h5><small class="text-white-50 opacity-75" style="font-size: 0.85rem;">Capacité illimitée</small></div>
+                <div class="col-lg-8 fade-up">
+                    <div class="chat-glass">
+                        <div class="chat-header-glass d-flex align-items-center">
+                            <div class="bg-white bg-opacity-10 rounded-circle p-2 me-3">
+                                <i class="fa-solid fa-brain fa-lg" style="color:var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Agent IA · SRB Vatovavy</h5>
+                                <small>Assistance 24/7</small>
+                            </div>
                         </div>
-                        <div class="chat-messages" id="chatMessagesPremium">
+                        <div class="chat-messages-glass" id="chatMessagesGlass">
                             <div class="d-flex mb-3 message-bot">
-                                <div class="bubble shadow-sm" style="max-width: 90%;">
+                                <div class="bubble shadow-sm" style="max-width:90%;">
                                     <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour !</strong><br><br>
-                                    Posez-moi vos questions.<br>
-                                    <span class="text-muted">N'hésitez pas !</span>
+                                    Posez-moi vos questions sur le SRB, les démarches, ou même des histoires malgaches.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-3 bg-white border-top">
-                            <form id="chatPremiumForm" class="d-flex gap-2">
-                                <input type="text" id="premiumChatInput" class="form-control rounded-pill py-3 px-4" placeholder="Posez votre question..." autocomplete="off">
-                                <button type="submit" class="btn rounded-pill px-5" style="background: linear-gradient(135deg, var(--mg-red), var(--mg-green)); color: white; font-weight: 600; font-size: 1rem; border: none;"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer</button>
+                        <div class="p-3 border-top" style="border-color:var(--glass-border);">
+                            <form id="chatFormGlass" class="d-flex gap-2">
+                                <input type="text" id="chatInputGlass" class="form-control rounded-pill py-3 px-4" placeholder="Posez votre question..." autocomplete="off">
+                                <button type="submit" class="btn btn-chat-glass"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer</button>
                             </form>
                         </div>
                     </div>
@@ -884,135 +640,108 @@
         </div>
     </section>
 
-    <!-- ===== DÉMARCHES ===== -->
-    <section id="demarches" class="py-5" style="background: var(--mg-white);">
+    <!-- DÉMARCHES -->
+    <section id="demarches" class="py-5">
         <div class="container">
             <div class="text-center mb-5 fade-up">
-                <h2 class="display-4 fw-bold">📋 Démarches & <span style="color: var(--mg-green);">Pièces à fournir</span></h2>
-                <div class="mx-auto" style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--mg-red), var(--mg-gold)); border-radius: 4px;"></div>
-                <p class="text-muted mt-3" style="font-size: 1.05rem;">Cliquez sur une division pour afficher les pièces et télécharger les modèles</p>
+                <h2 class="section-title-glass">📋 Démarches & <span class="highlight">Pièces à fournir</span></h2>
+                <div class="section-divider-glass"></div>
+                <p class="section-sub-glass mt-3">Cliquez sur une division pour afficher les modèles et télécharger les PDF</p>
             </div>
-
-            <div class="row g-4 mb-5">
-                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="dpe"><div class="division-icon"><i class="fa-solid fa-landmark"></i></div><h3>DPE</h3><p class="small text-muted">Patrimoine</p></div></div>
-                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="cir"><div class="division-icon"><i class="fa-solid fa-computer"></i></div><h3>CIR</h3><p class="small text-muted">Informatique</p></div></div>
-                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="budget"><div class="division-icon"><i class="fa-solid fa-chart-simple"></i></div><h3>BUDGET</h3><p class="small text-muted">Exécution</p></div></div>
-                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="sante"><div class="division-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>SANTÉ</h3><p class="small text-muted">Remboursement</p></div></div>
-                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="finance"><div class="division-icon"><i class="fa-solid fa-coins"></i></div><h3>FINANCE</h3><p class="small text-muted">Locale</p></div></div>
-                <div class="col-md-2 col-4 fade-up"><div class="division-card" data-division="tutelle"><div class="division-icon"><i class="fa-solid fa-building-user"></i></div><h3>TUTELLE</h3><p class="small text-muted">EPN</p></div></div>
+            <div class="row g-3 mb-5">
+                <div class="col-md-2 col-4 fade-up" style="animation-delay:0.05s;"><div class="division-card-glass" data-division="dpe"><div class="div-icon"><i class="fa-solid fa-landmark"></i></div><h3>DPE</h3><p>Patrimoine</p></div></div>
+                <div class="col-md-2 col-4 fade-up" style="animation-delay:0.10s;"><div class="division-card-glass" data-division="cir"><div class="div-icon"><i class="fa-solid fa-computer"></i></div><h3>CIR</h3><p>Informatique</p></div></div>
+                <div class="col-md-2 col-4 fade-up" style="animation-delay:0.15s;"><div class="division-card-glass" data-division="budget"><div class="div-icon"><i class="fa-solid fa-chart-simple"></i></div><h3>BUDGET</h3><p>Exécution</p></div></div>
+                <div class="col-md-2 col-4 fade-up" style="animation-delay:0.20s;"><div class="division-card-glass" data-division="sante"><div class="div-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>SANTÉ</h3><p>Remboursement</p></div></div>
+                <div class="col-md-2 col-4 fade-up" style="animation-delay:0.25s;"><div class="division-card-glass" data-division="finance"><div class="div-icon"><i class="fa-solid fa-coins"></i></div><h3>FINANCE</h3><p>Locale</p></div></div>
+                <div class="col-md-2 col-4 fade-up" style="animation-delay:0.30s;"><div class="division-card-glass" data-division="tutelle"><div class="div-icon"><i class="fa-solid fa-building-user"></i></div><h3>TUTELLE</h3><p>EPN</p></div></div>
             </div>
-
-            <div id="modelesContainer" class="mt-4">
+            <div id="modelesContainerGlass" class="mt-4">
                 <div class="text-center text-muted py-5">
-                    <i class="fa-regular fa-folder-open fa-3x mb-3"></i>
-                    <p style="font-size: 1.1rem;">Sélectionnez une division</p>
+                    <i class="fa-regular fa-folder-open fa-3x mb-3" style="color:var(--text-muted);"></i>
+                    <p style="font-size:1.1rem;">Sélectionnez une division ci-dessus</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================
-         À PROPOS AMÉLIORÉ AVEC STYLE ULTRA PREMIUM
-         ========================================================== -->
-    <section id="apropos" class="apropos-section">
-        <!-- Première carte : introduction -->
+    <!-- À PROPOS -->
+    <section id="apropos" class="py-5 about-glass">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10 fade-up">
-                    <div class="apropos-intro-card">
-                        <h3><i class="fa-regular fa-building me-2"></i> Service Régional du Budget</h3>
-                        <p class="mt-3">
-                            <strong>Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny SRB Vatovavy.</strong><br><br>
+                    <div class="glass-card p-4 p-md-5">
+                        <h3 style="font-family:'Playfair Display',serif; color:var(--accent); font-size:1.8rem;">
+                            <i class="fa-regular fa-building me-2"></i> Service Régional du Budget
+                        </h3>
+                        <p class="mt-3" style="color:var(--text-muted); line-height:2;">
+                            <strong style="color:white;">Tongasoa eto amin'ny sehatra nomerika ôfisialin'ny SRB Vatovavy.</strong><br><br>
                             Ny SRB Vatovavy dia sampana iray amin'ny Ministeran'ny Toe-karena sy ny Vola eto Mananjary. Ny asa sahaninay dia ny fanaraha-maso ny tetibola, ny fandaniana, ny fitantanana ny fananan'ny Fanjakana, ary ny fanampiana ireo mpiasam-panjakana.<br><br>
-                            <span class="devise"><i class="fa-regular fa-flag me-1"></i> Notre devise :</span> Transparence, efficacité et innovation au service de la nation.
+                            <span style="color:var(--accent); font-weight:600;"><i class="fa-regular fa-flag me-1"></i> Notre devise :</span> Transparence, efficacité et innovation au service de la nation.
                         </p>
-                        <div class="mt-3 d-flex justify-content-between align-items-center flex-wrap">
+                        <div class="mt-3 d-flex justify-content-between flex-wrap text-muted small">
                             <span><i class="fa-regular fa-clock me-1"></i> Service public digitalisé</span>
                             <span><i class="fa-regular fa-flag me-1"></i> Mananjary · Vatovavy</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Deuxième partie : détails avec icônes premium -->
-        <div class="container mt-5">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-5 mt-3">
                 <div class="col-lg-6 fade-left">
-                    <span class="apropos-badge"><i class="fa-regular fa-circle-check me-1"></i> Notre mission</span>
-                    <h2 class="fw-bold mt-3">🇲🇬 SRB <span style="color: var(--mg-red);">Vatovavy</span></h2>
-                    <div class="my-3" style="width: 80px; height: 4px; background: var(--mg-gold); border-radius: 4px;"></div>
-                    <p class="lead">Service Régional du Budget à Mananjary. Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
-                    <div class="apropos-card-luxe mt-4">
-                        <ul class="list-unstyled">
-                            <li class="list-item">
-                                <div class="icon-circle-premium"><i class="fa-regular fa-circle-check"></i></div>
-                                <div>
-                                    <strong>Exécution budgétaire</strong>
-                                    <br><span>Suivi rigoureux des crédits et engagements financiers</span>
-                                </div>
-                            </li>
-                            <li class="list-item">
-                                <div class="icon-circle-premium"><i class="fa-regular fa-building"></i></div>
-                                <div>
-                                    <strong>Patrimoine public</strong>
-                                    <br><span>Gestion des quitus, baux et recensement des biens de l'État</span>
-                                </div>
-                            </li>
-                            <li class="list-item">
-                                <div class="icon-circle-premium"><i class="fa-regular fa-microchip"></i></div>
-                                <div>
-                                    <strong>Digitalisation</strong>
-                                    <br><span>Modernisation via SIIGFP, SIGMP et Intelligence Artificielle</span>
-                                </div>
-                            </li>
-                        </ul>
+                    <span class="badge" style="background:var(--accent); color:#0B1A2E; font-weight:700; padding:8px 20px; border-radius:30px; font-size:0.85rem;">
+                        <i class="fa-regular fa-circle-check me-1"></i> Notre mission
+                    </span>
+                    <h2 class="section-title-glass mt-3" style="font-size:2rem;">🇲🇬 SRB <span class="highlight">Vatovavy</span></h2>
+                    <p class="text-muted" style="font-size:1.05rem;">Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
+                    <div class="mt-4">
+                        <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-circle-check"></i></div><div><strong>Exécution budgétaire</strong><br><span>Suivi rigoureux des crédits et engagements financiers</span></div></div>
+                        <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-building"></i></div><div><strong>Patrimoine public</strong><br><span>Gestion des quitus, baux et recensement des biens de l'État</span></div></div>
+                        <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-microchip"></i></div><div><strong>Digitalisation</strong><br><span>Modernisation via SIIGFP, SIGMP et Intelligence Artificielle</span></div></div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center fade-right">
-                    <div class="apropos-image-container">
-                        <img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" class="img-fluid" style="max-height: 320px; width: 100%; object-fit: cover;" alt="Mananjary">
-                        <p class="mt-3 small text-white-50" style="font-size: 0.9rem;">
-                            <i class="fa-regular fa-flag me-1"></i> Mananjary · Région Vatovavy
-                        </p>
+                <div class="col-lg-6 fade-right">
+                    <div class="about-image-glass">
+                        <img src="https://static-cms.routard.com/web-routard/uploads/large_pt26732_1238118_408f0df2e2.jpg" alt="Mananjary">
+                        <div class="p-3 text-center" style="background:rgba(0,0,0,0.15); border-top:1px solid var(--glass-border);">
+                            <small class="text-muted"><i class="fa-regular fa-flag me-1"></i> Mananjary · Région Vatovavy</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== CONTACT LUXE AVEC ENVOI DIRECT SUR VOTRE EMAIL ===== -->
-    <section id="contact" class="contact-section">
+    <!-- CONTACT -->
+    <section id="contact" class="py-5 contact-glass">
         <div class="container">
             <div class="text-center mb-5 fade-up">
-                <h2 class="display-4 fw-bold text-white">📞 Contacter <span style="color: var(--mg-red);">Nous</span></h2>
-                <div class="mx-auto" style="width: 70px; height: 3px; background: var(--mg-gold); border-radius: 4px;"></div>
-                <p class="text-white-50 mt-3" style="font-size: 1.05rem;">Réponse sous 48h · Appels aux heures ouvrables</p>
+                <h2 class="section-title-glass">📞 Contacter <span class="highlight">Nous</span></h2>
+                <div class="section-divider-glass"></div>
+                <p class="section-sub-glass mt-3">Réponse sous 48h · Appels aux heures ouvrables</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 fade-left">
                     <div class="contact-card">
-                        <h4><i class="fa-regular fa-building me-2" style="color: var(--mg-red);"></i> Coordonnées</h4>
-                        <p><i class="fa-solid fa-location-dot me-3" style="color: var(--mg-red);"></i> Antanambazaha, Mananjary 317</p>
-                        <p><i class="fa-solid fa-envelope me-3" style="color: var(--mg-green);"></i> jackandrianaivomanana@gmail.com</p>
-                        <p><i class="fa-solid fa-phone me-3" style="color: var(--mg-gold);"></i> +261 20 57 901 23</p>
-                        <p><i class="fa-brands fa-whatsapp me-3" style="color: #25D366;"></i> +261 34 57 250 57</p>
-                        <p><i class="fa-regular fa-clock me-3" style="color: var(--mg-gold);"></i> Lundi-Vendredi<br> &nbsp;&nbsp;08h00–12h00 · 14h00–17h00</p>
-                        <div class="map-container mt-3">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" allowfullscreen="" loading="lazy"></iframe>
+                        <h4><i class="fa-regular fa-building me-2" style="color:var(--accent);"></i> Coordonnées</h4>
+                        <p><i class="fa-solid fa-location-dot me-3"></i> Antanambazaha, Mananjary 317</p>
+                        <p><i class="fa-solid fa-envelope me-3"></i> jackandrianaivomanana@gmail.com</p>
+                        <p><i class="fa-solid fa-phone me-3"></i> +261 20 57 901 23</p>
+                        <p><i class="fa-brands fa-whatsapp me-3" style="color:#25D366;"></i> +261 34 57 250 57</p>
+                        <p><i class="fa-regular fa-clock me-3"></i> Lundi-Vendredi<br> &nbsp;&nbsp;08h00–12h00 · 14h00–17h00</p>
+                        <div class="map-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.555302690725!2d48.34463012377047!3d-21.23874032936938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2smg!4v1781089275534!5m2!1sfr!2smg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                        <div class="social-icons mt-3 text-center">
-                            <a href="#" class="text-white"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#" class="text-white"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#" class="text-white"><i class="fa-brands fa-twitter"></i></a>
+                        <div class="social-glass mt-3 text-center">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 fade-right">
-                    <div class="contact-form-luxe">
-                        <h4><i class="fa-regular fa-pen-to-square me-2" style="color: var(--mg-gold);"></i> Message rapide</h4>
-                        <!-- Envoi direct sur votre email jackandrianaivomanana@gmail.com -->
-                        <form id="contactForm" action="https://formsubmit.co/jackandrianaivomanana@gmail.com" method="POST">
+                    <div class="form-glass">
+                        <h4><i class="fa-regular fa-pen-to-square me-2"></i> Message rapide</h4>
+                        <form id="contactFormGlass" action="https://formsubmit.co/jackandrianaivomanana@gmail.com" method="POST">
                             <input type="text" name="Nom" placeholder="Nom complet" required>
                             <input type="email" name="Email" placeholder="Email" required>
                             <input type="tel" name="Telephone" placeholder="Téléphone">
@@ -1020,391 +749,226 @@
                             <input type="hidden" name="_subject" value="📩 Message site SRB Vatovavy">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://jackandrianaivomanana.github.io/srb/merci.html">
-                            <button type="submit" class="btn-submit"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer</button>
+                            <button type="submit" class="btn-submit-glass"><i class="fa-regular fa-paper-plane me-2"></i> Envoyer</button>
                         </form>
-                        <div id="formStatus" class="mt-3 text-center small text-success"></div>
+                        <div id="formStatusGlass" class="mt-3 text-center small text-success"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer-premium text-center">
+    <!-- FOOTER -->
+    <footer class="footer-glass text-center">
         <div class="container">
-            <p class="mb-0 small">© 2026 Ministère de l'Économie et des Finances · SRB Vatovavy · TAHIANA ANDREA 🇲🇬</p>
+            <p class="mb-0">© 2026 Ministère de l'Économie et des Finances · SRB Vatovavy · TAHIANA ANDREA 🇲🇬</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/261342501234" class="whatsapp-float-premium" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // ===== FONCTIONS PDF =====
-        function genererPDFQuitusLogement() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20); doc.setTextColor(198,40,40); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
-            doc.setFontSize(12); doc.setTextColor(0,0,0);
-            doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
-            doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
-            doc.setFontSize(11); doc.text("Objet : Demande de quitus pour logement/bâtiment administratif", 20, 65);
-            doc.text("Pièces à fournir :", 20, 85);
-            doc.text("• Bordereau d'envoi", 25, 98);
-            doc.text("• Certificat de situation juridique du bien", 25, 108);
-            doc.text("• Acte de donation visé par la Commune (si terrain donné)", 25, 118);
-            doc.text("• Plan topographique de la propriété", 25, 128);
-            doc.text("• Plans complets des travaux (2 exemplaires)", 25, 138);
-            doc.text("• Quitus N-1 du logement/bâtiment", 25, 148);
-            doc.text("• PV de recensement physique visé par le Contrôle Financier", 25, 158);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 200);
-            doc.text("[Nom, fonction, signature, cachet du service]", 20, 220);
-            doc.save("Demande_QUITUS_Logement.pdf");
-        }
-        function genererPDFQuitusVehicule() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20); doc.setTextColor(198,40,40); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
-            doc.setFontSize(12); doc.setTextColor(0,0,0);
-            doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
-            doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
-            doc.setFontSize(11); doc.text("Objet : Demande de quitus pour véhicule administratif", 20, 65);
-            doc.text("Pièces à fournir :", 20, 85);
-            doc.text("• Bordereau d'envoi", 25, 98);
-            doc.text("• Demande adressée au Chef SRB", 25, 108);
-            doc.text("• Dernier quitus matières du véhicule", 25, 118);
-            doc.text("• Carte grise certifiée", 25, 128);
-            doc.text("• Inventaire des matériels", 25, 138);
-            doc.text("• Ordre d'Entrée du matériel", 25, 148);
-            doc.text("• Décision de nomination du dépositaire comptable", 25, 158);
-            doc.text("• PV de recensement physique (4 exemplaires)", 25, 168);
-            doc.text("• Carnet d'entretien du véhicule", 25, 178);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 220);
-            doc.text("[Nom, fonction, signature, cachet du service]", 20, 240);
-            doc.save("Demande_QUITUS_Vehicule.pdf");
-        }
-        function genererPDFBailLogement() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', 'a4');
-            doc.setFontSize(20); doc.setTextColor(198,40,40); doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
-            doc.setFontSize(12); doc.setTextColor(0,0,0);
-            doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
-            doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
-            doc.setFontSize(11); doc.text("Objet : Demande d'accord pour bail à loyer administratif", 20, 65);
-            doc.text("Pièces à fournir :", 20, 85);
-            doc.text("• Photos de l'immeuble (vue d'ensemble, face et profil)", 25, 98);
-            doc.text("• Bordereau d'envoi", 25, 108);
-            doc.text("• Note de présentation", 25, 118);
-            doc.text("• Contrat de bail (7 exemplaires, selon modèle SRB)", 25, 128);
-            doc.text("• Acte de nomination du bénéficiaire", 25, 138);
-            doc.text("• Certificat de situation juridique original", 25, 148);
-            doc.text("• État des lieux établi par le SRB", 25, 158);
-            doc.text("• Attestation de non-logement délivrée par le SRB", 25, 168);
-            doc.text("• Fiche de paie du bénéficiaire", 25, 178);
-            doc.text("• RIB du bailleur (si paiement par virement)", 25, 188);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 230);
-            doc.text("[Nom, fonction, signature, cachet du service]", 20, 250);
-            doc.save("Demande_BAIL_Logement.pdf");
-        }
-        function genererPDFSIIGFP() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(14); doc.text("DEMANDE DE CRÉATION LOGIN SIIGFP", 20, 20);
-            doc.setFontSize(11); doc.text("À : Monsieur le Chef SRB VATOVAVY", 20, 40);
-            doc.text("Pièces à fournir :", 20, 60);
-            doc.text("• Nom et prénoms complets", 25, 75);
-            doc.text("• Numéro IM (matricule)", 25, 85);
-            doc.text("• Structure de rattachement", 25, 95);
-            doc.text("• Fonction exacte", 25, 105);
-            doc.text("• Rôle souhaité (RdP, CdP, Ordsec, Opérateur)", 25, 115);
-            doc.text("• Acte de nomination (ORDSEC)", 25, 125);
-            doc.text("• Lettre d'engagement signée", 25, 135);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 170);
-            doc.save("Demande_SIIGFP.pdf");
-        }
-        function genererPDFLettreEngagement() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(14); doc.text("LETTRE D'ENGAGEMENT SIIGFP", 20, 20);
-            doc.setFontSize(11);
-            doc.text("Je, soussigné(e) ____________, I.M : ____________,", 20, 45);
-            doc.text("agissant en qualité de ____________, m'engage à utiliser", 20, 55);
-            doc.text("l'application SIIGFP en veillant à la confidentialité des informations.", 20, 65);
-            doc.text("En cas de violation, je suis conscient des poursuites disciplinaires.", 20, 75);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 110);
-            doc.text("Signature : ____________", 20, 125);
-            doc.save("Lettre_Engagement_SIIGFP.pdf");
-        }
-        function genererPDFSIGMP() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(14); doc.text("DEMANDE COMPTE SIGMP (PRMP)", 20, 20);
-            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 45);
-            doc.text("• Acte de nomination en tant que PRMP", 25, 60);
-            doc.text("• Curriculum Vitae (CV) actualisé", 25, 70);
-            doc.text("• Lettre d'engagement signée", 25, 80);
-            doc.text("• Adresse email institutionnelle valide", 25, 90);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 130);
-            doc.save("Demande_SIGMP.pdf");
-        }
-        function genererPDFRemboursementMedical() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(14); doc.text("FANGATAHANA FAMERENANA SARAM-PITSABOANA", 20, 20);
-            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 40);
-            doc.text("• Demande manuscrite adressée au Chef SRB Vatovavy", 25, 55);
-            doc.text("• Photocopie carte pension / bulletin de pension", 25, 65);
-            doc.text("• Bulletin de consultation (original) avec cachet médecin ONM", 25, 75);
-            doc.text("• Ordonnance : nom patient, date, cachet médecin", 25, 85);
-            doc.text("• Facture : N° STAT, NIF, date, cachet", 25, 95);
-            doc.text("• Notice médicale", 25, 105);
-            doc.text("• RIB (pour virement bancaire)", 25, 115);
-            doc.text("• Pour conjoint : copie livret de famille", 25, 125);
-            doc.text("• Pour enfant -20 ans : acte de naissance", 25, 135);
-            doc.setTextColor(200, 0, 0);
-            doc.text("⚠️ Bulletin de consultation à prendre AVANT la consultation", 20, 165);
-            doc.save("Remboursement_Medical.pdf");
-        }
-        function genererPDFTransitFinancier() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(14); doc.text("PROCÉDURE DE TRANSIT FINANCIER LOCAL", 20, 20);
-            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 45);
-            doc.text("• Demande d'ouverture de compte de transit", 25, 60);
-            doc.text("• Notification des crédits par l'ordonnateur", 25, 70);
-            doc.text("• Engagement des dépenses", 25, 80);
-            doc.text("• Mandatement et liquidation", 25, 90);
-            doc.text("• Justification des fonds dans les délais", 25, 100);
-            doc.text("• RIB du compte de transit", 25, 110);
-            doc.text("• Acte de nomination du régisseur", 25, 120);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 160);
-            doc.save("Procedure_Transit_Financier.pdf");
-        }
-        function genererPDFComptabiliteMatiere() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(14); doc.text("COMPTABILITÉ MATIÈRE - PROCÉDURE", 20, 20);
-            doc.setFontSize(11); doc.text("Pièces à fournir :", 20, 45);
-            doc.text("• Note de présentation (2 exemplaires)", 25, 60);
-            doc.text("• Décision nomination dépositaire comptable", 25, 70);
-            doc.text("• PV de recensement général (3 exemplaires)", 25, 80);
-            doc.text("• Inventaire des biens (3 exemplaires)", 25, 90);
-            doc.text("• État appréciatif (3 exemplaires)", 25, 100);
-            doc.text("• Ordre d'entrée + justificatifs", 25, 110);
-            doc.text("• Ordre de sortie + justificatifs", 25, 120);
-            doc.text("• Version électronique (Excel)", 25, 130);
-            doc.save("Comptabilite_Matiere.pdf");
-        }
-        function genererPDFTutelleEPN() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(14); doc.text("TUTELLE DES ÉTABLISSEMENTS PUBLICS NATIONAUX (EPN)", 20, 20);
-            doc.setFontSize(11); doc.text("Pièces à fournir pour la tutelle :", 20, 45);
-            doc.text("• Statuts de l'EPN approuvés", 25, 60);
-            doc.text("• Convention de création", 25, 70);
-            doc.text("• Budget prévisionnel annuel", 25, 80);
-            doc.text("• Rapport d'activités annuel", 25, 90);
-            doc.text("• États financiers certifiés", 25, 100);
-            doc.text("• PV du Conseil d'Administration", 25, 110);
-            doc.text("• Demande d'agrément des comptes", 25, 120);
-            doc.text("Fait à Mananjary, le ___/___/___", 20, 160);
-            doc.save("Tutelle_EPN.pdf");
-        }
+<!-- WhatsApp Float -->
+<a href="https://wa.me/261342501234" class="whatsapp-float-glass" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-        const modelesData = {
-            dpe: [
-                { titre: "📄 QUITUS - Logement / Bâtiment", pieces: ["Bordereau d'envoi", "Certificat de situation juridique du bien", "Acte de donation visé par la Commune (si terrain donné)", "Plan topographique de la propriété", "Plans complets des travaux (2 exemplaires)", "Quitus N-1 du logement/bâtiment", "PV de recensement physique visé par le Contrôle Financier"], generer: genererPDFQuitusLogement },
-                { titre: "🚗 QUITUS - Véhicule Administratif", pieces: ["Bordereau d'envoi", "Demande adressée au Chef SRB", "Dernier quitus matières du véhicule", "Carte grise certifiée", "Inventaire des matériels", "Ordre d'Entrée du matériel", "Décision de nomination du dépositaire comptable", "PV de recensement physique (4 exemplaires)", "Carnet d'entretien du véhicule"], generer: genererPDFQuitusVehicule },
-                { titre: "🏠 BAIL - Logement Administratif", pieces: ["Photos de l'immeuble (vue d'ensemble, face et profil)", "Bordereau d'envoi", "Note de présentation", "Contrat de bail (7 exemplaires)", "Acte de nomination du bénéficiaire", "Certificat de situation juridique original", "État des lieux établi par le SRB", "Attestation de non-logement", "Fiche de paie du bénéficiaire", "RIB du bailleur"], generer: genererPDFBailLogement }
-            ],
-            cir: [
-                { titre: "💻 DEMANDE LOGIN SIIGFP", pieces: ["Nom et prénoms complets", "Numéro IM (matricule)", "Structure de rattachement", "Fonction exacte", "Rôle souhaité (RdP, CdP, Ordsec, Opérateur)", "Acte de nomination (ORDSEC)", "Lettre d'engagement signée"], generer: genererPDFSIIGFP },
-                { titre: "📝 LETTRE D'ENGAGEMENT SIIGFP", pieces: ["Nom complet", "Numéro IM", "Fonction", "Signature"], generer: genererPDFLettreEngagement },
-                { titre: "🔐 DEMANDE COMPTE SIGMP", pieces: ["Acte de nomination en tant que PRMP", "Curriculum Vitae (CV) actualisé", "Lettre d'engagement signée", "Adresse email institutionnelle valide"], generer: genererPDFSIGMP }
-            ],
-            budget: [
-                { titre: "📊 CADRE LOGIQUE", pieces: ["Objectif global", "Objectifs spécifiques", "Résultats attendus", "Indicateurs de performance", "Sources de vérification", "Hypothèses et risques"], generer: () => { const { jsPDF } = window.jspdf; const doc = new jsPDF(); doc.text("CADRE LOGIQUE", 20, 20); doc.save("Cadre_Logique.pdf"); } },
-                { titre: "📋 FICHE ACTION", pieces: ["Intitulé de l'action", "Activités prévues", "Calendrier d'exécution", "Coûts prévisionnels", "Responsable", "Indicateurs de suivi"], generer: () => { const { jsPDF } = window.jspdf; const doc = new jsPDF(); doc.text("FICHE ACTION", 20, 20); doc.save("Fiche_Action.pdf"); } }
-            ],
-            sante: [
-                { titre: "🏥 REMBOURSEMENT MÉDICAL", pieces: ["Demande manuscrite au Chef SRB", "Carte pension / bulletin de pension", "Bulletin de consultation original", "Ordonnance avec cachets", "Facture N° STAT, NIF", "Notice médicale", "RIB bancaire", "Livret de famille (conjoint)", "Acte de naissance (enfant -20 ans)"], generer: genererPDFRemboursementMedical }
-            ],
-            finance: [
-                { titre: "💰 TRANSIT FINANCIER LOCAL", pieces: ["Demande d'ouverture de compte de transit", "Notification des crédits par l'ordonnateur", "Engagement des dépenses", "Mandatement et liquidation", "Justification des fonds dans les délais", "RIB du compte de transit", "Acte de nomination du régisseur"], generer: genererPDFTransitFinancier },
-                { titre: "📊 COMPTABILITÉ MATIÈRE", pieces: ["Note de présentation (2 exemplaires)", "Décision nomination dépositaire", "PV de recensement général (3 ex)", "Inventaire des biens (3 ex)", "État appréciatif (3 ex)", "Ordre d'entrée + justificatifs", "Ordre de sortie + justificatifs", "Version électronique (Excel)"], generer: genererPDFComptabiliteMatiere }
-            ],
-            tutelle: [
-                { titre: "🏛️ TUTELLE DES EPN", pieces: ["Statuts de l'EPN approuvés", "Convention de création", "Budget prévisionnel annuel", "Rapport d'activités annuel", "États financiers certifiés", "PV du Conseil d'Administration", "Demande d'agrément des comptes"], generer: genererPDFTutelleEPN }
-            ]
-        };
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+<script>
+    // ============================================================
+    // 1. MODÈLES & PDF
+    // ============================================================
+    function genererPDF(titre, pieces) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('p', 'mm', 'a4');
+        doc.setFontSize(20);
+        doc.setTextColor(245, 201, 106);
+        doc.text("RÉPUBLIQUE DE MADAGASCAR", 105, 25, { align: 'center' });
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
+        doc.text("Ministère de l'Économie et des Finances", 105, 38, { align: 'center' });
+        doc.text("Service Régional du Budget Vatovavy", 105, 46, { align: 'center' });
+        doc.setFontSize(11);
+        doc.text("Objet : " + titre, 20, 65);
+        doc.text("Pièces à fournir :", 20, 85);
+        pieces.forEach((p, i) => doc.text("• " + p, 25, 98 + i * 10));
+        doc.text("Fait à Mananjary, le ___/___/___", 20, 200);
+        doc.text("[Nom, fonction, signature, cachet du service]", 20, 220);
+        doc.save(titre.replace(/[^a-zA-Z0-9]/g, '_') + ".pdf");
+    }
 
-        function displayModeles(division) {
-            const container = document.getElementById('modelesContainer');
-            const modeles = modelesData[division];
-            if (!modeles) {
-                container.innerHTML = '<div class="text-center text-muted py-5"><p>Aucun modèle disponible</p></div>';
+    const modelesData = {
+        dpe: [
+            { titre: "QUITUS - Logement / Bâtiment", pieces: ["Bordereau d'envoi", "Certificat de situation juridique", "Acte de donation", "Plan topographique", "Plans travaux (2 ex)", "Quitus N-1", "PV recensement"] },
+            { titre: "QUITUS - Véhicule Administratif", pieces: ["Bordereau", "Demande au Chef SRB", "Dernier quitus", "Carte grise", "Inventaire", "Ordre d'entrée", "Nomination dépositaire", "PV recensement", "Carnet entretien"] },
+            { titre: "BAIL - Logement Administratif", pieces: ["Photos immeuble", "Bordereau", "Note présentation", "Contrat bail (7 ex)", "Acte nomination", "Certificat situation", "État des lieux", "Attestation non-logement", "Fiche paie", "RIB"] }
+        ],
+        cir: [
+            { titre: "DEMANDE LOGIN SIIGFP", pieces: ["Nom complet", "Numéro IM", "Structure", "Fonction", "Rôle souhaité", "Acte nomination", "Lettre engagement"] },
+            { titre: "LETTRE D'ENGAGEMENT SIIGFP", pieces: ["Nom", "IM", "Fonction", "Signature"] },
+            { titre: "DEMANDE COMPTE SIGMP", pieces: ["Acte nomination PRMP", "CV", "Lettre engagement", "Email institutionnel"] }
+        ],
+        budget: [
+            { titre: "CADRE LOGIQUE", pieces: ["Objectif global", "Objectifs spécifiques", "Résultats", "Indicateurs", "Sources vérification", "Hypothèses"] },
+            { titre: "FICHE ACTION", pieces: ["Intitulé", "Activités", "Calendrier", "Coûts", "Responsable", "Indicateurs"] }
+        ],
+        sante: [
+            { titre: "REMBOURSEMENT MÉDICAL", pieces: ["Demande manuscrite", "Carte pension", "Bulletin consultation", "Ordonnance", "Facture", "Notice", "RIB", "Livret famille", "Acte naissance"] }
+        ],
+        finance: [
+            { titre: "TRANSIT FINANCIER LOCAL", pieces: ["Demande ouverture", "Notification crédits", "Engagement", "Mandatement", "Justification", "RIB", "Nomination régisseur"] },
+            { titre: "COMPTABILITÉ MATIÈRE", pieces: ["Note présentation", "Nomination dépositaire", "PV recensement", "Inventaire", "État appréciatif", "Ordre entrée", "Ordre sortie", "Excel"] }
+        ],
+        tutelle: [
+            { titre: "TUTELLE DES EPN", pieces: ["Statuts", "Convention", "Budget prévisionnel", "Rapport activités", "États financiers", "PV CA", "Demande agrément"] }
+        ]
+    };
+
+    function displayModeles(division) {
+        const container = document.getElementById('modelesContainerGlass');
+        const modeles = modelesData[division];
+        if (!modeles) {
+            container.innerHTML = '<div class="text-center text-muted py-5"><i class="fa-regular fa-folder-open fa-3x mb-3" style="color:var(--text-muted);"></i><p>Aucun modèle disponible</p></div>';
+            return;
+        }
+        let html = '<h4 class="mb-4 fw-bold" style="color:var(--accent); font-size:1.3rem;"><i class="fa-regular fa-file-lines me-2"></i>Pièces à fournir</h4><div class="row">';
+        modeles.forEach((m, idx) => {
+            html += '<div class="col-md-6"><div class="modele-card-glass"><div class="modele-title"><i class="fa-regular fa-file-pdf"></i> ' + m.titre + '</div><div class="pieces-liste-glass"><i class="fa-solid fa-list-check me-1" style="color:var(--accent);"></i> <strong style="color:white;">📋 Pièces :</strong><ul>';
+            m.pieces.forEach(p => html += '<li>📌 ' + p + '</li>');
+            html += '</ul></div><button class="btn-pdf-glass" onclick="telechargerModele(\'' + division + '\',' + idx + ')"><i class="fa-solid fa-download me-2"></i> Télécharger PDF</button></div></div>';
+        });
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    window.telechargerModele = function(division, idx) {
+        const m = modelesData[division];
+        if (m && m[idx]) genererPDF(m[idx].titre, m[idx].pieces);
+    };
+
+    document.querySelectorAll('.division-card-glass').forEach(card => {
+        card.addEventListener('click', () => {
+            displayModeles(card.dataset.division);
+            document.getElementById('modelesContainerGlass').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // ============================================================
+    // 2. CHAT IA (connecté au backend)
+    // ============================================================
+    const chatForm = document.getElementById('chatFormGlass');
+    const chatInput = document.getElementById('chatInputGlass');
+    const chatContainer = document.getElementById('chatMessagesGlass');
+
+    function addBotMessage(text) {
+        const div = document.createElement('div');
+        div.className = 'd-flex mb-3 message-bot';
+        div.innerHTML = '<div class="bubble shadow-sm" style="max-width:90%;"><i class="fa-regular fa-robot text-success me-2"></i> ' + text.replace(/\n/g, '<br>') + '</div>';
+        chatContainer.appendChild(div);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function addUserMessage(text) {
+        const div = document.createElement('div');
+        div.className = 'd-flex justify-content-end mb-3 message-user';
+        div.innerHTML = '<div class="bubble shadow-sm" style="max-width:85%;">' + text + '</div>';
+        chatContainer.appendChild(div);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    chatForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if (!msg) return;
+        addUserMessage(msg);
+        chatInput.value = '';
+
+        const typing = document.createElement('div');
+        typing.className = 'd-flex mb-3 message-bot';
+        typing.innerHTML = '<div class="bubble shadow-sm" style="max-width:90%;"><i class="fa-regular fa-robot text-success me-2"></i> <span class="text-muted">L\'IA réfléchit...</span></div>';
+        chatContainer.appendChild(typing);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        try {
+            const res = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: msg })
+            });
+            const data = await res.json();
+            typing.remove();
+            addBotMessage(data.response || 'Désolé, je n\'ai pas de réponse.');
+        } catch (err) {
+            typing.remove();
+            addBotMessage('⚠️ Erreur de connexion au serveur. Vérifiez qu\'il tourne sur le port 5000.');
+        }
+    });
+
+    // ============================================================
+    // 3. UPLOAD (connecté au backend)
+    // ============================================================
+    (function() {
+        const wrapper = document.querySelector('.contact-card .map-wrapper');
+        if (!wrapper) return;
+        const div = document.createElement('div');
+        div.className = 'mt-3';
+        div.innerHTML = '<div class="glass-card p-3" style="background:var(--glass-bg); backdrop-filter:blur(8px);"><p class="mb-2"><i class="fa-regular fa-file-arrow-up me-2" style="color:var(--accent);"></i> <strong>Déposer une pièce jointe</strong></p><input type="file" id="fileInput" class="form-control" style="background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:40px; padding:10px 18px;"><button id="uploadBtn" class="btn btn-primary-glass mt-2" style="width:100%; padding:10px; border-radius:40px; font-weight:700; background:linear-gradient(145deg, var(--accent), #E8B84A); border:none; color:#0B1A2E;"><i class="fa-regular fa-cloud-arrow-up me-2"></i> Uploader</button><div id="uploadStatus" class="mt-2 small text-muted"></div></div>';
+        wrapper.parentNode.insertBefore(div, wrapper.nextSibling);
+
+        document.getElementById('uploadBtn').addEventListener('click', async function() {
+            const input = document.getElementById('fileInput');
+            const status = document.getElementById('uploadStatus');
+            if (!input.files || input.files.length === 0) {
+                status.innerHTML = '<span style="color:#ff6b6b;">Veuillez sélectionner un fichier.</span>';
                 return;
             }
-            let html = `<h4 class="mb-4 fw-bold" style="color: var(--mg-red); font-size: 1.5rem;"><i class="fa-regular fa-file-lines me-2"></i>Pièces à fournir</h4><div class="row">`;
-            modeles.forEach((modele, index) => {
-                html += `<div class="col-md-6">
-                    <div class="modele-card">
-                        <div class="modele-title"><i class="fa-regular fa-file-pdf"></i><strong>${modele.titre}</strong></div>
-                        <div class="pieces-liste">
-                            <i class="fa-solid fa-list-check me-1" style="color: var(--mg-red);"></i> <strong>📋 Pièces :</strong>
-                            <ul>`;
-                for (let i = 0; i < modele.pieces.length; i++) {
-                    html += `<li>📌 ${modele.pieces[i]}</li>`;
+            const file = input.files[0];
+            status.innerHTML = '<span style="color:var(--accent);"><i class="fa-regular fa-spinner fa-spin me-1"></i> Upload en cours...</span>';
+            const fd = new FormData();
+            fd.append('file', file);
+            try {
+                const res = await fetch('/api/upload', { method: 'POST', body: fd });
+                const data = await res.json();
+                if (res.ok) {
+                    status.innerHTML = '<span style="color:#51cf66;">✅ Fichier "' + file.name + '" uploadé !</span>';
+                    input.value = '';
+                } else {
+                    status.innerHTML = '<span style="color:#ff6b6b;">❌ ' + (data.error || 'Échec') + '</span>';
                 }
-                html += `</ul>
-                        </div>
-                        <button class="btn-download-pdf" onclick="telechargerModele('${division}', ${index})">
-                            <i class="fa-solid fa-download me-2"></i> Télécharger le PDF
-                        </button>
-                    </div>
-                </div>`;
-            });
-            html += `</div>`;
-            container.innerHTML = html;
-        }
-
-        window.telechargerModele = function(division, index) {
-            const modeles = modelesData[division];
-            if (modeles && modeles[index] && modeles[index].generer) {
-                modeles[index].generer();
+            } catch (err) {
+                status.innerHTML = '<span style="color:#ff6b6b;">❌ Erreur réseau.</span>';
             }
-        };
-
-        document.querySelectorAll('.division-card').forEach(card => {
-            card.addEventListener('click', () => {
-                displayModeles(card.getAttribute('data-division'));
-                document.getElementById('modelesContainer').scrollIntoView({ behavior: 'smooth' });
-            });
         });
+    })();
 
-        // ===== IA =====
-        const chatForm = document.getElementById('chatPremiumForm');
-        const chatInput = document.getElementById('premiumChatInput');
-        const chatContainer = document.getElementById('chatMessagesPremium');
+    // ============================================================
+    // 4. ANIMATIONS & AUTRES
+    // ============================================================
+    const els = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.10 });
+    els.forEach(el => obs.observe(el));
 
-        function addBotMessage(text) {
-            const div = document.createElement('div');
-            div.className = 'd-flex mb-3 message-bot';
-            div.innerHTML = `<div class="bubble shadow-sm" style="max-width: 90%;"><i class="fa-regular fa-robot text-success me-2"></i> ${text.replace(/\n/g, '<br>')}</div>`;
-            chatContainer.appendChild(div);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+    document.getElementById('contactFormGlass').addEventListener('submit', function(e) {
+        const status = document.getElementById('formStatusGlass');
+        status.innerHTML = '<span style="color:var(--accent);"><i class="fa-regular fa-spinner fa-spin me-1"></i> Envoi...</span>';
+        setTimeout(() => {
+            status.innerHTML = '<span style="color:var(--accent);"><i class="fa-regular fa-circle-check me-1"></i> Message envoyé !</span>';
+        }, 1500);
+    });
+
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('mainNav');
+        if (window.scrollY > 30) {
+            nav.style.backgroundColor = 'rgba(11,26,46,0.88)';
+            nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.08)';
+        } else {
+            nav.style.backgroundColor = 'rgba(11,26,46,0.80)';
+            nav.style.boxShadow = 'none';
         }
-
-        function getConnaissance(question) {
-            const q = question.toLowerCase().trim();
-            const map = {
-                'horaire': "🕒 Horaires : Lundi-Vendredi 08h00-12h00 et 14h00-17h00",
-                'adresse': "📍 Antanambazaha, Mananjary 317, Vatovavy",
-                'email': "📧 jackandrianaivomanana@gmail.com",
-                'telephone': "📞 +261 20 57 901 23 · WhatsApp +261 34 57 250 57",
-                'quitus': "📄 Quitus : division DPE",
-                'bail': "🏠 Bail : division DPE",
-                'siigfp': "💻 SIIGFP : division CIR",
-                'sigmp': "🔐 SIGMP : division CIR",
-                'remboursement': "🏥 Remboursement médical : division Santé"
-            };
-            for (let key in map) {
-                if (q.includes(key)) return map[key];
-            }
-            return null;
-        }
-
-        function getHistoire(question) {
-            const q = question.toLowerCase().trim();
-            if (q.includes('histoire') || q.includes('conte') || q.includes('légende') || q.includes('raconte')) {
-                const histoires = [
-                    { titre: "📖 Légende de Madagascar", contenu: "Selon la tradition, Madagascar serait née d'un combat entre deux géants. L'un, vaincu, se coucha dans l'océan, formant l'île. Ses montagnes sont ses os, ses côtes ses déchirures. Les Malgaches l'appellent 'Nosy Manga'." },
-                    { titre: "📖 Le lémurien Indri", contenu: "L'Indri est sacré. La légende raconte qu'il était un homme qui commit un crime envers les esprits. Transformé en animal, son cri plaintif dans les forêts d'Andasibe est l'appel de son âme." },
-                    { titre: "📖 Roi Andrianampoinimerina", contenu: "Au XVIIIe siècle, il unifia Madagascar. Son dicton : 'Ny ranomasina no valampariako' (La mer est ma limite). Il fonda Antananarivo." }
-                ];
-                const choix = histoires[Math.floor(Math.random() * histoires.length)];
-                return `${choix.titre}\n\n${choix.contenu}\n\n💡 Encore une histoire ? Dites « encore ».`;
-            }
-            return null;
-        }
-
-        function getResolution(question) {
-            const q = question.toLowerCase().trim();
-            if (q.includes('=') || q.includes('calcule') || q.match(/[\d+\-*/%^]/)) {
-                try {
-                    let expr = q.replace(/[^0-9+\-*/%.()^]/g, '');
-                    const resultat = eval(expr);
-                    return `🧮 Résultat : ${expr} = ${resultat}`;
-                } catch(e) {}
-            }
-            if (q.includes('problème') || q.includes('résoudre')) {
-                return "💡 Méthode : 1. Définir · 2. Analyser · 3. Chercher · 4. Choisir · 5. Mettre en œuvre.\nDécrivez votre problème pour plus d'aide.";
-            }
-            return null;
-        }
-
-        function getCulture(question) {
-            const q = question.toLowerCase().trim();
-            const sujets = {
-                'madagascar': "🇲🇬 Madagascar : île de l'océan Indien, 4ème plus grande. Capitale Antananarivo. ~28 M d'habitants. Monnaie Ariary.",
-                'capitale': "🇲🇬 Antananarivo",
-                'population': "🇲🇬 ~28 millions",
-                'monnaie': "💰 Ariary (MGA). 1€ ≈ 4800 Ar",
-                'mananjary': "📍 Mananjary, région Vatovavy, côte est"
-            };
-            for (let key in sujets) {
-                if (q.includes(key)) return sujets[key];
-            }
-            return null;
-        }
-
-        function reponseIA(question) {
-            let rep = getConnaissance(question) || getHistoire(question) || getResolution(question) || getCulture(question);
-            if (rep) return rep;
-
-            const q = question.toLowerCase().trim();
-            if (q.match(/^(bonjour|salut|hello|salama)/)) return "👋 Bonjour ! Je suis votre assistant SRB Vatovavy. Que puis-je faire pour vous ?";
-            if (q.includes('merci')) return "🙏 Avec plaisir !";
-            if (q.includes('au revoir')) return "👋 Au revoir ! Bonne journée.";
-            if (q.includes('blague')) return "😂 Pourquoi les agents du SRB sont-ils organisés ? Parce qu'ils ont un bon quitus !";
-
-            return "🔍 Je suis votre assistant universel.\n\n📋 SRB : horaires, adresse, quitus, bail, SIIGFP\n🧮 Maths : calculs, équations\n📖 Histoires : contes malgaches\n🌍 Culture : Madagascar, géographie\n\nQue souhaitez-vous ?";
-        }
-
-        chatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const msg = chatInput.value.trim();
-            if (!msg) return;
-            const userDiv = document.createElement('div');
-            userDiv.className = 'd-flex justify-content-end mb-3 message-user';
-            userDiv.innerHTML = `<div class="bubble shadow-sm" style="max-width: 85%;">${msg}</div>`;
-            chatContainer.appendChild(userDiv);
-            chatInput.value = '';
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-            setTimeout(() => {
-                const reponse = reponseIA(msg);
-                addBotMessage(reponse);
-            }, 400);
-        });
-
-        // ---- Animation au scroll améliorée ----
-        const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-        animatedElements.forEach(el => observer.observe(el));
-
-        // ---- Gestion du formulaire de contact (statut d'envoi) ----
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            const status = document.getElementById('formStatus');
-            status.innerHTML = '<span class="text-success"><i class="fa-regular fa-spinner fa-spin me-1"></i> Envoi en cours...</span>';
-            setTimeout(() => {
-                status.innerHTML = '<span class="text-success"><i class="fa-regular fa-circle-check me-1"></i> Message envoyé avec succès !</span>';
-            }, 1500);
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
