@@ -55,7 +55,7 @@
             pointer-events: none;
         }
 
-        /* --- DRAPEAUX TRÈS LÉGERS --- */
+        /* --- DRAPEAUX FLOTTANTS (visibles mais très clairs) --- */
         .flags-container {
             position: fixed;
             inset: 0;
@@ -66,90 +66,91 @@
         .flag-float {
             position: absolute;
             font-size: 3rem;
-            opacity: 0.015;
+            opacity: 0.12;
             animation: floatFlag linear infinite;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.02));
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.03));
             user-select: none;
             will-change: transform;
+            color: rgba(255, 255, 255, 0.25); /* légère teinte claire */
         }
         .flag-float:nth-child(1) {
             left: 2%;
             top: 5%;
             animation-duration: 22s;
-            font-size: 4rem;
-            opacity: 0.02
+            font-size: 4.5rem;
+            opacity: 0.15
         }
         .flag-float:nth-child(2) {
             left: 15%;
             top: 70%;
             animation-duration: 28s;
             animation-delay: -3s;
-            font-size: 3.5rem;
-            opacity: 0.015
+            font-size: 3.8rem;
+            opacity: 0.12
         }
         .flag-float:nth-child(3) {
             left: 30%;
             top: 15%;
             animation-duration: 25s;
             animation-delay: -7s;
-            font-size: 4.5rem;
-            opacity: 0.01
+            font-size: 5rem;
+            opacity: 0.10
         }
         .flag-float:nth-child(4) {
             left: 50%;
             top: 80%;
             animation-duration: 30s;
             animation-delay: -12s;
-            font-size: 3rem;
-            opacity: 0.018
+            font-size: 3.2rem;
+            opacity: 0.14
         }
         .flag-float:nth-child(5) {
             left: 70%;
             top: 10%;
             animation-duration: 20s;
             animation-delay: -5s;
-            font-size: 4rem;
-            opacity: 0.012
+            font-size: 4.2rem;
+            opacity: 0.11
         }
         .flag-float:nth-child(6) {
             left: 85%;
             top: 60%;
             animation-duration: 26s;
             animation-delay: -9s;
-            font-size: 3.8rem;
-            opacity: 0.02
+            font-size: 4rem;
+            opacity: 0.13
         }
         .flag-float:nth-child(7) {
             left: 92%;
             top: 25%;
             animation-duration: 24s;
             animation-delay: -15s;
-            font-size: 3.2rem;
-            opacity: 0.015
+            font-size: 3.5rem;
+            opacity: 0.10
         }
         .flag-float:nth-child(8) {
             left: 5%;
             top: 92%;
             animation-duration: 32s;
             animation-delay: -2s;
-            font-size: 3.6rem;
-            opacity: 0.018
+            font-size: 3.8rem;
+            opacity: 0.12
         }
         .flag-float:nth-child(9) {
             left: 45%;
             top: 45%;
             animation-duration: 27s;
             animation-delay: -18s;
-            font-size: 4.2rem;
-            opacity: 0.01
+            font-size: 4.8rem;
+            opacity: 0.09
         }
         .flag-float:nth-child(10) {
             left: 60%;
             top: 92%;
             animation-duration: 29s;
             animation-delay: -6s;
-            font-size: 3.4rem;
-            opacity: 0.016
+            font-size: 3.6rem;
+            opacity: 0.11
         }
         @keyframes floatFlag {
             0% {
@@ -1075,20 +1076,20 @@
             }
 
             .flag-float {
-                font-size: 2rem !important;
-                opacity: 0.012 !important;
+                font-size: 2.2rem !important;
+                opacity: 0.15 !important;
             }
             .flag-float:nth-child(1) {
-                opacity: 0.015 !important;
+                opacity: 0.18 !important;
             }
             .flag-float:nth-child(3) {
-                opacity: 0.008 !important;
+                opacity: 0.12 !important;
             }
             .flag-float:nth-child(5) {
-                opacity: 0.01 !important;
+                opacity: 0.14 !important;
             }
             .flag-float:nth-child(9) {
-                opacity: 0.008 !important;
+                opacity: 0.11 !important;
             }
         }
 
@@ -1135,15 +1136,15 @@
                 border-radius: 12px;
             }
             .flag-float {
-                font-size: 1.6rem !important;
-                opacity: 0.008 !important;
+                font-size: 1.8rem !important;
+                opacity: 0.12 !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- DRAPEAUX FLOTTANTS (très légers) -->
+    <!-- DRAPEAUX FLOTTANTS (visibles mais très clairs) -->
     <div class="flags-container">
         <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
         <span class="flag-float">🇲🇬</span><span class="flag-float">🇲🇬</span>
@@ -1159,7 +1160,7 @@
                 <img src="https://thfvnext.bing.com/th/id/OIP.taBK_n5twN4-G4aw3kAKGgHaG1?r=0&o=7&cb=thfvnextfalcon2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Logo SRB" class="logo-img" onerror="this.classList.add('error'); this.onerror=null;" />
                 <span class="logo-fallback"><i class="fa-solid fa-landmark"></i> SRB</span>
                 <div>
-                    <div class="logo-text">SRB <span>Vatovavy</span></div>
+                    <div class="logo-text">Service Regional du Budget <span>Vatovavy</span></div>
                     <div class="logo-badge">Ministère des Finances</div>
                 </div>
             </a>
@@ -1235,7 +1236,7 @@
                                 <div class="d-flex mb-3 message-bot">
                                     <div class="bubble shadow-sm" style="max-width:92%;">
                                         <i class="fa-regular fa-robot text-success me-2"></i> <strong>Bonjour !</strong><br><br>
-                                        Posez-moi vos questions !
+                                        Posez-moi vos questions !!!!
                                     </div>
                                 </div>
                             </div>
@@ -1302,7 +1303,7 @@
                         <span class="badge" style="background:var(--accent); color:#0B1A2E; font-weight:700; padding:5px 16px; border-radius:30px; font-size:0.7rem;">
                             <i class="fa-regular fa-circle-check me-1"></i> Notre mission
                         </span>
-                        <h2 class="section-title-glass mt-3" style="font-size:1.5rem;">🇲🇬 SRB <span class="highlight">Vatovavy</span></h2>
+                        <h2 class="section-title-glass mt-3" style="font-size:1.5rem;">🇲🇬 Service Regional du Budget<span class="highlight">Vatovavy</span></h2>
                         <p class="text-muted" style="font-size:0.9rem;">Gestion budgétaire, contrôle des dépenses et patrimoine de l'État dans la région Vatovavy.</p>
                         <div class="mt-3">
                             <div class="about-item"><div class="icon-circle-sm"><i class="fa-regular fa-circle-check"></i></div><div><strong>Exécution budgétaire</strong><br><span>Suivi rigoureux des crédits et engagements financiers</span></div></div>
@@ -1470,7 +1471,6 @@
                 displayModeles(card.dataset.division);
                 document.getElementById('modelesContainerGlass').scrollIntoView({ behavior: 'smooth' });
             });
-            // Support tactile : retour haptique léger
             card.addEventListener('touchstart', function() {
                 this.style.transform = 'scale(0.96)';
             }, { passive: true });
